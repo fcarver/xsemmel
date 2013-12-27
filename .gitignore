@@ -1,0 +1,16 @@
+/Xsemmel/bin/Debug
+/Xsemmel/bin/Release
+/Xsemmel/obj/Debug
+/Xsemmel/obj/Release
+/XsemmelTest/bin/Debug
+/XsemmelTest/bin/Release
+/XsemmelTest/obj/Debug
+/InnoSetup/Developer Command Prompt for VS2012.lnk
+/InnoSetup/output
+/XSemmel.sln.DotSettings.user
+/XSemmel.v11.suo
+/XsemmelTest/obj/Release
+/packages/AvalonEdit.4.2.0.8783
+/packages/DiffPlex.1.2.0
+/packages/HtmlAgilityPack.1.4.6
+/packages/PropertyTools.Wpf.2013.1.12.1

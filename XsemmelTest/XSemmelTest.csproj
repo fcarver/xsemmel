@@ -61,12 +61,6 @@
     <Compile Include="XsltTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Xemmel\XSemmel.csproj">
-      <Project>{E3CF1844-9703-425E-B0C2-980FB2026A01}</Project>
-      <Name>XSemmel</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="SampleFiles\Xml\books.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -122,6 +116,12 @@
     <None Include="SampleFiles\Xml\pattern" />
     <None Include="SampleFiles\Xml\pattern2" />
     <None Include="SampleFiles\Xml\pattern3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Xsemmel\XSemmel.csproj">
+      <Project>{e3cf1844-9703-425e-b0c2-980fb2026a01}</Project>
+      <Name>XSemmel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
