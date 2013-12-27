@@ -1,0 +1,39 @@
+﻿<StatusBar x:Class="XSemmel.Editor.FindString"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+           mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="300"
+           Visibility="Collapsed" >
+
+  <StatusBarItem DockPanel.Dock="Right">
+    <Button Click="btnClose_Click" Margin="5 0 0 0" ToolTip="Close">
+      <Image Source="/Images/305_Close_16x16_72.png" Height="16" Width="16" />
+    </Button>
+  </StatusBarItem>
+
+  <StatusBarItem DockPanel.Dock="Right">
+    <Button Click="btnFindNext_Click" Margin="5 0 0 0" ToolTip="Next">
+      <Image Source="/Images/Down_16x16.png" Height="16" Width="16" />
+    </Button>
+  </StatusBarItem>
+
+  <StatusBarItem DockPanel.Dock="Right">
+    <TextBox 
+        x:Name="_edtSearchText" x:FieldModifier="private"
+        TextChanged="_edtSearchText_TextChanged"
+        KeyDown="_edtSearchText_KeyDown"
+        Width="200"
+    />
+  </StatusBarItem>
+
+  <StatusBarItem DockPanel.Dock="Right">
+    <TextBlock VerticalAlignment="Center">Search for</TextBlock>
+  </StatusBarItem>
+    
+  <StatusBarItem>
+    <!-- Workaround: Statusbar needs something which is not right-docked -->
+    <TextBlock Visibility="Hidden">x</TextBlock>
+  </StatusBarItem>
+
+</StatusBar>

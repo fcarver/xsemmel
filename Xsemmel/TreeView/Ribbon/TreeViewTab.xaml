@@ -1,0 +1,126 @@
+﻿<ribbon:RibbonTab x:Class="XSemmel.TreeView.Ribbon.TreeViewTab"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" 
+            xmlns:TreeView="clr-namespace:XSemmel.TreeView.Commands" 
+            mc:Ignorable="d" 
+            Header="TreeView">
+    <ribbon:RibbonTab.Resources>
+        <TreeView:CommentOutCommand x:Key="CommentOutCommand"/>
+        <TreeView:RenameCommand x:Key="RenameCommand"/>
+        <TreeView:CollapseAllCommand x:Key="CollapseAllCommand"/>
+        <TreeView:ExpandAllCommand x:Key="ExpandAllCommand"/>
+        <TreeView:ExpandToLevel1Command x:Key="ExpandToLevel1Command"/>
+        <TreeView:ExpandToLevel2Command x:Key="ExpandToLevel2Command"/>
+        <TreeView:ExpandToLevel3Command x:Key="ExpandToLevel3Command"/>
+        <TreeView:ExpandToLevel4Command x:Key="ExpandToLevel4Command"/>
+        <TreeView:CopyXPathCommand x:Key="CopyXPathCommand"/>
+        <TreeView:MoveUpCommand x:Key="MoveUpCommand"/>
+        <TreeView:MoveDownCommand x:Key="MoveDownCommand"/>
+        <TreeView:SelectCodeCommand x:Key="SelectCodeCommand"/>
+        <TreeView:ShowSchemaInfoCommand x:Key="ShowSchemaInfoCommand"/>
+        <TreeView:DeleteCommand x:Key="DeleteCommand"/>
+        <TreeView:UpdateCommand x:Key="UpdateCommand"/>
+    </ribbon:RibbonTab.Resources>
+    
+    <ribbon:RibbonGroup Header="Selected item">
+        <ribbon:RibbonButton
+            Label="Copy XPath"
+            SmallImageSource="/Images/112_ArrowCurve_Blue_Right_16x16_72.png"
+            LargeImageSource="/Images/112_ArrowCurve_Blue_Right_32x32_72.png"
+            Command="{StaticResource CopyXPathCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Select in editor"
+            SmallImageSource="/Images/View_16x16.png"
+            LargeImageSource="/Images/View_32x32.png"
+            Command="{StaticResource SelectCodeCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Show schema info"
+            SmallImageSource="/Images/BookVshelp_16x16.png"
+            LargeImageSource="/Images/BookVshelp_32x32.png"
+            Command="{StaticResource ShowSchemaInfoCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+        <ribbon:RibbonButton
+            Label="Comment out"
+            SmallImageSource="/Images/Comment_16x16.png"
+            Command="{StaticResource CommentOutCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Rename"
+            SmallImageSource="/Images/RenameFolderHS.png"
+            Command="{StaticResource RenameCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Delete"
+            SmallImageSource="/Images/Delete_16x16.png"
+            Command="{StaticResource DeleteCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+    </ribbon:RibbonGroup>
+
+    <ribbon:RibbonGroup Header="View">
+        <ribbon:RibbonButton
+            Label="Update"
+            SmallImageSource="/Images/112_RefreshArrow_Blue_16x16_72.png"
+            LargeImageSource="/Images/112_RefreshArrow_Blue_32x32.png"
+            Command="{StaticResource UpdateCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+        <ribbon:RibbonCheckBox
+            Label="Update automatically"
+            IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.UpdateTreeViewAutomatically}"
+        />
+
+        <ribbon:RibbonSplitButton Label="Expand all"
+                                  SmallImageSource="/Images/ExpandAll_16x16.png"
+                                  Command="{StaticResource ExpandAllCommand}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}">
+            <ribbon:RibbonSplitButton.Items>
+                <ribbon:RibbonMenuItem Header="Expand to level 1"
+                    Command="{StaticResource ExpandToLevel1Command}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                <ribbon:RibbonMenuItem Header="Expand to level 2"
+                    Command="{StaticResource ExpandToLevel2Command}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                <ribbon:RibbonMenuItem Header="Expand to level 3"
+                    Command="{StaticResource ExpandToLevel3Command}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                <ribbon:RibbonMenuItem Header="Expand to level 4"
+                    Command="{StaticResource ExpandToLevel4Command}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+            </ribbon:RibbonSplitButton.Items>
+        </ribbon:RibbonSplitButton>
+        
+        <ribbon:RibbonButton
+            Label="Collapse all" 
+            SmallImageSource="/Images/CollapseAll_16x16.png"
+            Command="{StaticResource CollapseAllCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+    </ribbon:RibbonGroup>
+
+    <ribbon:RibbonGroup Header="Move selected item">
+        <ribbon:RibbonButton
+            Label="Move up"
+            SmallImageSource="/Images/Up_16x16.png"
+            Command="{StaticResource MoveUpCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Move down"
+            SmallImageSource="/Images/Down_16x16.png"
+            Command="{StaticResource MoveDownCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+    </ribbon:RibbonGroup>
+
+</ribbon:RibbonTab>

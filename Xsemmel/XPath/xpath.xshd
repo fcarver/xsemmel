@@ -1,0 +1,112 @@
+<SyntaxDefinition name="xpath"
+        xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+    <Color name="Comment" foreground="Green" />
+    <Color name="String" foreground="Blue" />
+    <Color name="Attributes" foreground="DarkViolet" />
+    <Color name="Keywords" foreground="Black" fontWeight="bold" />
+    <Color name="Navigation" foreground="DarkRed" />
+    <Color name="Methods" foreground="Black" fontStyle="italic"/>
+    
+    <!-- This is the main ruleset. -->
+    <RuleSet>
+       <!-- <Span color="Comment" begin="//" />
+        <Span color="Comment" multiline="true" begin="/\*" end="\*/" />-->
+        
+        <Span color="String">
+            <Begin>'</Begin>
+            <End>'</End>
+            <!--<RuleSet>
+                <Span begin="''" end="''" />
+            </RuleSet>-->
+        </Span>
+
+        <Span color="String">
+            <Begin>"</Begin>
+            <End>"</End>
+<!--            <RuleSet>
+                <Span begin="''" end="''" />
+            </RuleSet>-->
+        </Span>
+        
+        <Span color="Attributes">
+            <Begin>@</Begin>
+            <End>=</End>
+        </Span>
+        
+        <Keywords color="Keywords">
+            <Word>and</Word>
+            <Word>or</Word>
+            <Word>+</Word>
+            <Word>-</Word>
+            <Word>*</Word>
+            <Word>/</Word>
+            <Word>div</Word>
+            <Word>mod</Word>
+        </Keywords>
+        
+        <Keywords color="Navigation">
+            <Word>node()</Word>
+            <Word>processing-instruction()</Word>
+            <Word>text()</Word>
+            <Word>name()</Word>
+            <Word>comment()</Word>
+        </Keywords>
+        
+        <Keywords color="Navigation">
+            <Word>child</Word>
+            <Word>descendant</Word>
+            <Word>parent</Word>
+            <Word>ancestor</Word>
+            <Word>follow-sibling</Word>
+            <Word>preceding-sibling</Word>
+            <Word>following</Word>
+            <Word>preceding</Word>
+            <Word>attribute</Word>
+            <Word>namespace</Word>
+            <Word>self</Word>
+            <Word>descendant-or-self</Word>
+            <Word>ancestor-or-self</Word>
+        </Keywords>
+        
+        
+        <Keywords color="Methods">
+            <Word>count</Word>
+            <Word>id</Word>
+            <Word>last</Word>
+            <Word>local-name</Word>
+            <Word>name</Word>
+            <Word>namespace-uri</Word>
+            <Word>position</Word>
+            <Word>concat</Word>
+            <Word>contains</Word>
+            <Word>normalize-space</Word>
+            <Word>starts-with</Word>
+            <Word>string</Word>
+            <Word>string-length</Word>
+            <Word>substring</Word>
+            <Word>substring-after</Word>
+            <Word>substring-before</Word>
+            <Word>translate</Word>
+            <Word>boolean</Word>
+            <Word>false</Word>
+            <Word>lang</Word>
+            <Word>not</Word>
+            <Word>true</Word>
+            <Word>ceiling</Word>
+            <Word>floor</Word>
+            <Word>number</Word>
+            <Word>round</Word>
+            <Word>sum</Word>
+        </Keywords>
+        
+        <!-- Digits -->
+        <Rule foreground="DarkBlue">
+            \b0[xX][0-9a-fA-F]+  # hex number
+        |    \b
+            (    \d+(\.[0-9]+)?   #number with optional floating point
+            |    \.[0-9]+         #or just starting with floating point
+            )
+            ([eE][+-]?[0-9]+)? # optional exponent
+        </Rule>
+    </RuleSet>
+</SyntaxDefinition>

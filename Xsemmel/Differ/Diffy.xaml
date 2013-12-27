@@ -1,0 +1,101 @@
+﻿<Window x:Class="XSemmel.Differ.Diffy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:avalon="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" 
+        xmlns:WPF="clr-namespace:XSemmel.Helpers.WPF" 
+        mc:Ignorable="d" 
+        Title="Compare XML files" ShowInTaskbar="False"
+        Icon="/Images/compareversionsHS.png"
+        MinHeight="230" MinWidth="312" Height="400" Width="600">
+    <Window.Resources>
+        <WPF:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    </Window.Resources>
+    <DockPanel Margin="5">
+        <StackPanel DockPanel.Dock="Top">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0">First file</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="edtXmlFile1" x:FieldModifier="private"
+                         IsEnabled="{Binding ElementName=chkCurrentDocument, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}"/>
+                <Button Grid.Row="0" Grid.Column="2" Margin="5,0,0,0" Click="Button_Click"
+                        IsEnabled="{Binding ElementName=chkCurrentDocument, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}">
+                    ...
+                </Button>
+                <CheckBox Grid.Row="1" Grid.Column="1" x:Name="chkCurrentDocument">Current document</CheckBox>
+
+                <Label Grid.Row="2" Grid.Column="0">Second file</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="edtXmlFile2" x:FieldModifier="private"
+                         IsEnabled="{Binding ElementName=chkClipboard, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}"/>
+                <Button Grid.Row="2" Grid.Column="2" Margin="5,0,0,0" Click="Button_Click_1"
+                        IsEnabled="{Binding ElementName=chkClipboard, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}">
+                    ...
+                </Button>
+                <CheckBox x:Name="chkClipboard" x:FieldModifier="private" Grid.Row="3" Grid.Column="1">Clipboard</CheckBox>
+            </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Width="100" Margin="5" Click="btnDiff_Click">Diff</Button>
+            </StackPanel>
+        </StackPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2" MinHeight="50"/>
+                <RowDefinition Height="*" MinHeight="50"/>
+            </Grid.RowDefinitions>
+
+            <TextBox Name="edtResult" x:FieldModifier="private" 
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto" 
+                     FontFamily="Courier New" Grid.Row="0" IsReadOnly="True" />
+            <GridSplitter HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="4" />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="18"/>
+                </Grid.RowDefinitions>
+                <avalon:TextEditor 
+                    Grid.Column="0" Grid.Row="0"
+                    x:FieldModifier="private" x:Name="edtOne" FontFamily="Consolas"
+			        FontSize="10pt"
+			        SyntaxHighlighting="XML"
+                    ShowLineNumbers="True" 
+                    IsReadOnly="True"/>
+                <avalon:TextEditor 
+                    Grid.Column="1" Grid.Row="0" 
+                    x:FieldModifier="private" x:Name="edtTwo"
+                    FontFamily="Consolas"
+			        FontSize="10pt"
+			        SyntaxHighlighting="XML"
+                    ShowLineNumbers="True" 
+                    IsReadOnly="True" />
+                <Button 
+                    Grid.Column="0" Grid.Row="1" FontSize="10" 
+                    Width="80" HorizontalAlignment="Right" Click="Button_Click_2" Padding="0">
+                    Sync Scrollbar
+                </Button>
+                <Button 
+                    Grid.Column="1" Grid.Row="1" FontSize="10"
+                    Width="80" HorizontalAlignment="Right" Click="Button_Click_3" Padding="0">
+                    Sync Scrollbar
+                </Button>
+            </Grid>
+
+        </Grid>
+        
+    </DockPanel>
+</Window>

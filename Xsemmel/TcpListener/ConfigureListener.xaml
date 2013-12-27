@@ -1,0 +1,50 @@
+﻿<Window x:Class="XSemmel.TcpListener.ConfigureListener"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Configure TCP socket" Height="180" Width="350" Loaded="ConfigureListener_OnLoaded"
+        ResizeMode="NoResize"
+        Icon="/Images/Document_TCP_16x16.png">
+    <Grid>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="2*"/>
+      </Grid.ColumnDefinitions>
+
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">
+        Network adapter:
+      </TextBlock>
+      <ComboBox Grid.Row="0" Grid.Column="1" x:Name="_cbxNetworkAdapter" x:FieldModifier="private" Margin="5"/>
+
+      <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center">
+        Port:
+      </TextBlock>
+      <TextBox Grid.Row="1" Grid.Column="1" x:Name="_edtPort" x:FieldModifier="private" Margin="5">
+        4711
+      </TextBox>
+
+      <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center">
+        Encoding:
+      </TextBlock>
+      <ComboBox Grid.Row="2" Grid.Column="1" x:Name="_cbxEncodings" x:FieldModifier="private" Margin="5"/>
+      
+      <Separator Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="5"/>
+      
+      <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right">
+        <Button Margin="5 5 0 5" Width="80" Click="_btnOk_OnClick">
+          OK
+        </Button>
+        <Button Margin="5" Width="80" Click="_btnCancel_OnClick">
+          Cancel
+        </Button>
+      </StackPanel>
+        
+    </Grid>
+</Window>

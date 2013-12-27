@@ -1,0 +1,44 @@
+﻿<DockPanel x:Class="XSemmel.XPath.BulkXPathInputBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+           xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" mc:Ignorable="d" 
+        Height="65" Margin="0,0,0,5"
+     >
+
+    <Label DockPanel.Dock="Top">XPath:</Label>
+    <Border BorderThickness="1" BorderBrush="Silver">
+        <AvalonEdit:TextEditor 
+                    x:Name="EdtXPath" x:FieldModifier="public"
+                    FontSize="10pt"  
+                    FontFamily="Consolas">
+            <AvalonEdit:TextEditor.Template>
+                <ControlTemplate>
+                    <ScrollViewer
+                            Focusable="False"
+                            CanContentScroll="True"
+                            VerticalScrollBarVisibility="Auto"
+                            HorizontalScrollBarVisibility="Auto"
+                            Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                            VerticalContentAlignment="Top"
+                            HorizontalContentAlignment="Left"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                        />
+                </ControlTemplate>
+            </AvalonEdit:TextEditor.Template>
+            <AvalonEdit:TextEditor.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy" Click="mnuCopy_Click"/>
+                    <MenuItem Header="Paste" Click="mnuPaste_Click"/>
+                    <MenuItem Header="Delete" Click="mnuDelete_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Load from file..." Click="mnuLoadFromFile_Click"/>
+                </ContextMenu>
+            </AvalonEdit:TextEditor.ContextMenu>
+        </AvalonEdit:TextEditor>
+    </Border>
+
+
+</DockPanel>

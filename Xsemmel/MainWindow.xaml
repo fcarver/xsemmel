@@ -1,0 +1,334 @@
+﻿<ribbon:RibbonWindow x:Class="XSemmel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" 
+        xmlns:prettyPrinter="clr-namespace:XSemmel.PrettyPrinter"
+        xmlns:commands="clr-namespace:XSemmel.Commands" 
+        xmlns:treeViewRibbon="clr-namespace:XSemmel.TreeView.Ribbon" 
+        xmlns:XSemmel="clr-namespace:XSemmel" 
+        xmlns:Ribbon="clr-namespace:XSemmel.Schema.Ribbon" 
+        xmlns:Ribbon1="clr-namespace:XSemmel.Xslt.Ribbon" 
+        mc:Ignorable="d" 
+        Title="Xsemmel" MinHeight="380" MinWidth="640"
+        d:DesignHeight="391" d:DesignWidth="999"
+        TextOptions.TextFormattingMode="Display"        
+        Icon="/XSemmel;component/AppIcon.ico" SizeToContent="Manual"
+        Closed="RibbonWindow_Closed">
+    <ribbon:RibbonWindow.Resources>
+        <prettyPrinter:PrettyPrintCommand x:Key="PrettyPrintCommand"/>
+        <commands:SaveCommand x:Key="SaveCommand"/>
+        <commands:OpenCommand x:Key="OpenCommand"/>
+        <commands:CopyFilenameCommand x:Key="CopyFilenameCommand"/>
+        <commands:Xsd2XmlGeneratorCommand x:Key="Xsd2XmlGeneratorCommand"/>
+        <commands:InsertCurrentDateTimeCommand x:Key="InsertCurrentDateTimeCommand"/>
+        <commands:XsdVizFontPlusCommand x:Key="XsdVizFontPlusCommand"/>
+        <commands:XsdVizFontMinusCommand x:Key="XsdVizFontMinusCommand"/>
+        <commands:XsdVizShowRootCommand x:Key="XsdVizShowRootCommand"/>
+        <commands:XsdVizHistoryBackCommand x:Key="XsdVizHistoryBackCommand"/>
+        <commands:XsdVizUnhideAllCommand x:Key="XsdVizUnhideAllCommand"/>
+        <commands:XsdVizCopyToClipboardCommand x:Key="XsdVizCopyToClipboardCommand"/>
+        <commands:XsdVizExportCommand x:Key="XsdVizExportCommand"/>
+        <commands:StartXQueryCommand x:Key="StartXQueryCommand"/>
+        <commands:UnescapeCsStringCommand x:Key="UnescapeCsStringCommand"/>
+        <commands:UnescapeXmlStringCommand x:Key="UnescapeXmlStringCommand"/>
+        <commands:UnescapeBase64StringCommand x:Key="UnescapeBase64StringCommand"/>
+        <commands:EscapeXmlStringCommand x:Key="EscapeXmlStringCommand"/>
+        <commands:EscapeBase64StringCommand x:Key="EscapeBase64StringCommand"/>
+        <commands:ToggleSearchAndReplaceCommand x:Key="ToggleSearchAndReplaceCommand"/>
+        <commands:ExportAsHtmlCommand x:Key="ExportAsHtmlCommand"/>
+        <commands:OpenFromClipboardCommand x:Key="OpenFromClipboardCommand"/>
+        <commands:XsdVizEnabledCommand x:Key="XsdVizEnabledCommand"/>
+        <commands:XsdValidateXmlCommand x:Key="XsdValidateXmlCommand"/>
+    </ribbon:RibbonWindow.Resources>
+    <DockPanel>
+
+        <ribbon:Ribbon x:Name="Ribbon" DockPanel.Dock="Top">
+            <ribbon:Ribbon.QuickAccessToolBar>
+                <ribbon:RibbonQuickAccessToolBar HorizontalAlignment="Right">
+                    <ribbon:RibbonButton SmallImageSource="/Images/Folder_Open_16x16.png"
+                        ToolTipTitle="Open"
+                        Command="{StaticResource OpenCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton
+                        SmallImageSource="/Images/OpenFromClipboard_16x16.png"
+                        ToolTipTitle="Open from clipboard"
+                        Command="{StaticResource OpenFromClipboardCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton 
+                        SmallImageSource="/Images/Save.png" 
+                        ToolTipTitle="Save file"
+                        Command="{StaticResource SaveCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                </ribbon:RibbonQuickAccessToolBar>
+            </ribbon:Ribbon.QuickAccessToolBar>
+            <ribbon:Ribbon.HelpPaneContent>
+                <StackPanel Orientation="Horizontal">
+                    <ribbon:RibbonButton Click="mnuMinimize_Click" SmallImageSource="/Images/PushPin_16x16.png" ToolTipTitle="Minimize or expand ribbon" />
+                    <ribbon:RibbonButton Click="mnuAbout_Click" SmallImageSource="/Images/109_AllAnnotations_Info_16x16_72.png" />
+                </StackPanel>
+            </ribbon:Ribbon.HelpPaneContent>
+
+            <ribbon:Ribbon.ApplicationMenu>
+                <XSemmel:ApplicationMenu />
+            </ribbon:Ribbon.ApplicationMenu>
+            
+            <ribbon:RibbonTab Header="Editor">
+                <ribbon:RibbonGroup Header="Clipboard">
+                    <ribbon:RibbonButton Label="Paste" LargeImageSource="/Images/Paste.png" Command="Paste"/>
+                    <ribbon:RibbonButton Label="Cut" SmallImageSource="/Images/Cut.png" Command="Cut"/>
+                    <ribbon:RibbonButton Label="Copy" SmallImageSource="/Images/Copy.png" Command="Copy"/>
+                    <ribbon:RibbonButton 
+                        Label="Copy file path" 
+                        SmallImageSource="/Images/CopyFolderHS.png" 
+                        ToolTipTitle="Copy name of open document to clipboard"
+                        Command="{StaticResource CopyFilenameCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Editing">
+                    <ribbon:RibbonButton Label="Delete" SmallImageSource="/Images/Delete_16x16.png" Command="Delete"/>
+                    <ribbon:RibbonButton Label="Select all" SmallImageSource="/Images/SelectAll.png" Command="SelectAll"/>
+                    <ribbon:RibbonToggleButton 
+                        Label="Search'n'Replace"
+                        SmallImageSource="/Images/Binoculars_16x16.png"
+                        Command="{StaticResource ToggleSearchAndReplaceCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.ShowFindDialog}" />
+                    <ribbon:RibbonButton Label="Undo" SmallImageSource="/Images/Undo.png" Command="Undo"/>
+                    <ribbon:RibbonButton Label="Redo" SmallImageSource="/Images/Redo.png" Command="Redo"/>
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Show">
+                    <ribbon:RibbonCheckBox
+                        Label="WordWrap"
+                        ToolTipTitle="WordWrap"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.WordWrap}" 
+                    />
+                    <ribbon:RibbonCheckBox
+                        Label="Special chars"
+                        ToolTipTitle="Show special charaters"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.ShowSpecialCharacters}" 
+                    />
+                </ribbon:RibbonGroup>
+                <ribbon:RibbonGroup Header="Text">
+                    <ribbon:RibbonSplitButton Label="PrettyPrint" 
+                        SmallImageSource="/Images/IndentHS.png" 
+                        LargeImageSource="/Images/IndentHS.png" 
+                        Command="{StaticResource PrettyPrintCommand}" 
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}">
+                        <ribbon:RibbonSplitButton.Items>
+                            <CheckBox Content="Indent"
+                                      IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.PrettyPrintData.Indent}" 
+                                      Command="{StaticResource PrettyPrintCommand}" 
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                            <CheckBox Content="New lines on attributes"
+                                      IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.PrettyPrintData.NewLineOnAttributes}"
+                                      Command="{StaticResource PrettyPrintCommand}" 
+                                      CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                          <ribbon:RibbonSeparator/>
+                          <ribbon:RibbonMenuItem
+                              Header="Bulk"
+                              ToolTipTitle="Prettyprints multiple files"
+                              ImageSource="/Images/IndentHS.png"
+                              Click="mnuBulkPrettyPrint_Click"
+                          />
+                        </ribbon:RibbonSplitButton.Items>
+                    </ribbon:RibbonSplitButton>
+                    
+                    <ribbon:RibbonButton
+                        Label="Insert current date"
+                        ToolTipTitle="Inserts the current date and time in a format compatible to ISO 8601 which is as well compatible to xs:dateTime"
+                        SmallImageSource="/Images/Clock_16x16.png" 
+                        Command="{StaticResource InsertCurrentDateTimeCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+                    />
+                    <ribbon:RibbonButton
+                        Label="Export highlighting"
+                        ToolTipTitle="Exports the code highlighting as HTML file"
+                        SmallImageSource="/Images/Forecolor.png" 
+                        Command="{StaticResource ExportAsHtmlCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonSplitButton Label="(Un)escape XML"
+                            Command="{StaticResource UnescapeXmlStringCommand}" 
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}">
+                        <ribbon:RibbonSplitButton.Items>
+                            <ribbon:RibbonMenuItem Header="Unescape XML"
+                                Command="{StaticResource UnescapeXmlStringCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                            <ribbon:RibbonMenuItem Header="Escape XML"
+                                Command="{StaticResource EscapeXmlStringCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                            <ribbon:RibbonSeparator />
+                            <ribbon:RibbonMenuItem Header="Unescape C# string" 
+                                Command="{StaticResource UnescapeCsStringCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                            <ribbon:RibbonSeparator />
+                            <ribbon:RibbonMenuItem Header="Unescape Base64"
+                                Command="{StaticResource UnescapeBase64StringCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                            <ribbon:RibbonMenuItem Header="Escape Base64"
+                                Command="{StaticResource EscapeBase64StringCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"/>
+                        </ribbon:RibbonSplitButton.Items>
+                    </ribbon:RibbonSplitButton>
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+
+            <Ribbon:ValidationTab />
+
+            <ribbon:RibbonTab Header="XSD" x:Name="tabXsd">
+                <ribbon:RibbonGroup Header="Style">
+                    <ribbon:RibbonButton 
+                        Label="Zoom In"
+                        SmallImageSource="/Images/ZoomIn_16x16.png"
+                        LargeImageSource="/Images/ZoomIn_32x32.png" 
+                        Command="{StaticResource XsdVizFontPlusCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton 
+                        Label="Zoom Out"
+                        SmallImageSource="/Images/ZoomOut_16x16.png" 
+                        LargeImageSource="/Images/ZoomOut_32x32.png" 
+                        Command="{StaticResource XsdVizFontMinusCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup Header="Show">
+                    <ribbon:RibbonButton 
+                        Label="Show root"
+                        SmallImageSource="/Images/HomeHS.png"
+                        Command="{StaticResource XsdVizShowRootCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton 
+                        Label="Back"
+                        SmallImageSource="/Images/Back.png" 
+                        Command="{StaticResource XsdVizHistoryBackCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton 
+                        Label="Unhide all"
+                        SmallImageSource="/Images/RepeatHS.png"
+                        Command="{StaticResource XsdVizUnhideAllCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup Header="Elements">
+                    <ribbon:RibbonToggleButton 
+                        Label="Expand refs"
+                        Command="{StaticResource XsdVizEnabledCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandRefs}"
+                    />
+                    <ribbon:RibbonToggleButton 
+                        Label="Expand types"
+                        Command="{StaticResource XsdVizEnabledCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandTypes}"
+                    />
+                    <ribbon:RibbonToggleButton 
+                        Label="Expand includes"
+                        Command="{StaticResource XsdVizEnabledCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandIncludes}"
+                    />
+                    <ribbon:RibbonToggleButton 
+                        Label="Hide types"
+                        Command="{StaticResource XsdVizEnabledCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsdVisualizerData.HideTypes}"
+                    />
+                    <ribbon:RibbonToggleButton 
+                        Label="Hide includes"
+                        Command="{StaticResource XsdVizEnabledCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsdVisualizerData.HideIncludes}"
+                    />
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup Header="View">
+                    <ribbon:RibbonButton Label="Copy" 
+                        SmallImageSource="/Images/Copy.png" 
+                        Command="{StaticResource XsdVizCopyToClipboardCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                    <ribbon:RibbonButton 
+                        Label="Export"
+                        SmallImageSource="/Images/NewCardHS.png" 
+                        Command="{StaticResource XsdVizExportCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                </ribbon:RibbonGroup>
+
+                <ribbon:RibbonGroup Header="Tools">
+                    <ribbon:RibbonButton 
+                        Label="Generate sample" 
+                        LargeImageSource="/Images/Generate_XML_32x32.png" 
+                        Command="{StaticResource Xsd2XmlGeneratorCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}" 
+                    />
+                    <ribbon:RibbonButton
+                        Label="Validate xml file"
+                        SmallImageSource="/Images/112_Tick_Green_16x16.png"
+                        LargeImageSource="/Images/112_Tick_Green_32x32_72.png"
+                        Command="{StaticResource XsdValidateXmlCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}" 
+                    />
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+
+            <ribbon:RibbonTab Header="Grid" ContextualTabGroupHeader="Grid View" >
+                <!-- Ribbon Tab Content -->
+            </ribbon:RibbonTab>
+
+            <treeViewRibbon:TreeViewTab x:Name="ribbonTabTreeView" ContextualTabGroupHeader="Tree View" />
+
+            <Ribbon1:XsltTab />
+
+            <ribbon:RibbonTab Header="Tools">
+                <ribbon:RibbonGroup Header="Tools">
+                    <ribbon:RibbonButton
+                        Label="Generate by pattern"
+                        LargeImageSource="/Images/Generate_XML_32x32.png"
+                        Click="mnuXmlGenerator_Click" />
+
+                    <ribbon:RibbonButton
+                        Label="Compare XML files"
+                        LargeImageSource="/Images/compareversionsHS.png"
+                        Click="mnuDiff_Click"
+                    />
+                    <ribbon:RibbonButton
+                        Label="XQuery"
+                        LargeImageSource="/Images/XQ_32x32.png"
+                        Command="{StaticResource StartXQueryCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+                    />
+                </ribbon:RibbonGroup>
+            </ribbon:RibbonTab>
+
+            <ribbon:Ribbon.ContextualTabGroups>
+                <ribbon:RibbonContextualTabGroup x:Name="contextribGrid" Header="Grid View"  />
+                <ribbon:RibbonContextualTabGroup x:Name="contextribTree" Header="Tree View"  />
+            </ribbon:Ribbon.ContextualTabGroups>
+        </ribbon:Ribbon>
+
+        <Border DockPanel.Dock="Top" Height="7" BorderBrush="Black" BorderThickness="0,1,0,0">
+            <Border.Effect>
+                <DropShadowEffect Direction="270" ShadowDepth="1" />
+            </Border.Effect>
+        </Border>
+
+        <StatusBar DockPanel.Dock="Bottom" Height="23">
+            <TextBlock x:Name="_lblCurrentFileName" x:FieldModifier="private" />
+        </StatusBar>
+
+        <ContentPresenter x:Name="_tabCtrl" x:FieldModifier="private" Margin="3,0,3,0" />        
+        
+    </DockPanel>
+</ribbon:RibbonWindow>

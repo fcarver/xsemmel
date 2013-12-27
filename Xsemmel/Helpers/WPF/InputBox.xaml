@@ -1,0 +1,31 @@
+﻿<Window x:Class="XSemmel.Helpers.WPF.InputBoxWnd" x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        MinHeight="130" MinWidth="500" MaxHeight="130" Width="500"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+    <DockPanel>
+        <TextBlock x:Name="lblMessage" x:FieldModifier="private" 
+                   DockPanel.Dock="Top" Margin="5">
+            The message:
+        </TextBlock>
+        <TextBox DockPanel.Dock="Top" Margin="5,0,5,5" x:Name="edtInput" KeyboardNavigation.TabIndex="0" />
+        <DockPanel DockPanel.Dock="Bottom" 
+                   Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+                   HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnOk" x:FieldModifier="private" 
+                        Height="22" Width="80" 
+                        Margin="5" IsDefault="True" Click="btnOk_Click">
+                    OK
+                </Button>
+                <Button x:Name="btnCancel" x:FieldModifier="private" 
+                        Height="22" Width="80" 
+                        Margin="5" IsCancel="True" Click="btnCancel_Click">
+                    Cancel
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <ContentPresenter/>
+    </DockPanel>
+</Window>

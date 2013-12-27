@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E3CF1844-9703-425E-B0C2-980FB2026A01}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XSemmel</RootNamespace>
+    <AssemblyName>Xsemmel</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>XSemmel.Program</StartupObject>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="AvalonDock, Version=1.3.3571.0, Culture=neutral, PublicKeyToken=85a1e0ada7ec13e4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DiffPlex, Version=1.2.0.38654, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DiffPlex.1.2.0\lib\Net40\DiffPlex.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=4.2.0.8783, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AvalonEdit.4.2.0.8783\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell">
+      <HintPath>lib\Microsoft.Windows.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xml.XQuery, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Microsoft.Xml.XQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PropertyTools, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PropertyTools.Wpf.2013.1.12.1\lib\NET40\PropertyTools.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyTools.Wpf, Version=2013.1.1.1, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PropertyTools.Wpf.2013.1.12.1\lib\NET40\PropertyTools.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\RibbonControlsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TaskDialog, Version=1.0.4372.18283, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\TaskDialog.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="XmlGridControl">
+      <HintPath>lib\XmlGridControl.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationMenu.xaml.cs">
+      <DependentUpon>ApplicationMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AttributeType.cs" />
+    <Compile Include="Commands\UnescapeBase64StringCommand.cs" />
+    <Compile Include="Commands\EscapeBase64StringCommand.cs" />
+    <Compile Include="Commands\XsdValidateXmlCommand.cs" />
+    <Compile Include="Commands\XsdVizEnabledCommand.cs" />
+    <Compile Include="Commands\WwwReferenceCommand.cs" />
+    <Compile Include="Commands\NewWindowCommand.cs" />
+    <Compile Include="Commands\TidyInvalidXmlCommand.cs" />
+    <Compile Include="Commands\OpenFromClipboardCommand.cs" />
+    <Compile Include="Commands\OpenCommand.cs" />
+    <Compile Include="Commands\ReloadCommand.cs" />
+    <Compile Include="Commands\QuitCommand.cs" />
+    <Compile Include="Commands\NewFileCommand.cs" />
+    <Compile Include="Configuration\ConfigObj.cs" />
+    <Compile Include="Configuration\ConfigurationWnd.xaml.cs">
+      <DependentUpon>ConfigurationWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\ShortcutNavigator.cs" />
+    <Compile Include="Editor\GotoLine.cs" />
+    <Compile Include="Editor\FindString.xaml.cs">
+      <DependentUpon>FindString.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\HighlightCurrentLineBackgroundRenderer.cs" />
+    <Compile Include="Editor\HighlightOccurrences.cs" />
+    <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\WindowSaver.cs" />
+    <Compile Include="Helpers\NamedPipeHelper.cs" />
+    <Compile Include="Helpers\NodeMover.cs" />
+    <Compile Include="Helpers\WPF\ControlBox.cs" />
+    <Compile Include="Helpers\WPF\MaximizableDockableContent.cs" />
+    <Compile Include="Helpers\WPF\Wpf32Window.cs" />
+    <Compile Include="Helpers\WPF\InputBox.xaml.cs">
+      <DependentUpon>InputBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrettyPrinter\BulkPrettyPrint.cs" />
+    <Compile Include="PrettyPrinter\PrettyPrint.cs" />
+    <Compile Include="Helpers\BulkWindow.xaml.cs">
+      <DependentUpon>BulkWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\BulkXsdValidation.cs" />
+    <Compile Include="Schema\Commands\Xml2XsdGeneratorCommand.cs" />
+    <Compile Include="Configuration\XSConfiguration.cs" />
+    <Compile Include="Editor\FragmentView.xaml.cs">
+      <DependentUpon>FragmentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\XmlDocumentEx.cs" />
+    <Compile Include="Helpers\StringEx.cs" />
+    <Compile Include="Schema\SchemaInfoView.xaml.cs">
+      <DependentUpon>SchemaInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Ribbon\ValidationTab.xaml.cs">
+      <DependentUpon>ValidationTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TcpListener\Commands\OpenFromTcpCommand.cs" />
+    <Compile Include="TcpListener\ConfigureListener.xaml.cs">
+      <DependentUpon>ConfigureListener.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TcpListener\TcpListeningWindow.xaml.cs">
+      <DependentUpon>TcpListeningWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreeView\BackgroundChildExpander.cs" />
+    <Compile Include="TreeView\Commands\CollapseAllCommand.cs" />
+    <Compile Include="TreeView\Commands\ShowSchemaInfoCommand.cs" />
+    <Compile Include="TreeView\Commands\ExpandToLevelCommand.cs" />
+    <Compile Include="TreeView\Commands\UpdateCommand.cs" />
+    <Compile Include="TreeView\Commands\DeleteCommand.cs" />
+    <Compile Include="TreeView\Commands\SelectCodeCommand.cs" />
+    <Compile Include="TreeView\Commands\MoveDownCommand.cs" />
+    <Compile Include="TreeView\Commands\MoveUpCommand.cs" />
+    <Compile Include="TreeView\Commands\CopyXPathCommand.cs" />
+    <Compile Include="TreeView\Commands\ExpandAllCommand.cs" />
+    <Compile Include="TreeView\XmlTree.xaml.cs">
+      <DependentUpon>XmlTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreeView\TreeViewDragDropHandler.cs" />
+    <Compile Include="TreeView\Commands\CommentOutCommand.cs" />
+    <Compile Include="Commands\InsertCurrentDateTimeCommand.cs" />
+    <Compile Include="Commands\EscapeXmlStringCommand.cs" />
+    <Compile Include="Commands\UnescapeXmlStringCommand.cs" />
+    <Compile Include="Commands\ToggleSearchAndReplaceCommand.cs" />
+    <Compile Include="Schema\Commands\InsertXsdLocationCommand.cs" />
+    <Compile Include="Commands\ExportAsHtmlCommand.cs" />
+    <Compile Include="Commands\UnescapeCsStringCommand.cs" />
+    <Compile Include="Commands\StartXQueryCommand.cs" />
+    <Compile Include="Commands\XsdVizExportCommand.cs" />
+    <Compile Include="Commands\XsdVizCopyToClipboardCommand.cs" />
+    <Compile Include="Commands\XsdVizUnhideAllCommand.cs" />
+    <Compile Include="Commands\XsdVizHistoryBackCommand.cs" />
+    <Compile Include="Commands\XsdVizShowRootCommand.cs" />
+    <Compile Include="Commands\XsdVizFontMinusCommand.cs" />
+    <Compile Include="Commands\XsdVizCommand.cs" />
+    <Compile Include="Commands\XsdVizFontPlusCommand.cs" />
+    <Compile Include="Commands\Xsd2XmlGeneratorCommand.cs" />
+    <Compile Include="Commands\CopyFilenameCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
+    <Compile Include="Data.xaml.cs" />
+    <Compile Include="Differ\EqualsList.cs" />
+    <Compile Include="Differ\Diffy.xaml.cs">
+      <DependentUpon>Diffy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Differ\EqualsDictionary.cs" />
+    <Compile Include="Editor\CodeCompletion.cs" />
+    <Compile Include="Editor\ColorizeAvalonEdit.cs" />
+    <Compile Include="Editor\Commenter.cs" />
+    <Compile Include="Editor\BracketMatcher.cs" />
+    <Compile Include="Editor\EditorFrame.xaml.cs">
+      <DependentUpon>EditorFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\MarkBackgroundRenderer.cs" />
+    <Compile Include="Editor\MyCompletionData.cs" />
+    <Compile Include="Commands\SaveAsCommand.cs" />
+    <Compile Include="Editor\XmlGridView.xaml.cs">
+      <DependentUpon>XmlGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\XmlEditor.xaml.cs">
+      <DependentUpon>XmlEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Editor\XParser.cs" />
+    <Compile Include="Generator\XmlGenerator.xaml.cs">
+      <DependentUpon>XmlGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FileHelpers.cs" />
+    <Compile Include="Helpers\TreeEx.cs" />
+    <Compile Include="Helpers\WPF\BooleanToHiddenVisibilityConverter.cs" />
+    <Compile Include="Helpers\WPF\FixedRibbonTextBox.cs" />
+    <Compile Include="Helpers\WPF\InverseBooleanConverter.cs" />
+    <Compile Include="Helpers\WPF\PropertyChangeNotifierBase.cs" />
+    <Compile Include="Helpers\XmlEscape.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrettyPrinter\PrettyPrintCommand.cs" />
+    <Compile Include="Commands\XSemmelCommand.cs" />
+    <Compile Include="SampleGenerator\Xsd2XmlGenerator.xaml.cs">
+      <DependentUpon>Xsd2XmlGenerator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Parser\XsdExtension.cs" />
+    <Compile Include="Schema\Parser\IXsdIsType.cs" />
+    <Compile Include="Schema\EditorValidation.xaml.cs">
+      <DependentUpon>EditorValidation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\ValidationIssue.cs" />
+    <Compile Include="Schema\XsdVisualizer.xaml.cs">
+      <DependentUpon>XsdVisualizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\XsdValidationHelper.cs" />
+    <Compile Include="NodeType.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xslt\Commands\AbstractXsltCommand.cs" />
+    <Compile Include="Xslt\Commands\XsltNewFileCommand.cs" />
+    <Compile Include="Xslt\Commands\XsltNewXSemmelCommand.cs" />
+    <Compile Include="Xslt\Ribbon\XsltTab.xaml.cs">
+      <DependentUpon>XsltTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Xslt\XsltTransformer.cs" />
+    <None Include="app.config" />
+    <Compile Include="SampleGenerator\Facets.cs" />
+    <Compile Include="SampleGenerator\Generator.cs" />
+    <Compile Include="SampleGenerator\InstanceAttribute.cs" />
+    <Compile Include="SampleGenerator\InstanceElement.cs" />
+    <Compile Include="SampleGenerator\InstanceGroup.cs" />
+    <Compile Include="SampleGenerator\InstanceObject.cs" />
+    <Compile Include="SampleGenerator\XmlSampleGenerator.cs" />
+    <Compile Include="TreeViewHelper.cs" />
+    <Compile Include="Schema\ValidationState.cs" />
+    <Compile Include="TreeView\Commands\RenameCommand.cs" />
+    <Compile Include="TreeView\Commands\TreeViewItemCommand.cs" />
+    <Compile Include="TreeView\EditorTree.xaml.cs">
+      <DependentUpon>EditorTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreeView\Ribbon\TreeViewTab.xaml.cs">
+      <DependentUpon>TreeViewTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewerNode.cs" />
+    <Compile Include="AboutBox.xaml.cs">
+      <DependentUpon>AboutBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WebBrowser\WebBrowserView.xaml.cs">
+      <DependentUpon>WebBrowserView.xaml</DependentUpon>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="XPathFunctions.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Compile Include="XPath\BulkXPath.cs" />
+    <Compile Include="XPath\BulkXPathInputbox.xaml.cs">
+      <DependentUpon>BulkXPathInputbox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XPath\XsltContextScript.cs" />
+    <Compile Include="XPath\XPathSearchAndReplace.xaml.cs">
+      <DependentUpon>XPathSearchAndReplace.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XPath\ScriptEngine.cs" />
+    <Compile Include="XPath\XPathQueries.xaml.cs">
+      <DependentUpon>XPathQueries.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\XsdValidationResult.cs" />
+    <EmbeddedResource Include="XPath\xpath.xshd" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Differ\Diff.cs" />
+    <Compile Include="Differ\Knoten.cs" />
+    <Compile Include="XQuery\XQuery.xaml.cs">
+      <DependentUpon>XQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XSDocument.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generator\AstBuilder.cs" />
+    <Compile Include="Generator\Astelements\AstDocumentElement.cs" />
+    <Compile Include="Generator\Astelements\AstElement.cs" />
+    <Compile Include="Generator\Astelements\AstTextElement.cs" />
+    <Compile Include="Generator\Astelements\AstXmlElement.cs" />
+    <Compile Include="Generator\Datatypes\BoolType.cs" />
+    <Compile Include="Generator\Datatypes\DataType.cs" />
+    <Compile Include="Generator\Datatypes\FloatType.cs" />
+    <Compile Include="Generator\Datatypes\HardCodedType.cs" />
+    <Compile Include="Generator\Datatypes\HauptstaedteType.cs" />
+    <Compile Include="Generator\Datatypes\IncnumberType.cs" />
+    <Compile Include="Generator\Datatypes\IntType.cs" />
+    <Compile Include="Generator\Datatypes\NachnamenType.cs" />
+    <Compile Include="Generator\Datatypes\StaatenType.cs" />
+    <Compile Include="Generator\Datatypes\StrassenType.cs" />
+    <Compile Include="Generator\Datatypes\StringType.cs" />
+    <Compile Include="Generator\Datatypes\UuidType.cs" />
+    <Compile Include="Generator\Datatypes\VornamenType.cs" />
+    <Compile Include="Generator\Random.cs" />
+    <Compile Include="Generator\Repeater.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Schema\Parser\IXsdHasType.cs" />
+    <Compile Include="Schema\Parser\IXsdHasRef.cs" />
+    <Compile Include="Schema\Parser\XsdAny.cs" />
+    <Compile Include="Schema\Parser\XsdImportInclude.cs" />
+    <Compile Include="Schema\Parser\XsdRestriction.cs" />
+    <Compile Include="Schema\Parser\XsdSimpleType.cs" />
+    <Compile Include="Schema\Parser\IXsdHasName.cs" />
+    <Compile Include="Schema\Parser\IXsdHasAttribute.cs" />
+    <Compile Include="Schema\Parser\XsdComplexType.cs" />
+    <Compile Include="Schema\Parser\IXsdCountable.cs" />
+    <Compile Include="Schema\Parser\XsdAllSequenceChoice.cs" />
+    <Compile Include="Schema\Parser\XsdElement.cs" />
+    <Compile Include="Schema\Parser\XsdSchema.cs" />
+    <Compile Include="Schema\Parser\IXsdNode.cs" />
+    <Compile Include="Schema\Parser\SchemaParser.cs" />
+    <Compile Include="Schema\Parser\XsdAttribute.cs" />
+    <Compile Include="Schema\Parser\XsdNode.cs" />
+    <Compile Include="Schema\VisualizerHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ApplicationMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Configuration\ConfigurationWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Differ\Diffy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\EditorFrame.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\FindString.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Editor\FragmentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\XmlGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Editor\XmlEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generator\XmlGenerator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Helpers\WPF\InputBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Helpers\BulkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SampleGenerator\Xsd2XmlGenerator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\EditorValidation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Schema\SchemaInfoView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Schema\Ribbon\ValidationTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Schema\XsdVisualizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AboutBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TcpListener\ConfigureListener.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TcpListener\TcpListeningWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TreeView\XmlTree.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TreeView\EditorTree.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TreeView\Ribbon\TreeViewTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebBrowser\WebBrowserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XPath\BulkXPathInputbox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XPath\XPathSearchAndReplace.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XPath\XPathQueries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XQuery\XQuery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Xslt\Ribbon\XsltTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Editor\Images\Open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Document_blank_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\109_AllAnnotations_Help_16x16_72.png" />
+    <Resource Include="Images\109_AllAnnotations_Info_16x16_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Folder_Open_16x16.png" />
+    <Resource Include="Images\Folder_Open_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\305_Close_32x32_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Folder_Open_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\305_Close_16x16_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Copy.png" />
+    <Resource Include="Images\Cut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete_16x16.png" />
+    <Resource Include="Images\Redo.png" />
+    <Resource Include="Images\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\WordWrap.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Paste_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.png" />
+    <Resource Include="Images\HomeHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ZoomIn_16x16.png" />
+    <Resource Include="Images\ZoomOut_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NewCardHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RepeatHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\compareversionsHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\XQ_32x32.png" />
+    <Resource Include="Images\XSLT_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Generate_XML_32x32.png" />
+    <Resource Include="Images\Generate_XSD_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_Tick_Green_32x32_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ZoomIn_32x32.png" />
+    <Resource Include="Images\ZoomOut_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\base_binoculars_32.png" />
+    <Resource Include="Images\Binoculars_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SaveAsHH.png" />
+    <Resource Include="Images\SaveHH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CopyFolderHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PushPin_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Images\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Document_blank_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Document_blank_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\IndentHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RelationshipsHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Forecolor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Clock_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\RenameFolderHS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\comment_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CollapseAll_16x16.png" />
+    <Resource Include="Images\ExpandAll_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_ArrowCurve_Blue_Right_16x16_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\arrow_start_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Gear_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\EditTask.png" />
+    <Resource Include="Images\EditTask_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_RefreshArrow_Blue_16x16_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_RefreshArrow_Blue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\View_16x16.png" />
+    <Resource Include="Images\View_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_ArrowCurve_Blue_Right_32x32_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SelectAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\w3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\OpenFromClipboard_16x16.png" />
+    <Resource Include="Images\OpenFromClipboard_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\FilterClear_16x16.png" />
+    <Resource Include="Images\Filter_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Down_16x16.png" />
+    <Resource Include="Images\Up_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\112_Tick_Green_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SelectionAsFragment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BookVshelp_16x16.png" />
+    <Resource Include="Images\BookVshelp_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Document_TCP_16x16.png" />
+    <Resource Include="Images\Document_TCP_24x24.png" />
+    <Resource Include="Images\Document_TCP_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Delete_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\appendPrettyprinted_32x32.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

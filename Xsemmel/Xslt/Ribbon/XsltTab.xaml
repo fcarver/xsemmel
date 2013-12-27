@@ -1,0 +1,86 @@
+﻿<ribbon:RibbonTab x:Class="XSemmel.Xslt.Ribbon.XsltTab"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" 
+            xmlns:WPF="clr-namespace:XSemmel.Helpers.WPF" 
+            xmlns:Commands="clr-namespace:XSemmel.Xslt.Commands" xmlns:commands="clr-namespace:XSemmel.Commands"
+            mc:Ignorable="d" 
+            Header="Xslt">
+    <ribbon:RibbonTab.Resources>
+        <Commands:XsltNewXSemmelCommand x:Key="XsltNewXSemmelCommand" />
+        <Commands:XsltNewFileCommand x:Key="XsltNewFileCommand" />
+        <commands:NewWindowCommand x:Key="NewWindowCommand"/>
+    </ribbon:RibbonTab.Resources>
+
+    <ribbon:RibbonGroup Header="Transformation" LargeImageSource="/Images/112_Tick_Green_32x32_72.png" >
+
+        <StackPanel >
+            <ribbon:RibbonRadioButton
+                            x:Name="_chkXsltInEditor" x:FieldModifier="private" 
+                            Label="Use document in editor to transform following xml file:"
+                            IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsltData.XsltInEditor}"/>
+            <ribbon:RibbonRadioButton
+                            x:Name="_chkXmlInEditor" x:FieldModifier="private" 
+                            Label="Transform document in editor with following xslt stylesheet:"
+                            IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsltData.XmlInEditor}"/>
+        </StackPanel>
+
+        <ribbon:RibbonControlGroup>
+            <Label>File:</Label>
+            <WPF:FixedRibbonTextBox
+                            x:Name="_edtFile" x:FieldModifier="private" TextBoxWidth="260"
+                            Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data.XsltData.File, UpdateSourceTrigger=PropertyChanged}">
+                <WPF:FixedRibbonTextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Command="Cut">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/cut.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="Copy">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/copy.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="Paste">
+                            <MenuItem.Icon>
+                                <Image Source="/Images/Paste_16x16.png" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Edit Xslt File" Click="mnuEditXslt_Click" />
+                        <MenuItem Header="Copy file path to clipboard" Click="mnuCopyXsdPath_Click" />
+                    </ContextMenu>
+                </WPF:FixedRibbonTextBox.ContextMenu>
+            </WPF:FixedRibbonTextBox>
+            <ribbon:RibbonButton Margin="0" Label="..." Click="mnuSelectXsltFile_Click"/>
+        </ribbon:RibbonControlGroup>
+
+        <ribbon:RibbonButton
+            Label="Transform into new window"
+            LargeImageSource="/Images/XSLT_32x32.png"
+            Command="{StaticResource XsltNewXSemmelCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"                        
+        />
+        <ribbon:RibbonButton
+            Label="Transform into new file"
+            LargeImageSource="/Images/XSLT_32x32.png"
+            Command="{StaticResource XsltNewFileCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+    </ribbon:RibbonGroup>
+
+    <ribbon:RibbonGroup Header="Extras" LargeImageSource="/Images/Document_blank_16x16.png" >
+        <ribbon:RibbonButton
+            Label="New Xsemmel window"
+            SmallImageSource="/Images/Document_blank_16x16.png"
+            LargeImageSource="/Images/Document_blank_32x32.png"
+            Command="{StaticResource NewWindowCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+    </ribbon:RibbonGroup>
+
+
+</ribbon:RibbonTab>

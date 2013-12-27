@@ -1,0 +1,131 @@
+﻿<ribbon:RibbonApplicationMenu KeyTip="F" x:Class="XSemmel.ApplicationMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" 
+        xmlns:commands="clr-namespace:XSemmel.Commands" xmlns:Commands="clr-namespace:XSemmel.TcpListener.Commands"
+                              mc:Ignorable="d" 
+        d:DesignHeight="1" d:DesignWidth="1"
+                              DropDownOpened="RibbonApplicationMenu_DropDownOpened">
+    <ribbon:RibbonApplicationMenu.Resources>
+        <commands:SaveAsCommand x:Key="SaveAsCommand"/>
+        <commands:NewFileCommand x:Key="NewFileCommand"/>
+        <commands:NewWindowCommand x:Key="NewWindowCommand"/>
+        <commands:SaveCommand x:Key="SaveCommand"/>
+        <commands:QuitCommand x:Key="QuitCommand"/>
+        <commands:OpenCommand x:Key="OpenCommand"/>
+        <commands:OpenFromClipboardCommand x:Key="OpenFromClipboardCommand"/>
+        <commands:ReloadCommand x:Key="ReloadCommand"/>
+        <Commands:OpenFromTcpCommand x:Key="OpenFromTcpCommand" />
+        <commands:WwwReferenceCommand x:Key="WwwReferenceCommand"/>
+    </ribbon:RibbonApplicationMenu.Resources>
+    <ribbon:RibbonApplicationMenu.SmallImageSource>
+        <DrawingImage>
+            <DrawingImage.Drawing>
+                <GeometryDrawing  x:Name="_fileIcon" x:FieldModifier="private" />
+            </DrawingImage.Drawing>
+        </DrawingImage>
+    </ribbon:RibbonApplicationMenu.SmallImageSource>
+
+    <ribbon:RibbonApplicationMenu.FooterPaneContent>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <ribbon:RibbonButton 
+                Label=" Options" HorizontalAlignment="Right"
+                SmallImageSource="/Images/Gear_16x16.png"
+                Click="btnOptions_Click"
+            />
+            <ribbon:RibbonButton 
+                Label=" Exit" HorizontalAlignment="Right"
+                SmallImageSource="/Images/305_Close_16x16_72.png"
+                Command="{StaticResource QuitCommand}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+            />
+        </StackPanel>
+    </ribbon:RibbonApplicationMenu.FooterPaneContent>
+
+    <ribbon:RibbonApplicationMenuItem 
+        Header="Save" ImageSource="/Images/SaveHH.png" 
+        Command="{StaticResource SaveCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+    />
+    <ribbon:RibbonApplicationMenuItem 
+        Header="Save As..." ImageSource="/Images/SaveAsHH.png" 
+        Command="{StaticResource SaveAsCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+    />
+    
+    <ribbon:RibbonApplicationMenuItem 
+        Header="Open" ImageSource="/Images/Folder_Open_32x32.png"
+        Command="{StaticResource OpenCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+    />
+    <ribbon:RibbonApplicationMenuItem 
+        x:Name="_mnuOpen" x:FieldModifier="private"
+        Header="Open more" ImageSource="/Images/Folder_Open_32x32.png"
+    >
+        <ribbon:RibbonApplicationMenuItem
+            Header="Open from clipboard" ImageSource="/Images/OpenFromClipboard_32x32.png"
+            Command="{StaticResource OpenFromClipboardCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+        <ribbon:RibbonApplicationMenuItem 
+            Header="Open from TCP stream" ImageSource="/Images/Document_TCP_32x32.png"
+            Command="{StaticResource OpenFromTcpCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+        <ribbon:RibbonApplicationMenuItem 
+            Header="Reload file" 
+            ImageSource="/Images/112_RefreshArrow_Blue_32x32.png" 
+            Command="{StaticResource ReloadCommand}"
+            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+        />
+        <ribbon:RibbonSeparator Label="Recent" />
+        
+    </ribbon:RibbonApplicationMenuItem>
+
+    <!-- TODO close -->
+
+    <ribbon:RibbonApplicationMenuItem 
+        Header="New file" 
+        ImageSource="/Images/Document_blank_32x32.png" 
+        Command="{StaticResource NewFileCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+    />
+    <ribbon:RibbonApplicationMenuItem 
+        Header="New window" 
+        ImageSource="/Images/Document_blank_32x32.png" 
+        Command="{StaticResource NewWindowCommand}"
+        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ribbon:RibbonWindow}}, Path=Data}"
+    />
+    
+    <ribbon:RibbonSeparator />
+
+    <ribbon:RibbonApplicationMenuItem 
+        Header="w3schools Reference" 
+        ImageSource="/Images/w3.png" 
+    >
+        <ribbon:RibbonApplicationMenuItem 
+            Header="XML Schema Reference" 
+            Command="{StaticResource WwwReferenceCommand}"
+            CommandParameter="http://www.w3schools.com/schema/schema_elements_ref.asp"
+        />
+        <ribbon:RibbonApplicationMenuItem 
+            Header="XPath Reference" 
+            Command="{StaticResource WwwReferenceCommand}"
+            CommandParameter="http://www.w3schools.com/xpath/xpath_functions.asp"
+        />
+        <ribbon:RibbonApplicationMenuItem 
+            Header="XQuery Reference" 
+            Command="{StaticResource WwwReferenceCommand}"
+            CommandParameter="http://www.w3schools.com/xquery/xquery_reference.asp"
+        />
+        <ribbon:RibbonApplicationMenuItem 
+            Header="XSLT Reference" 
+            Command="{StaticResource WwwReferenceCommand}"
+            CommandParameter="http://www.w3schools.com/xsl/xsl_w3celementref.asp"
+        />
+    </ribbon:RibbonApplicationMenuItem>
+
+</ribbon:RibbonApplicationMenu>
+    

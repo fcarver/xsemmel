@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="XSemmel.XPath.XPathSearchAndReplace"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" 
+             mc:Ignorable="d" 
+             d:DesignHeight="440" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" MinHeight="125px" />
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="2*" MinHeight="100px"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Label DockPanel.Dock="Top">XPath:</Label>
+
+            <RadioButton DockPanel.Dock="Bottom" Name="chkUseNamespaces" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="True"
+                         x:FieldModifier="private">Extract Namespaces from XML document</RadioButton>
+            <RadioButton DockPanel.Dock="Bottom" Name="chkUseUserdefinedFunctions" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="False"
+                         x:FieldModifier="private">Use user-defined XPath functions (from XPathFunctions.cs file)</RadioButton>
+
+            <Border BorderThickness="1" BorderBrush="Silver">
+                <AvalonEdit:TextEditor 
+                        Name="edtXPath" x:FieldModifier="private"
+                        FontSize="10pt" 
+                        FontFamily="Consolas">
+                    <AvalonEdit:TextEditor.Template>
+                        <ControlTemplate>
+                            <ScrollViewer
+                        Focusable="False"
+                        CanContentScroll="True"
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Auto"
+                        Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Left"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}"
+                    />
+                        </ControlTemplate>
+                    </AvalonEdit:TextEditor.Template>
+                    <AvalonEdit:TextEditor.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Copy" Click="mnuCopy_Click"/>
+                            <MenuItem Header="Paste" Click="mnuPaste_Click"/>
+                            <MenuItem Header="Delete" Click="mnuDelete_Click"/>
+                            <Separator/>
+                            <MenuItem Header="Load from file..." Click="mnuLoadFromFile_Click"/>
+                        </ContextMenu>
+                    </AvalonEdit:TextEditor.ContextMenu>
+                </AvalonEdit:TextEditor>
+            </Border>
+
+        </DockPanel>
+        <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <DockPanel Grid.Row="2">
+            <Label DockPanel.Dock="Top" Margin="0,5,0,0">Replace by:</Label>
+            <RadioButton DockPanel.Dock="Top" Name="chkReplaceByText" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="True" Checked="chkReplaceByXPath_Checked">Text</RadioButton>
+            <RadioButton DockPanel.Dock="Top" Name="chkReplaceByXPath" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="False" Checked="chkReplaceByXPath_Checked">XPath relative to search result</RadioButton>
+            
+            <Label x:Name="lblStatus" DockPanel.Dock="Bottom"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+                <Button Width="100" Margin="5" Click="btnExecute_Click" IsDefault="True">Execute</Button>
+            </StackPanel>
+
+            <Border BorderThickness="1" BorderBrush="Silver">
+                <AvalonEdit:TextEditor x:Name="edtReplaceBy" x:FieldModifier="private" 
+                                       FontSize="10pt" FontFamily="Consolas" SyntaxHighlighting="XML">
+                    <AvalonEdit:TextEditor.Template>
+                        <ControlTemplate>
+                            <ScrollViewer
+                        Focusable="False"
+                        CanContentScroll="True"
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Auto"
+                        Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                        VerticalContentAlignment="Top"
+                        HorizontalContentAlignment="Left"
+                        Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}"
+                    />
+                        </ControlTemplate>
+                    </AvalonEdit:TextEditor.Template>
+                </AvalonEdit:TextEditor>
+            </Border>
+            
+        </DockPanel>
+    </Grid>
+</UserControl>
