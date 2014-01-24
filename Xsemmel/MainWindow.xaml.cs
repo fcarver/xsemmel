@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using ICSharpCode.AvalonEdit;
@@ -70,11 +71,6 @@ namespace XSemmel
             Application.Current.SessionEnding += (sender, y) => { y.Cancel = !allowToClose(); };
 
             Closing += (sender, y) => { y.Cancel = !allowToClose(); };
-        }
-
-        private void mnuAbout_Click(object sender, RoutedEventArgs e)
-        {
-            new AboutBox {Owner = this}.ShowDialog();
         }
 
 
@@ -330,11 +326,6 @@ namespace XSemmel
             }
         }
 
-        private void mnuMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            Ribbon.IsMinimized = !Ribbon.IsMinimized;
-        }
-
         private void RibbonWindow_Closed(object sender, EventArgs e)
         {
             if (Editor != null && Editor.XSDocument != null && Editor.XSDocument.Filename != null)
@@ -352,5 +343,15 @@ namespace XSemmel
         {
             BulkPrettyPrint.ShowDialog(this);
         }
+
+        private void MainWindow_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            var qai = Ribbon.QuickAccessItems;
+            foreach (var quickAccessMenuItem in qai)
+            {
+                Ribbon.AddToQuickAccessToolBar(quickAccessMenuItem);
+            }
+        }
+
     }
 }

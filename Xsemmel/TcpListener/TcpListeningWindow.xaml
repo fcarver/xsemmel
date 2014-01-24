@@ -1,77 +1,78 @@
-﻿<ribbon:RibbonWindow x:Class="XSemmel.TcpListener.TcpListeningWindow"
+﻿<fluent:RibbonWindow x:Class="XSemmel.TcpListener.TcpListeningWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
-        xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+        xmlns:fluent="clr-namespace:Fluent;assembly=Fluent"
         Title="Listening to TCP stream" Height="350" Width="525" MinHeight="150" MinWidth="250"
         Icon="/Images/Document_TCP_16x16.png" >
     <DockPanel>
-        <ribbon:Ribbon DockPanel.Dock="Top">
+        <fluent:Ribbon DockPanel.Dock="Top">
 
-            <ribbon:Ribbon.ApplicationMenu>
-                <ribbon:RibbonApplicationMenu Visibility="Collapsed" />
-            </ribbon:Ribbon.ApplicationMenu>
+            <fluent:RibbonTabItem Header="TCP">
 
-            <ribbon:RibbonTab Header="TCP">
-                   
-                <ribbon:RibbonGroup Header="Interaction" LargeImageSource="/Images/arrow_start_32x32.png">
-                    <ribbon:RibbonButton 
-                        Label="Append to editor" 
+                <fluent:RibbonGroupBox Header="Interaction" Icon="/Images/arrow_start_32x32.png">
+                    <fluent:Button
+                        Header="Append to editor"
                         ToolTip="Append to editor"
-                        LargeImageSource="/Images/arrow_start_32x32.png"
+                        LargeIcon="/Images/arrow_start_32x32.png"
                         Click="mnuAppendToEditor_Click"
                     />
-                    <ribbon:RibbonButton 
-                        Label="Append trimmed &amp; prettyprinted" 
-                        ToolTipTitle="Append trimmed &amp; prettyprinted to editor" 
-                        LargeImageSource="/Images/appendPrettyprinted_32x32.png"
+                    <fluent:Button
+                        Header="Append trimmed &amp; prettyprinted" 
+                        ToolTip="Append trimmed &amp; prettyprinted to editor" 
+                        LargeIcon="/Images/appendPrettyprinted_32x32.png"
                         Click="mnuAppendToEditorAndPrettyprint_Click"
                     />
-                    <ribbon:RibbonButton 
-                        Label="Copy to clipboard" 
-                        ToolTipTitle="Copy to clipboard" 
-                        SmallImageSource="/Images/Copy.png"
+                    <fluent:Button
+                        Header="Copy to clipboard" 
+                        ToolTip="Copy to clipboard" 
+                        Icon="/Images/Copy.png"
+                        SizeDefinition="Middle, Small"
                         Click="mnuCopyToClipboard_Click"
                     />
-                    <ribbon:RibbonButton
-                      Label="Save as..."
-                      ToolTipTitle="Save as..."
-                      SmallImageSource="\Images\SaveAsHH.png"
-                      Click="mnuSaveAs_Click"
+                    <fluent:Button
+                        Header="Save as..."
+                        ToolTip="Save as..."
+                        Icon="\Images\SaveAsHH.png"
+                        SizeDefinition="Middle, Small"
+                        Click="mnuSaveAs_Click"
                     />
-                    <ribbon:RibbonButton 
-                        Label="Open in new Xsemmel" 
-                        ToolTipTitle="Open in new Xsemmel" 
-                        SmallImageSource="\AppIcon.ico"
+                    <fluent:Button
+                        Header="Open in new Xsemmel" 
+                        ToolTip="Open in new Xsemmel" 
+                        Icon="\AppIcon.ico"
+                        SizeDefinition="Middle, Small"
                         Click="mnuOpenInNewXSemmel_Click"
                     />
-                </ribbon:RibbonGroup>
+                </fluent:RibbonGroupBox>
 
-                <ribbon:RibbonGroup Header="View" LargeImageSource="/Images/View_32x32.png">
-                    <ribbon:RibbonButton 
-                        Label="Clear all" 
-                        ToolTipTitle="Clear all" 
-                        SmallImageSource="/Images/Delete_16x16.png" 
-                        LargeImageSource="/Images/Delete_32x32.png" 
+                <fluent:RibbonGroupBox Header="View" Icon="/Images/View_32x32.png">
+                    <fluent:Button
+                        Header="Clear all" 
+                        ToolTip="Clear all" 
+                        Icon="/Images/Delete_16x16.png" 
+                        LargeIcon="/Images/Delete_32x32.png" 
                         Click="btnClear_OnClick"
                     />
-                    <ribbon:RibbonCheckBox
+                    <fluent:CheckBox
                         x:Name="_btnWordWrap" x:FieldModifier="private"
-                        Label="WordWrap"
-                        ToolTipTitle="WordWrap"
+                        Header="WordWrap"
+                        ToolTip="WordWrap"
+                        SizeDefinition="Middle, Small"
                         IsChecked="False"
                     />
-                    <ribbon:RibbonCheckBox
+                    <fluent:CheckBox
                         Checked="chkShowSpecialCharacters_Click"
                         Unchecked="chkShowSpecialCharacters_Click"
-                        Label="Special chars"
-                        ToolTipTitle="Show special characters"
+                        Header="Special chars"
+                        ToolTip="Show special characters"
+                        SizeDefinition="Middle, Small"
                         IsChecked="True"
                     />
-                </ribbon:RibbonGroup>
+                </fluent:RibbonGroupBox>
             
-            </ribbon:RibbonTab>
-        </ribbon:Ribbon>
+            </fluent:RibbonTabItem>
+        </fluent:Ribbon>
 
         <StatusBar DockPanel.Dock="Bottom" Height="23">
             <TextBlock x:Name="_lblStatus" x:FieldModifier="private" />
@@ -100,4 +101,4 @@
         </AvalonEdit:TextEditor>
 
     </DockPanel>
-</ribbon:RibbonWindow>
+</fluent:RibbonWindow>

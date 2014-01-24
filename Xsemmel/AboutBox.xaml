@@ -1,136 +1,133 @@
-﻿<Window x:Class="XSemmel.AboutBox"
-	    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="About" Height="400" Width="700" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterOwner">
-    <DockPanel Margin="5">
-        <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontWeight="Bold" FontSize="16">Xsemmel</TextBlock>
-        <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-13 by F. Schnitzer</TextBlock>
-        <TextBlock x:Name="builtOn" DockPanel.Dock="Top" FontStyle="Italic"/>
-        <Button Click="Button_Click" DockPanel.Dock="Bottom" Width="100" HorizontalAlignment="Right">OK</Button>
-        <TabControl Margin="0,5,0,5">
-            <TabItem Header="Uses">
-                <FlowDocumentScrollViewer>
-                    <FlowDocument x:Name="flowDoc" x:FieldModifier="private">
-                        <Paragraph>Xsemmel uses following components:</Paragraph>
-                        <List>
-                            <ListItem>
-                                <Paragraph>
-                                    Microsoft XML Sample Generator
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://msdn.microsoft.com/en-us/library/aa302296.aspx">http://msdn.microsoft.com/en-us/library/aa302296.aspx</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    Microsoft XQuery Demo
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://cankansu.blogspot.com/2008/11/using-xquery-in-c.html">http://cankansu.blogspot.com/2008/11/using-xquery-in-c.html</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    SharpDevelop AvalonEdit
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.avalonedit.net/">http://www.avalonedit.net/</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    SharpDevelop AvalonDock
-                                    <LineBreak/>
-                                    Version 1.3.3571, New BSD
-                                    <LineBreak/>
-                                    Copyright (c) 2007-2012, Adolfo Marinucci
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://avalondock.codeplex.com/">http://avalondock.codeplex.com/</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    XmlGridControl
-                                    <LineBreak/>
-                                    Version 1.2, LGPL
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://xmlgrid.codeplex.com">http://xmlgrid.codeplex.com/</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    DiffPlex
-                                    <LineBreak/>
-                                    Ms-PL
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://diffplex.codeplex.com">http://diffplex.codeplex.com</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    WPF TaskDialog Wrapper and Emulator
-                                    <LineBreak/>
-                                    The Code Project Open License (CPOL)
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.codeproject.com/Articles/137552/WPF-TaskDialog-Wrapper-and-Emulator">http://www.codeproject.com/Articles/137552/WPF-TaskDialog-Wrapper-and-Emulator</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    Html Agility Pack
-                                    <LineBreak/>
-                                    Ms-PL
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://htmlagilitypack.codeplex.com">http://htmlagilitypack.codeplex.com</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    Property Tools
-                                    <LineBreak/>
-                                    Ms-PL
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://propertytools.codeplex.com">http://propertytools.codeplex.com</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    Microsoft Ribbon for WPF
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=11877">http://www.microsoft.com/download/en/details.aspx?displaylang=en&amp;id=11877</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                            <ListItem>
-                                <Paragraph>
-                                    Idea based on
-                                    <LineBreak/>
-                                    DanSharp XmlViewer
-                                    <LineBreak/>
-                                    Version 1, Ms-PL
-                                    <LineBreak/>
-                                    <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://dansharpxmlviewer.codeplex.com/">http://dansharpxmlviewer.codeplex.com/</Hyperlink>
-                                </Paragraph>
-                            </ListItem>
-                        </List>
-                    </FlowDocument>
-                </FlowDocumentScrollViewer>
-            </TabItem>
-            <TabItem Header="License">
-                <FlowDocumentScrollViewer>
-                    <FlowDocument>
-                        <Paragraph>
-                            Copyright (c) 2007-2013, Frank Schnitzer
-                            <LineBreak/>
-                            All rights reserved.
-                            <LineBreak/>
-                            Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-                            <LineBreak/>
-                            Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+﻿<DockPanel x:Class="XSemmel.AboutBox"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Margin="5">
+    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontWeight="Bold" FontSize="16">Xsemmel</TextBlock>
+    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-14 by F. Schnitzer</TextBlock>
+    <TextBlock x:Name="builtOn" DockPanel.Dock="Top" FontStyle="Italic"/>
+    <TabControl Margin="0,5,0,5">
+        <TabItem Header="Uses">
+            <FlowDocumentScrollViewer>
+                <FlowDocument x:Name="flowDoc" x:FieldModifier="private">
+                    <Paragraph>Xsemmel uses following components:</Paragraph>
+                    <List>
+                        <ListItem>
+                            <Paragraph>
+                                Microsoft XML Sample Generator
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://msdn.microsoft.com/en-us/library/aa302296.aspx">http://msdn.microsoft.com/en-us/library/aa302296.aspx</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                Microsoft XQuery Demo
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://cankansu.blogspot.com/2008/11/using-xquery-in-c.html">http://cankansu.blogspot.com/2008/11/using-xquery-in-c.html</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                SharpDevelop AvalonEdit
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.avalonedit.net/">http://www.avalonedit.net/</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                SharpDevelop AvalonDock
+                                <LineBreak/>
+                                Version 1.3.3571, New BSD
+                                <LineBreak/>
+                                Copyright (c) 2007-2012, Adolfo Marinucci
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://avalondock.codeplex.com/">http://avalondock.codeplex.com/</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                XmlGridControl
+                                <LineBreak/>
+                                Version 1.2, LGPL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://xmlgrid.codeplex.com">http://xmlgrid.codeplex.com/</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                DiffPlex
+                                <LineBreak/>
+                                Ms-PL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://diffplex.codeplex.com">http://diffplex.codeplex.com</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                WPF TaskDialog Wrapper and Emulator
+                                <LineBreak/>
+                                The Code Project Open License (CPOL)
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.codeproject.com/Articles/137552/WPF-TaskDialog-Wrapper-and-Emulator">http://www.codeproject.com/Articles/137552/WPF-TaskDialog-Wrapper-and-Emulator</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                Html Agility Pack
+                                <LineBreak/>
+                                Ms-PL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://htmlagilitypack.codeplex.com">http://htmlagilitypack.codeplex.com</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                Property Tools
+                                <LineBreak/>
+                                Ms-PL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://propertytools.codeplex.com">http://propertytools.codeplex.com</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                Fluent Ribbon Control Suite
+                                <LineBreak/>
+                                Version 2.0.2, Ms-PL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://fluent.codeplex.com">http://fluent.codeplex.com</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                        <ListItem>
+                            <Paragraph>
+                                Idea based on
+                                <LineBreak/>
+                                DanSharp XmlViewer
+                                <LineBreak/>
+                                Version 1, Ms-PL
+                                <LineBreak/>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://dansharpxmlviewer.codeplex.com/">http://dansharpxmlviewer.codeplex.com/</Hyperlink>
+                            </Paragraph>
+                        </ListItem>
+                    </List>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </TabItem>
+        <TabItem Header="License">
+            <FlowDocumentScrollViewer>
+                <FlowDocument>
+                    <Paragraph>
+                        Copyright (c) 2007-2014, Frank Schnitzer
+                        <LineBreak/>
+                        All rights reserved.
+                        <LineBreak/>
+                        Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+                        <LineBreak/>
+                        Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-                        </Paragraph>
-                    </FlowDocument>
-                </FlowDocumentScrollViewer>
-            </TabItem>
-        </TabControl>        
-    </DockPanel>
-    
-    
-</Window>
+                    </Paragraph>
+                </FlowDocument>
+            </FlowDocumentScrollViewer>
+        </TabItem>
+    </TabControl>        
+</DockPanel>

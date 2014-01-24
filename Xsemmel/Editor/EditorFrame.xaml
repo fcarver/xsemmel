@@ -13,7 +13,7 @@
              xmlns:TreeView="clr-namespace:XSemmel.TreeView" 
              xmlns:WPF="clr-namespace:XSemmel.Helpers.WPF">
     <ad:DockingManager x:Name="dockManager" ActiveContentChanged="dockManager_ActiveContentChanged">
-        <ad:ResizingPanel Orientation="Horizontal">
+        <ad:ResizingPanel Orientation="Horizontal" Margin="5,0,5,5">
           
             <!-- links -->
             <ad:DockablePane ad:ResizingPanel.ResizeWidth="400" MinWidth="50">

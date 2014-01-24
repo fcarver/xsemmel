@@ -1,32 +1,29 @@
-﻿<ribbon:RibbonWindow x:Class="XSemmel.SampleGenerator.Xsd2XmlGenerator"
+﻿<fluent:RibbonWindow x:Class="XSemmel.SampleGenerator.Xsd2XmlGenerator"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" xmlns:ribbon="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary" 
+             xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" 
+             xmlns:fluent="clr-namespace:Fluent;assembly=Fluent"
              mc:Ignorable="d" 
              d:DesignHeight="250" d:DesignWidth="750"
              MinHeight="250" MinWidth="400"
              Icon="/Images/Generate_XML_32x32.png" 
         Title="Xsd2Xml sample generator">
     <DockPanel>
-        <ribbon:Ribbon x:Name="Ribbon" DockPanel.Dock="Top">
+        <fluent:Ribbon x:Name="Ribbon" DockPanel.Dock="Top">
 
-            <ribbon:Ribbon.ApplicationMenu>
-                <ribbon:RibbonApplicationMenu Visibility="Collapsed" />
-            </ribbon:Ribbon.ApplicationMenu>
+            <fluent:RibbonTabItem Header="Xsd2Xml">
 
-            <ribbon:RibbonTab Header="Xsd2Xml">
-                
-                <ribbon:RibbonGroup Header="Generate">
-                    <ribbon:RibbonButton 
-                        Label="Generate Xml" 
-                        LargeImageSource="/Images/arrow_start_32x32.png" 
+                <fluent:RibbonGroupBox Header="Generate">
+                    <fluent:Button
+                        Header="Generate Xml"
+                        LargeIcon="/Images/arrow_start_32x32.png"
                         Click="btnGenerate_Click"
                     />
-                </ribbon:RibbonGroup>
+                </fluent:RibbonGroupBox>
 
-                <ribbon:RibbonGroup Header="Settings">
+                <fluent:RibbonGroupBox Header="Settings">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="360" />
@@ -37,52 +34,55 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <TextBlock 
-                            Grid.Row="0" Grid.Column="0" 
+                        <TextBlock
+                            Grid.Row="0" Grid.Column="0"
                             VerticalAlignment="Center">
                             Name of the root element to begin generating the XML:
                         </TextBlock>
-                        <ComboBox 
+                        <ComboBox
                             x:Name="cboRoot" x:FieldModifier="private"
-                            Grid.Row="0" Grid.Column="1" 
-                            IsEditable="True" 
+                            Grid.Row="0" Grid.Column="1"
+                            IsEditable="True"
                         />
-                        <TextBlock 
+                        <TextBlock
                             Grid.Row="1" Grid.Column="0"
                             VerticalAlignment="Center">
                             Number of elements to be generated if maxOccurs='unbounded':
                         </TextBlock>
-                        <TextBox 
-                            Grid.Row="1" Grid.Column="1" 
+                        <TextBox
+                            Grid.Row="1" Grid.Column="1"
                             x:Name="edtMaxThreshold" x:FieldModifier="private">2</TextBox>
-                        <TextBlock 
+                        <TextBlock
                             Grid.Row="2" Grid.Column="0"
                             VerticalAlignment="Center">
                             Number of items while generating a list type:
                         </TextBlock>
                         <TextBox Grid.Row="2" Grid.Column="1" x:Name="edtListLength" x:FieldModifier="private">2</TextBox>
                     </Grid>
-                </ribbon:RibbonGroup>
+                </fluent:RibbonGroupBox>
 
-                <ribbon:RibbonGroup Header="Result">
-                    <ribbon:RibbonButton 
-                        Label="Open in new window..." 
+                <fluent:RibbonGroupBox Header="Result">
+                    <fluent:Button
+                        Header="Open in new window..."
+                        SizeDefinition="Middle, Small"
                         Click="btnOpenInNewWindow_Click"
                     />
-                    <ribbon:RibbonButton 
-                        Label="Save As..." 
-                        SmallImageSource="/Images/SaveAsHH.png" 
+                    <fluent:Button
+                        Header="Save As..."
+                        Icon="/Images/SaveAsHH.png"
+                        SizeDefinition="Middle, Small"
                         Click="btnSave_Click"
                     />
-                    <ribbon:RibbonCheckBox
+                    <fluent:CheckBox
                         x:Name="btnWordWrap" x:FieldModifier="private"
-                        Label="WordWrap"
-                        ToolTipTitle="WordWrap"
+                        Header="WordWrap"
+                        ToolTip="WordWrap"
+                        SizeDefinition="Middle, Small"
                         IsChecked="True"
                     />
-                </ribbon:RibbonGroup>
-            </ribbon:RibbonTab>
-        </ribbon:Ribbon>
+                </fluent:RibbonGroupBox>
+                </fluent:RibbonTabItem>
+            </fluent:Ribbon>
 
         <Border DockPanel.Dock="Top" Height="7" BorderBrush="Black" BorderThickness="0,1,0,0">
             <Border.Effect>
@@ -94,4 +94,4 @@
                                 FontSize="10pt" SyntaxHighlighting="XML" 
                                 ShowLineNumbers="true" WordWrap="{Binding IsChecked, ElementName=btnWordWrap}"/>
     </DockPanel>
-</ribbon:RibbonWindow>
+</fluent:RibbonWindow>

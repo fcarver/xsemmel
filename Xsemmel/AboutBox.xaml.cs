@@ -18,16 +18,14 @@
 
 using System;
 using System.Diagnostics;
-using System.Windows;
 using System.Windows.Navigation;
-using XSemmel.Schema.Parser;
 
 namespace XSemmel
 {
 	/// <summary>
 	/// Interaction logic for Window1.xaml
 	/// </summary>
-	public partial class AboutBox : Window
+	public partial class AboutBox
 	{
 
 		public AboutBox()
@@ -38,10 +36,6 @@ namespace XSemmel
             builtOn.Inlines.Add(string.Format("built on {0:r}", date));
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
 
         private static DateTime retrieveLinkerTimestamp()
         {

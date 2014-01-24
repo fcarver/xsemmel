@@ -18,7 +18,6 @@ namespace XSemmel
             AppDomain.CurrentDomain.UnhandledException += (x,exargs) => 
                 MessageBox.Show(exargs.ExceptionObject.ToString(), "Error");
 
-
             if (XSConfiguration.Instance.Config.ShowSplashScreen)
             {
                 SplashScreen splashScreen = new SplashScreen("Images\\Splash.png");
@@ -29,6 +28,11 @@ namespace XSemmel
             System.Windows.Forms.Application.EnableVisualStyles();
 
             Application app = new Application();
+
+//            app.Resources.BeginInit();
+//            app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Office2010/Blue.xaml") });
+//            app.Resources.EndInit();
+
             MainWindow main = new MainWindow();
             if (args.Length == 1)
             {

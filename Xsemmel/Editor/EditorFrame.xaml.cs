@@ -138,14 +138,14 @@ namespace XSemmel.Editor
             if (actContent == _editorTreeDockable)
             {
                 wnd.contextribTree.Visibility = Visibility.Visible;
-                wnd.Ribbon.SelectedItem = wnd.ribbonTabTreeView;
+                wnd.Ribbon.SelectedTabItem = wnd.ribbonTabTreeView;
             }
             else
             {
                 wnd.contextribTree.Visibility = Visibility.Collapsed;
-                if (wnd.Ribbon.SelectedItem == wnd.ribbonTabTreeView)
+                if (wnd.Ribbon.SelectedTabItem == wnd.ribbonTabTreeView)
                 {
-                    wnd.Ribbon.SelectedItem = null;
+                    wnd.Ribbon.SelectedTabItem = null;
                 }
             }
             //            wnd.contextribGrid.Visibility = (actContent == gridViewDockable) ? Visibility.Visible : Visibility.Collapsed;

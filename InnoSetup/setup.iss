@@ -73,16 +73,16 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; OnlyBelowVersion: 0,6.1
-
+ä
 [Files]
 Source: "..\Xsemmel\bin\Release\Xsemmel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\AvalonDock.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\DiffPlex.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\ICSharpCode.AvalonEdit.dll"; DestDir: "{app}"; Flags: ignoreversion
-;Microsoft.Windows.Shell is used by RibbonControlsLibrary
-Source: "..\Xsemmel\bin\Release\Microsoft.Windows.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Xsemmel\bin\Release\Fluent.dll"; DestDir: "{app}"; Flags: ignoreversion
+;System.Windows.Interactivity used by Fluent
+Source: "..\Xsemmel\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\Microsoft.Xml.XQuery.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\Xsemmel\bin\Release\RibbonControlsLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\XmlGridControl.dll"; DestDir: "{app}"; Flags: ignoreversion
 ;http://www.codeproject.com/KB/WPF/WPFTaskDialogEmulator.aspx?msg=4068294
 Source: "..\Xsemmel\bin\Release\TaskDialog.dll"; DestDir: "{app}"; Flags: ignoreversion
