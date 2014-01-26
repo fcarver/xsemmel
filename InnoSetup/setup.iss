@@ -51,6 +51,7 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
+ChangesAssociations=true
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
@@ -73,7 +74,9 @@ Name: "en"; MessagesFile: "compiler:Default.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; OnlyBelowVersion: 0,6.1
-ä
+Name: "xmlAssociation"; Description: "Open all "".xml"" files with Xsemmel"; GroupDescription: "File extensions:"; Flags: unchecked
+
+
 [Files]
 Source: "..\Xsemmel\bin\Release\Xsemmel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\AvalonDock.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -91,12 +94,19 @@ Source: "..\Xsemmel\bin\Release\PropertyTools.dll"; DestDir: "{app}"; Flags: ign
 Source: "..\Xsemmel\bin\Release\PropertyTools.Wpf.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\HtmlAgilityPack.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\XPathFunctions.cs"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Xsemmel\bin\Release\FileIcon.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{group}\{cm:ProgramOnTheWeb,{#MyAppName}}"; Filename: "{#MyAppURL}"
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunchicon
+
+[Registry]
+Root: HKCR; Subkey: ".xml"; ValueType: string; ValueName: ""; ValueData: "XsemmelFile"; Flags: uninsdeletevalue; Tasks: xmlAssociation
+Root: HKCR; Subkey: "XsemmelFile"; ValueType: string; ValueName: ""; ValueData: "XML File"; Flags: uninsdeletekey; Tasks: xmlAssociation
+Root: HKCR; Subkey: "XsemmelFile\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\FileIcon.ico"; Tasks: xmlAssociation
+Root: HKCR; Subkey: "XsemmelFile\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Tasks: xmlAssociation
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent

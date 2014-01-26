@@ -64,7 +64,7 @@ namespace XSemmel.Editor
                         string s = XParser.GetElementAtCursor(_editor.Text, offset - 1);
                         if (!string.IsNullOrWhiteSpace(s) && "!--"!=s)
                         {
-                            if (!XParser.IsClosingElement(_editor.Text, offset, s))
+                            if (!XParser.IsClosingElement(_editor.Text, offset-1, s))
                             {
                                 _editor.TextArea.Document.Insert(offset, "</" + s + ">");
                                 _editor.CaretOffset = offset;
