@@ -45,13 +45,34 @@ namespace XSemmel.Editor
                     TextComposition tc = new TextComposition(null, null, c.ToString());
                     var tcea = new TextCompositionEventArgs(null, tc);
 
-                    textEditor_TextArea_TextEntered(sender, tcea);
+                    bool foundProposal = completeBasedOnTextEntered(tcea);
+                    if (!foundProposal)
+                    {
+                        completeOnCtrlSpace();
+                    }
                 }
                 e.Handled = true;
             }
         }
 
         private void textEditor_TextArea_TextEntered(object sender, TextCompositionEventArgs e)
+        {
+            completeBasedOnTextEntered(e);
+        }
+
+        private bool completeOnCtrlSpace()
+        {
+            if (XParser.IsInsideComment(_editor.Text, _editor.CaretOffset))
+            {
+                IList<ICompletionData> data = new List<ICompletionData>();
+                data.Add(new MyCompletionData("-->"));
+                showCompletion(data);
+                return true;
+            }
+            return false;
+        }
+
+        private bool completeBasedOnTextEntered(TextCompositionEventArgs e)
         {
             try 
             {
@@ -68,6 +89,7 @@ namespace XSemmel.Editor
                             {
                                 _editor.TextArea.Document.Insert(offset, "</" + s + ">");
                                 _editor.CaretOffset = offset;
+                                return true;
                             }
                         }
                         break;
@@ -84,7 +106,19 @@ namespace XSemmel.Editor
                                 IList<ICompletionData> data = new List<ICompletionData>();
                                 data.Add(new MyCompletionData(s + ">"));
                                 showCompletion(data);
+                                return true;
                             }
+                        }
+                        break;
+                    }
+                    case "!":
+                    {
+                        int offset = _editor.CaretOffset;
+                        if (offset > 1 && _editor.Text[offset - 2] == '<')
+                        {
+                            _editor.TextArea.Document.Insert(offset, "-- ");
+                            _editor.CaretOffset = offset + 2;
+                            return true;
                         }
                         break;
                     }
@@ -92,17 +126,25 @@ namespace XSemmel.Editor
                     {
                         //auto-insert closing apostroph
                         int offset = _editor.CaretOffset;
-                        if (_editor.Text.Length > offset && _editor.Text[offset] == '\"')
+                        int countApostroph = 0;
+                        for (int i = offset; i >= 0; i--)
                         {
-                            //Wenn CUrsor auf einem Apostroph steht, dann nicht noch eines einfügen,
-                            //da dieses wahrscheinlich von der AutoCompletion eingefügt wurde.
-                            //Da das Event nicht unterdrückt werden kann, wird hier das vorhandene gelöscht
-                            _editor.TextArea.Document.Remove(offset, 1);
+                            char charAtCursor = _editor.Text[i];
+                            if (charAtCursor == '\"')
+                            {
+                                countApostroph++;
+                            }
+                            else if (charAtCursor == '<')
+                            {
+                                break;
+                            }
                         }
-                        else
+                        
+                        if (countApostroph % 2 == 1)
                         {
                             _editor.TextArea.Document.Insert(offset, "\"");
-                            _editor.CaretOffset = offset;    
+                            _editor.CaretOffset = offset;
+                            return true;
                         }
                         break;
                     }
@@ -110,7 +152,7 @@ namespace XSemmel.Editor
                     {
                         if (_schemaParser == null)
                         {
-                            return;
+                            return false;
                         }
 
                         int offset = _editor.CaretOffset;
@@ -143,6 +185,7 @@ namespace XSemmel.Editor
                                         }
                                     }
                                     showCompletion(data);
+                                    return true;
                                 }
                             }
                         }
@@ -153,7 +196,7 @@ namespace XSemmel.Editor
                     {
                         if (_schemaParser == null)
                         {
-                            return;
+                            return false;
                         }
                         int offset = _editor.CaretOffset;
                         string parent = XParser.GetParentElementAtCursor(_editor.Text, offset);
@@ -198,6 +241,7 @@ namespace XSemmel.Editor
                                 }
                             }
                             showCompletion(data);
+                            return true;
                         }
 
                         break;
@@ -208,6 +252,7 @@ namespace XSemmel.Editor
             {
                 MessageBox.Show(ex.ToString(), "Error");
             }
+            return false;
         }
 
         private void showCompletion(IEnumerable<ICompletionData> datas)

@@ -1,8 +1,10 @@
 ﻿= Done in current release = 
 
+	* FIX: Auto-complete when cursor is on apostroph
 	* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
 	* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
 	* NEW: ribbon-button to insert XML entities
+	* NEW: Code completion (Ctrl+Space) for closing comments, Auto-complete of opening comment characters ("<!" --> "<!--")
 
 = TODOs =
 
@@ -45,7 +47,6 @@
 	* Aktionen (z.B. Prettyprint) rückgängig machen
 	* ShortcutNavigation erweitern: nach Links, Selektion 
 	* Code Completion:
-		* bei <! könnte direkt erweitert werden
 		* CodeCompletion: bestehende Elemente heranziehen, wenn kein xsd zugeordnet ist
 		* xsd-Annotations zeigen -> Tooltip für XML-Elemente im Editor
 		* Annotation in CodeCompletion zeigen
@@ -64,7 +65,7 @@
 		* remove comments
 		* Intendation
 		* Anm.: Un-Prettyprint funktioniert, wenn man indent ausschaltet. 
-		* Anm2.: Whitespace zwischen den Elementen wird beachtet, wenn ein mind. ein Element gibt, das mixed-content enthält
+		* Anm2.: Whitespace zwischen den Elementen wird beachtet, wenn es mind. ein Element gibt, das mixed-content enthält
 	* Drucken: http://wpfprintengine.codeplex.com/
 	* Große XML splitten, vgl XmlReader
 	* xs3p: xsd2html

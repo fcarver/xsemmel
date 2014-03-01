@@ -249,8 +249,8 @@ namespace XSemmel.Editor
 
         public static bool IsInsideComment(string text, int offset)
         {
-            int lastOpening = text.LastIndexOf("<!--", offset);
-            int lastClosing = text.LastIndexOf("-->", offset);
+            int lastOpening = text.LastIndexOf("<!--", offset, StringComparison.InvariantCulture);
+            int lastClosing = text.LastIndexOf("-->", offset, StringComparison.InvariantCulture);
 
             if (lastOpening == -1 || lastClosing > lastOpening)
             {
