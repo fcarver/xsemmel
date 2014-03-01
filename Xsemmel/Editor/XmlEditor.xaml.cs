@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -20,6 +19,7 @@ namespace XSemmel.Editor
         private EditorFrame _editorFrame;
 
         private readonly CodeCompletion _codeCompletion;
+        private readonly GotoLine _gotoLine;
         private readonly ToolTip _toolTip = new ToolTip();
 
         public XmlEditor()
@@ -41,7 +41,7 @@ namespace XSemmel.Editor
             new BracketMatcher(_textEditor);
             new HighlightOccurrences(_textEditor);
             new HighlightCurrentLineBackgroundRenderer(_textEditor);
-            new GotoLine(_textEditor);
+            _gotoLine = new GotoLine(_textEditor);
             new ShortcutNavigator(_textEditor);
             
             _textEditor.TextArea.Caret.PositionChanged += textEditor_CursorPositionChanged;
@@ -223,5 +223,14 @@ namespace XSemmel.Editor
         {
             _editorFrame.SetFragmentText(_textEditor.SelectedText, true);
         }
+
+        private void UIElement_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2)
+            {
+                _gotoLine.ShowDialog();    
+            }
+        }
+
     }
 }

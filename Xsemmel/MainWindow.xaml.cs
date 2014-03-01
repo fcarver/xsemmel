@@ -353,5 +353,41 @@ namespace XSemmel
             }
         }
 
+        private void _tabCtrl_OnDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                // Note that you can have more than one file.
+                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop);
+
+                if (files != null && files.Length > 0)
+                {
+                    OpenFile(files[0]);        
+                }
+            }
+        }
+
+        private void insertEntity_OnClick(object sender, RoutedEventArgs e)
+        {
+            var menuItem = sender as Fluent.MenuItem;
+            if (menuItem != null && Editor != null && Editor.XmlEditor != null)
+            {
+                try
+                {
+                    string stringToInsert = string.Format("&{0};", menuItem.Header);
+                    Editor.XmlEditor.SelectedText = stringToInsert;
+                } 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Application.Current.MainWindow, "Error: " + ex.Message, "Error", MessageBoxButton.OK,
+                                    MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                Debug.Fail("");
+            }
+        }
+
     }
 }

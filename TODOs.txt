@@ -1,0 +1,82 @@
+﻿= Done in current release = 
+
+	* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
+	* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
+	* NEW: ribbon-button to insert XML entities
+
+= TODOs =
+
+	* XSD-mode: per Shortcut xsd:annotation einfügen
+	* Screenshots auf Homepage aktualisieren
+	* Refactoring: rename (Editor)
+	* Beschreibung Pattern in Wiki
+	* XsdVisualizer aktualisiert sich nicht, wenn Dokument geändert wird
+	* Diff: 2. Fenster editierbar machen
+	* Forms-Controls: Passt DPI-Anpassung?
+	* show matching closing/opening element (vgl. BracketMatcher)
+	* Icon zum Ein-/Auskommentieren
+	* xsd-Validation einschalten, wieder ausschalten,
+		* Insert XSD location bleibt aktiviert
+		* in Editor-Statusbar wird xsd-Name weiterhin angezeigt
+	* Validation-Tab: Info wenn "Do not check" ausgewählt ist
+	* SchemaInfo
+		* wenn leer, Info wie aktiviert werden kann
+		* schöner formatieren
+		* Quellenangabe in Form (Line:Index)
+		* Bei Quellenangabe: Klick und XSD öffnen an spezifizierter Position
+		* Im Tooltip eines XML-Elements zeigen
+		* Tab "Schema Info" nur einblenden, wenn Schema referenziert ist
+	* GridView: Collapse all
+	* GridView: Expand to level x
+	
+== Limitations ==
+	* Xsd visualizer is not namespace aware
+	* Tidy is not namespace-aware
+	* GridView is read-only
+	
+== low prio ==
+	* GridView: Zelle markieren und 'copy XPath', insert element, delete element, comment out, rename (aus Forum)
+	* TCP Listener: Auto-Scrolldown
+	* Öffnender und schließender Tag synchron halten (vgl. VS)
+	* Highlighting fuer beliebige Dateien ausschalten
+    * Nur Teile einer Datei öffnen, siehe XmlReader
+	* Editor: Empty tags collapsen / erweitern
+	* package.xsd: SpecialFileSubType wird nicht angezeigt
+	* Aktionen (z.B. Prettyprint) rückgängig machen
+	* ShortcutNavigation erweitern: nach Links, Selektion 
+	* Code Completion:
+		* bei <! könnte direkt erweitert werden
+		* CodeCompletion: bestehende Elemente heranziehen, wenn kein xsd zugeordnet ist
+		* xsd-Annotations zeigen -> Tooltip für XML-Elemente im Editor
+		* Annotation in CodeCompletion zeigen
+		* XSDs selber schreiben mit CodeCompletion-Unterstützung
+	* Docking Layout serialization
+	* Xsd2Xml generator: voraussichtliche Dateigroesse anzeigen
+	* XQuery überarbeiten und durch Tests abdecken
+	* XPathFunction.cs unter Configuration einstellbar machen
+	* Fehler und Highlights in der Margin anzeigen
+		* https://github.com/icsharpcode/SharpDevelop/blob/master/src/AddIns/DisplayBindings/AvalonEdit.AddIn/Src/CodeEditor.cs
+	* Bulk XSLT, z.B. alle Dateien eines Verzeichnisses mittels search'n'replace ändern
+		
+== Brainstorm ==
+	* Komplexeres Prettyprint
+		* max. Zeilenlaenge
+		* remove comments
+		* Intendation
+		* Anm.: Un-Prettyprint funktioniert, wenn man indent ausschaltet. 
+		* Anm2.: Whitespace zwischen den Elementen wird beachtet, wenn ein mind. ein Element gibt, das mixed-content enthält
+	* Drucken: http://wpfprintengine.codeplex.com/
+	* Große XML splitten, vgl XmlReader
+	* xs3p: xsd2html
+	* AutoCompletion of Visual Studio 2008
+		The XML editor fills in the end tag and positions the cursor after the start tag. The following is an example of this (the "|" notes the cursor position):
+		<book>|</book>
+		Because attribute values must always have quotes, the XML editor fills in the quotes for you. For example, if you type the following:
+		<book title=
+		The XML editor adds the quotes and positions the cursor between the quotes:
+		<book title="|"
+		Similarly, the XML editor also inserts the following XML syntax automatically for you:
+		End a processing instruction: ?>
+		End a CDATA block: ]]>
+		End a comment: -->
+		End a DTD declaration: >

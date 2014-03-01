@@ -94,6 +94,11 @@ namespace XSemmel.Editor
             }
         }
 
+        public void StartSearch()
+        {
+            ((FindString) _xmlEditor._presenterFindString.Content).StartSearch();
+        }
+
         public void SetSchemaInfo(IXmlSchemaInfo schemaInfo)
         {
             _schemaInfoDockable.Show();

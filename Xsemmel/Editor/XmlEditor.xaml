@@ -19,7 +19,7 @@
                 </TextBlock>
             </StatusBarItem>
             <StatusBarItem DockPanel.Dock="Right">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" MouseLeftButtonDown="UIElement_OnMouseLeftButtonUp">
                     <TextBlock Text="Length " />
                     <TextBlock x:Name="_lblSize" x:FieldModifier="private" Width="100" Text="{Binding ElementName=_textEditor, Path=Document.TextLength, StringFormat='{}{0:#,0} chars'}" />
                     <TextBlock x:Name="_lblCurrentLine" x:FieldModifier="private" Width="100">Ln</TextBlock>
@@ -32,17 +32,17 @@
         </StatusBar>
 
         <ContentPresenter 
-            x:Name="_presenterFindString" x:FieldModifier="private" 
+            x:Name="_presenterFindString" 
             DockPanel.Dock="Bottom"
         />
 
-        <avalonEdit:TextEditor
-			      x:Name="_textEditor" x:FieldModifier="private"
-            FontFamily="Consolas"
-			      SyntaxHighlighting="XML"
-            ShowLineNumbers="True" 
-            MouseHover="textEditor_MouseHover" MouseHoverStopped="textEditor_MouseHoverStopped"
-            MouseRightButtonDown="_textEditor_MouseRightButtonDown"
+        <avalonEdit:TextEditor x:Name="_textEditor" x:FieldModifier="private"
+                               FontFamily="Consolas"
+			                   SyntaxHighlighting="XML"
+                               ShowLineNumbers="True" 
+                               MouseHover="textEditor_MouseHover" 
+                               MouseHoverStopped="textEditor_MouseHoverStopped"
+                               MouseRightButtonDown="_textEditor_MouseRightButtonDown"
             >
             <avalonEdit:TextEditor.ContextMenu>
                 <ContextMenu>

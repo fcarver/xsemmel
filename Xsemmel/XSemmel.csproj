@@ -147,6 +147,7 @@
       <DependentUpon>ApplicationMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AttributeType.cs" />
+    <Compile Include="Commands\StartSearchCommand.cs" />
     <Compile Include="Commands\UnescapeBase64StringCommand.cs" />
     <Compile Include="Commands\EscapeBase64StringCommand.cs" />
     <Compile Include="Commands\XsdValidateXmlCommand.cs" />
@@ -722,6 +723,16 @@
     <None Include="FileIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SearchReplace_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\entities\amp.png" />
+    <Resource Include="Images\entities\apos.png" />
+    <Resource Include="Images\entities\gt.png" />
+    <Resource Include="Images\entities\lt.png" />
+    <Resource Include="Images\entities\quot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -52,33 +52,7 @@ namespace XSemmel.Editor
             }
             if (e.Key == Key.F && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                if (Visibility == Visibility.Visible)
-                {
-                    if (_edtSearchText.IsFocused)
-                    {
-                        close();
-                    }
-                    else
-                    {
-                        Keyboard.Focus(_edtSearchText);
-                        bool success = _edtSearchText.Focus();
-                        Debug.Assert(success);
-                    }
-                }
-                else
-                {
-                    Visibility = Visibility.Visible;
-                    startSearch();
-                    gotoFirst();
-
-                    //http://stackoverflow.com/questions/3109080/focus-on-textbox-when-usercontrol-change-visibility
-                    Dispatcher.BeginInvoke((Action)delegate
-                    {
-                        Keyboard.Focus(_edtSearchText);
-                        bool success = _edtSearchText.Focus();
-                        Debug.Assert(success);
-                    }, DispatcherPriority.Render);
-                }
+                StartSearch();
 
                 e.Handled = true;
             }
@@ -212,6 +186,37 @@ namespace XSemmel.Editor
         private void btnFindNext_Click(object sender, RoutedEventArgs e)
         {
             gotoNext();
+        }
+
+        public void StartSearch()
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                if (_edtSearchText.IsFocused)
+                {
+                    close();
+                }
+                else
+                {
+                    Keyboard.Focus(_edtSearchText);
+                    bool success = _edtSearchText.Focus();
+                    Debug.Assert(success);
+                }
+            }
+            else
+            {
+                Visibility = Visibility.Visible;
+                startSearch();
+                gotoFirst();
+
+                //http://stackoverflow.com/questions/3109080/focus-on-textbox-when-usercontrol-change-visibility
+                Dispatcher.BeginInvoke((Action)delegate
+                {
+                    Keyboard.Focus(_edtSearchText);
+                    bool success = _edtSearchText.Focus();
+                    Debug.Assert(success);
+                }, DispatcherPriority.Render);
+            }
         }
     }
 }

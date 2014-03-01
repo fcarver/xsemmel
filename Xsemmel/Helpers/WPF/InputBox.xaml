@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         MinHeight="130" MinWidth="500" MaxHeight="130" Width="500"
         ResizeMode="NoResize"
+        Icon="/XSemmel;component/AppIcon.ico"
         WindowStartupLocation="CenterOwner">
     <DockPanel>
         <TextBlock x:Name="lblMessage" x:FieldModifier="private" 

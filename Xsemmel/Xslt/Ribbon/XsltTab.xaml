@@ -35,7 +35,8 @@
                 <StackPanel Orientation="Horizontal">
                     <Label Padding="3 0 3 0" VerticalAlignment="Center">File:</Label>
                     <TextBox x:Name="_edtFile" x:FieldModifier="private" Width="267"
-                             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsltData.File, UpdateSourceTrigger=PropertyChanged}">
+                             Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsltData.File, UpdateSourceTrigger=PropertyChanged}"
+                             >
                         <TextBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Command="Cut">

@@ -20,33 +20,38 @@ namespace XSemmel.Editor
         {
             if (e.Key == Key.G && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                int maxLines = _editor.Document.Lines.Count;
+                ShowDialog();
+                e.Handled = true;
+            }
+        }
 
-                string linenum = InputBox.Show(Application.Current.MainWindow, "Go To Line", "Line number ( 1 - "+maxLines+"):");
-                if (linenum != null)
+        public void ShowDialog()
+        {
+            int maxLines = _editor.Document.Lines.Count;
+
+            string linenum = InputBox.Show(Application.Current.MainWindow, "Go To Line", "Line number ( 1 - " + maxLines + "):");
+            if (linenum != null)
+            {
+                int line;
+                if (int.TryParse(linenum, out line))
                 {
-                    int line;
-                    if (int.TryParse(linenum, out line))
+                    try
                     {
-                        try
-                        {
-                            var docline = _editor.Document.GetLineByNumber(line);
-                            _editor.CaretOffset = docline.Offset;
-                            _editor.ScrollToLine(line);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(Application.Current.MainWindow, ex.Message, "Error",
-                                            MessageBoxButton.OK, MessageBoxImage.Error);    
-                        }
+                        var docline = _editor.Document.GetLineByNumber(line);
+                        _editor.CaretOffset = docline.Offset;
+                        _editor.ScrollToLine(line);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show(Application.Current.MainWindow, "Only numbers are allowed", "Error",
+                        MessageBox.Show(Application.Current.MainWindow, ex.Message, "Error",
                                         MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
-                e.Handled = true;
+                else
+                {
+                    MessageBox.Show(Application.Current.MainWindow, "Only numbers are allowed", "Error",
+                                    MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

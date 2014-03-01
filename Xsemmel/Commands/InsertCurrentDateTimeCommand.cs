@@ -24,10 +24,7 @@ namespace XSemmel.Commands
             try
             {
                 string stringToInsert = DateTime.Now.ToString("yyyy-MM-dd'T'HH:mm:ss.fffffffZ");
-
                 ef.XmlEditor.SelectedText = stringToInsert;
-
-                
             } 
             catch (Exception e)
             {
