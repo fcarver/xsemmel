@@ -50,21 +50,21 @@
         <fluent:Button
             Header="Comment out"
             Icon="/Images/Comment_16x16.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource CommentOutCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"                        
         />
         <fluent:Button
             Header="Rename"
             Icon="/Images/RenameFolderHS.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource RenameCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"                        
         />
         <fluent:Button
             Header="Delete"
             Icon="/Images/Delete_16x16.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource DeleteCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
@@ -80,13 +80,13 @@
         />
         <fluent:CheckBox
             Header="Update automatically"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.UpdateTreeViewAutomatically}"
         />
 
         <fluent:SplitButton Header="Expand all"
                             Icon="/Images/ExpandAll_16x16.png"
-                            SizeDefinition="Middle, Small"
+                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                             Command="{StaticResource ExpandAllCommand}"
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}">
             <fluent:SplitButton.Items>
@@ -108,7 +108,7 @@
         <fluent:Button
             Header="Collapse all" 
             Icon="/Images/CollapseAll_16x16.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource CollapseAllCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"                        
         />
@@ -118,14 +118,14 @@
         <fluent:Button
             Header="Move up"
             Icon="/Images/Up_16x16.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource MoveUpCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
         <fluent:Button
             Header="Move down"
             Icon="/Images/Down_16x16.png"
-            SizeDefinition="Middle, Small"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource MoveDownCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />

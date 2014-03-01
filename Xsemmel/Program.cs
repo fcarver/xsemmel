@@ -29,9 +29,10 @@ namespace XSemmel
 
             Application app = new Application();
 
-//            app.Resources.BeginInit();
-//            app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Office2010/Blue.xaml") });
-//            app.Resources.EndInit();
+            app.Resources.BeginInit();
+            app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Generic.xaml") });
+            app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Office2010/Silver.xaml") });
+            app.Resources.EndInit();
 
             MainWindow main = new MainWindow();
             if (args.Length == 1)

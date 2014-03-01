@@ -19,12 +19,12 @@
         <StackPanel Orientation="Vertical" >
             <fluent:ToggleButton
                             x:Name="_chkXsltInEditor" x:FieldModifier="private" 
-                            SizeDefinition="Middle, Small"
+                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                             Header="Use document in editor to transform following xml file:"
                             IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsltData.XsltInEditor}"/>
             <fluent:ToggleButton
                             x:Name="_chkXmlInEditor" x:FieldModifier="private" 
-                            SizeDefinition="Middle, Small"
+                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                             Header="Transform document in editor with following xslt stylesheet:"
                             IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsltData.XmlInEditor}"/>
 
@@ -60,7 +60,7 @@
                             </ContextMenu>
                         </TextBox.ContextMenu>
                     </TextBox>
-                    <fluent:Button Margin="0" Header="..." Click="mnuSelectXsltFile_Click" SizeDefinition="Middle, Small" Height="18"/>
+                    <fluent:Button Margin="0" Header="..." Click="mnuSelectXsltFile_Click" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small" Height="18"/>
                 </StackPanel>
             </Border>
         </StackPanel>

@@ -18,17 +18,17 @@
         <StackPanel >
             <StackPanel Orientation="Horizontal">
                 <fluent:ToggleButton
-                                Header="Do not check" Padding="30,0,30,0" 
-                                SizeDefinition="Middle, Small"
+                                Header="Do not check" Padding="30,0,30,0"
+                                fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                                 IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ValidationData.DoNotValidate}" />
                 <fluent:ToggleButton
                                 Header="Check wellformedness" Padding="5,0,5,0"
-                                SizeDefinition="Middle, Small"
+                                fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                                 IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ValidationData.CheckWellformedness}"/>
             </StackPanel>
             <fluent:ToggleButton 
                             x:Name="chkValidateXsd" Header="Validate against schema" Click="chkValidateXsd_Click"
-                            SizeDefinition="Middle, Small"
+                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
                             IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ValidationData.CheckXsd}"/>
 
             <Border CornerRadius="2"
@@ -62,7 +62,7 @@
                             </ContextMenu>
                         </TextBox.ContextMenu>
                     </TextBox>
-                    <fluent:Button Margin="0" Header="..." Click="mnuSelectXsdFile_Click" SizeDefinition="Middle, Small" Height="18"/>
+                    <fluent:Button Margin="0" Header="..." Click="mnuSelectXsdFile_Click" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small" Height="18"/>
                 </StackPanel>
 
             </Border>
@@ -92,8 +92,8 @@
         />
         <fluent:Button
             Header="Insert XSD location" 
-            Icon="/Images/RelationshipsHS.png" 
-            SizeDefinition="Middle, Small"
+            Icon="/Images/RelationshipsHS.png"
+            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
             Command="{StaticResource InsertXsdLocationCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
