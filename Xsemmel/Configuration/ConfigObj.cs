@@ -60,7 +60,7 @@ namespace XSemmel.Configuration
         public string Comment
         {
             get { return "All xsd's with the specified name will be replaced by the path of the mapping"; }
-            set { string dummy = value;  }
+            set { string dummy = value; }  //needed becuase ShowReadOnlyProperties="False"
         }
 
         [Category("General|Application")]
@@ -98,12 +98,6 @@ namespace XSemmel.Configuration
             set { _enableCodeCompletion = value; }
         }
 
-//        public string FileEncoding
-//        {
-//            get { return _fileEncoding; }
-//            set { _fileEncoding = value; }
-//        }
-
         [Category("General|Editor")]
         public Encoding Encoding
         {
@@ -118,6 +112,57 @@ namespace XSemmel.Configuration
 
         [Category("General|Application")]
         public OpenType OpenAtStartup { get; set; }
+
+        [Category("External Tools|")]
+        [Comment]
+        public string Comment3
+        {
+            get { return "You can specifiy up to three external tools. Please specify command lines to run the tools:"; }
+            set { string dummy = value; }  //needed becuase ShowReadOnlyProperties="False"
+        }
+
+        [Category("External Tools|Tool 1")]
+        [DisplayName("File name: ")]
+        public string ExternalTool1Filename { get; set; }
+
+        [Category("External Tools|Tool 1")]
+        [DisplayName("Arguments: ")]
+        public string ExternalTool1Arguments { get; set; }
+
+        [Category("External Tools|Tool 2")]
+        [DisplayName("File name: ")]
+        public string ExternalTool2Filename { get; set; }
+
+        [Category("External Tools|Tool 2")]
+        [DisplayName("Arguments: ")]
+        public string ExternalTool2Arguments { get; set; }
+        
+        [Category("External Tools|Tool 3")]
+        [DisplayName("File name: ")]
+        public string ExternalTool3Filename { get; set; }
+
+        [Category("External Tools|Tool 3")]
+        [DisplayName("Arguments: ")]
+        public string ExternalTool3Arguments { get; set; }
+
+        [Category("External Tools|")]
+        [Comment]
+        public string Comment2
+        {
+            get
+            {
+                return "Placeholder:\n" +
+                       "$(ItemPath) The complete file name with path of the current file\n" +
+                       "$(ItemDir) The directory of the current file\n" +
+                       "$(ItemFilename) The file name of the current file\n" +
+                       "$(ItemExt) The file name extension of the current file\n" +
+                       "$(ItemFilenameWithoutExt) The file name without extension of the current file\n" +
+                       "$(CurText) The selected text\n" +
+                       "$(CurLine) The current line position of the cursor\n" +
+                       "$(CurCol) The current column position of the cursor";
+            }
+            set { string dummy = value; }  //needed becuase ShowReadOnlyProperties="False"
+        }
 
         [Browsable(false)]
         public List<string> RecentlyUsedFiles  //cannot use IList due to serialization

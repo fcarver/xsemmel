@@ -21,7 +21,7 @@ namespace XSemmel
         private string _xsdFile;
 
 
-        public XSDocument(string xml)
+        public XSDocument(string xml, string xsdfile = null, string xmlfile = null)
         {
             Debug.Assert(xml != null);
             if (xml == null)
@@ -29,20 +29,26 @@ namespace XSemmel
                 throw new ArgumentNullException("xml");
             }
             Xml = xml;
-
-            try
+            if (xmlfile != null)
             {
-                string xsd = GetEmbeddedXsdFile();
-                XsdFile = xsd;
+                Filename = xmlfile;
             }
-            catch (Exception)
-            {
-            }
-        }
 
-        public XSDocument(string xml, string xsd) : this(xml)
-        {
-            XsdFile = xsd;
+            if (xsdfile != null)
+            {
+                XsdFile = xsdfile;
+            }
+            else
+            {
+                try
+                {
+                    string xsd2 = GetEmbeddedXsdFile();
+                    XsdFile = xsd2;
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
 
 

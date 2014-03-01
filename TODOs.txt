@@ -1,6 +1,8 @@
 ﻿= Done in current release = 
 
 	* FIX: Auto-complete when cursor is on apostroph
+	* FIX: use XSD file if referenced by noNamespaceLocation
+	* NEW: Run [External tools]
 	* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
 	* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
 	* NEW: ribbon-button to insert XML entities

@@ -173,6 +173,7 @@
     </Compile>
     <Compile Include="Editor\HighlightCurrentLineBackgroundRenderer.cs" />
     <Compile Include="Editor\HighlightOccurrences.cs" />
+    <Compile Include="ExternalTools.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
     <Compile Include="Helpers\WindowSaver.cs" />
     <Compile Include="Helpers\NamedPipeHelper.cs" />
@@ -735,6 +736,9 @@
     <Resource Include="Images\entities\gt.png" />
     <Resource Include="Images\entities\lt.png" />
     <Resource Include="Images\entities\quot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Tools_Hammer_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

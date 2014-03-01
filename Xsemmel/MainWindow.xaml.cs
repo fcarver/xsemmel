@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
+using Fluent;
 using ICSharpCode.AvalonEdit;
 using TaskDialogInterop;
 using XSemmel.Commands;
@@ -71,6 +71,14 @@ namespace XSemmel
             Application.Current.SessionEnding += (sender, y) => { y.Cancel = !allowToClose(); };
 
             Closing += (sender, y) => { y.Cancel = !allowToClose(); };
+        }
+
+
+        private void setupExternalTools()
+        {
+            var et = new ExternalTools(Editor);
+            _ribbongroupExternalTools.Visibility = et.IsAnySpecified() ? Visibility.Visible : Visibility.Collapsed;
+            et.Configure(_ribbongroupExternalTools);
         }
 
 
@@ -160,9 +168,7 @@ namespace XSemmel
                     using (StreamReader streamReader = new StreamReader(fileStream))
                     {
                         string xml = streamReader.ReadToEnd();
-//                        string xml = File.ReadAllText(filePath);
-                        doc = new XSDocument(xml);
-                        doc.Filename = filePath;
+                        doc = new XSDocument(xml, null, filePath);
                     }
 
                     XSConfiguration.Instance.Config.AddRecentlyUsedFile(filePath);
@@ -183,6 +189,8 @@ namespace XSemmel
                 }
                 createTaskPanes(doc);
                 setFilename();
+
+                setupExternalTools();
 
                 //http://stackoverflow.com/questions/3109080/focus-on-textbox-when-usercontrol-change-visibility
                 Dispatcher.BeginInvoke((Action)delegate

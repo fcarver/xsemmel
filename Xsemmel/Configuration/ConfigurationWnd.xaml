@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:pt="clr-namespace:PropertyTools.Wpf;assembly=PropertyTools.Wpf" 
              mc:Ignorable="d" 
-             Height="400" Width="350"
+             Height="400" Width="550"
         Title="Configuration"
         ResizeMode="NoResize">
     <Window.Resources>
@@ -25,7 +25,7 @@
         <pt:PropertyControl 
             x:Name="_propertyControl" x:FieldModifier="private" 
             Margin="5"
-            ShowDescriptionIcons="False"
+            ShowDescriptionIcons="True"
             ShowReadOnlyProperties="False"
             TabHeaderTemplate="{StaticResource HeaderTemplate2}"
         />

@@ -356,6 +356,8 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
                 </fluent:RibbonGroupBox>
+                <fluent:RibbonGroupBox Header="External" x:Name="_ribbongroupExternalTools" x:FieldModifier="private">
+                </fluent:RibbonGroupBox>
             </fluent:RibbonTabItem>
 
             <fluent:Ribbon.ContextualGroups>
