@@ -139,6 +139,15 @@ namespace XSemmel.Test
         }
 
         [TestMethod]
+        public void IsInsideEmptyElementTest()
+        {
+            Assert.IsFalse(XParser.IsInsideEmptyElement("", 0));
+
+            Assert.IsFalse(XParser.IsInsideEmptyElement("<elem></elem> ", 3));
+            Assert.IsTrue(XParser.IsInsideEmptyElement("<elem/> ", 3));
+        }
+
+        [TestMethod]
         public void IsInsideCommentTest()
         {
             Assert.IsFalse(XParser.IsInsideComment("xxx", 2));

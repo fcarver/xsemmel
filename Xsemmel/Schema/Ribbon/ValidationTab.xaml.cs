@@ -51,7 +51,13 @@ namespace XSemmel.Schema.Ribbon
             if (!string.IsNullOrEmpty(edtXsdFile.Text))
             {
                 string exePath = Environment.GetCommandLineArgs()[0];
-                Process.Start(exePath, edtXsdFile.Text);
+                string xsdFile = edtXsdFile.Text;
+                if (!xsdFile.StartsWith("\""))
+                {
+                    xsdFile = string.Format("\"{0}\"", xsdFile);
+                }
+
+                Process.Start(exePath, xsdFile);
             }
             else
             {

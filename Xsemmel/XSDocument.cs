@@ -145,23 +145,6 @@ namespace XSemmel
         {
             get
             {
-//                try
-//                {
-//                    if (_xsdFile == null)
-//                    {
-//                        string xsd = GetEmbeddedXsdFile();
-//                        if (File.Exists(xsd))
-//                        {
-//                            _xsdFile = xsd;
-//                        }
-//                    }
-//                    return _xsdFile;
-//                }
-//                catch (Exception)
-//                {
-//                    return null;
-//                }
-
                 return _xsdFile;
             }
             set

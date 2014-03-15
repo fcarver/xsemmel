@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
@@ -9,24 +11,21 @@ namespace XSemmel.Editor
 	/// <summary>
 	/// Implements AvalonEdit ICompletionData interface to provide the entries in the completion drop down.
 	/// </summary>
-	public class MyCompletionData : ICompletionData
+	public class ActionCompletionData : ICompletionData
 	{
 
-		public MyCompletionData(string text) : this(text, null)
-		{
-		}
+	    private readonly CompleteDelegate _action;
 
-        public MyCompletionData(string text, string description)
-        {
-            Text = text;
-            Content = Text;
-            Description = description;
-        }
+        public delegate void CompleteDelegate(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs);
 
-        public MyCompletionData(string textToShow, string textToInsert, string description)
+        public ActionCompletionData(string textToShow, string description, CompleteDelegate action)
         {
-            Text = textToInsert;
-            Content = textToShow;
+            if (action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
+            _action = action;
+            Content = new TextBlock(new Italic(new Run(textToShow)));
             Description = description;
         }
 
@@ -37,8 +36,8 @@ namespace XSemmel.Editor
 		
 		public string Text 
         { 
-            get; 
-            private set; 
+            get { return ""; } 
+            private set {}
         }
 		
 		// Use this property if you want to show a fancy UIElement in the drop down list.
@@ -58,7 +57,7 @@ namespace XSemmel.Editor
 		
 		public void Complete(TextArea textArea, ISegment completionSegment, EventArgs insertionRequestEventArgs)
 		{
-			textArea.Document.Replace(completionSegment, this.Text);
+            _action(textArea, completionSegment, insertionRequestEventArgs);
 		}
 	}
 }

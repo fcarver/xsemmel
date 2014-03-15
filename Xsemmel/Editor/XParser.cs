@@ -228,6 +228,18 @@ namespace XSemmel.Editor
             return false;
         }
 
+
+        public static bool IsInsideEmptyElement(string xml, int offset)
+        {
+            if (IsInsideElementDeclaration(xml, offset))
+            {
+                int idxClose = xml.LastIndexOf('>', offset);
+                int idxEmptyClose = xml.LastIndexOf("/>", offset);
+                return idxEmptyClose < idxClose;
+            }
+            return false;
+        }
+
         public static bool IsInsideElementDeclaration(string xml, int offset)
         {
             if (offset <= 0) return false;

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Threading;
-using Fluent;
 using ICSharpCode.AvalonEdit;
 using TaskDialogInterop;
 using XSemmel.Commands;
@@ -203,8 +202,8 @@ namespace XSemmel
             catch (Exception e)
             {
                 Mouse.OverrideCursor = null;
-                MessageBox.Show(this, "Cannot open file: " + e.Message, "Error", MessageBoxButton.OK,
-                                MessageBoxImage.Error);
+                MessageBox.Show(this, string.Format("Cannot open file '{1}': {0}", e.Message, filePath), "Error", 
+                    MessageBoxButton.OK, MessageBoxImage.Error);
             }
             finally
             {

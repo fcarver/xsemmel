@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -42,7 +44,7 @@ namespace XSemmel.Editor
                 {
                     char c = _editor.Text[offset - 1];
 
-                    TextComposition tc = new TextComposition(null, null, c.ToString());
+                    TextComposition tc = new TextComposition(null, null, c.ToString(CultureInfo.InvariantCulture));
                     var tcea = new TextCompositionEventArgs(null, tc);
 
                     bool foundProposal = completeBasedOnTextEntered(tcea);
@@ -69,6 +71,32 @@ namespace XSemmel.Editor
                 showCompletion(data);
                 return true;
             }
+
+            if (XParser.IsInsideEmptyElement(_editor.Text, _editor.CaretOffset))
+            {
+                //replace <test/> --> <test></test>
+
+                IList<ICompletionData> data = new List<ICompletionData>();
+
+                int idxStart = _editor.Text.LastIndexOf('<', _editor.CaretOffset);
+                int idxEnd = _editor.Text.IndexOf('>', _editor.CaretOffset);
+                Debug.Assert(idxStart !=-1 && idxEnd != -1, "Can only happen of XParser.IsInsideEmptyElement is incorrect");
+
+                if (idxStart >= 0 && idxEnd > idxStart)
+                {
+                    data.Add(new ActionCompletionData("Expand empty tag", null, (textArea, completionSegment, eventArgs) =>
+                        {
+                            string tag = XParser.GetElementAtCursor(_editor.Text, _editor.CaretOffset - 1);
+                            string element = string.Format("<{0}></{0}>", tag);
+                            textArea.Document.Replace(idxStart, idxEnd - idxStart + 1, element);
+                            _editor.CaretOffset = idxStart + tag.Length + 2;
+                        }));
+                }
+
+                showCompletion(data);
+                return true;
+            }
+            
             return false;
         }
 
@@ -100,13 +128,39 @@ namespace XSemmel.Editor
                         int offset = _editor.CaretOffset;
                         if (offset > 1 &&_editor.Text[offset-2] == '<')
                         {
+                            //expand to closing tag
                             string s = XParser.GetParentElementAtCursor(_editor.Text, offset - 1);
                             if (!string.IsNullOrEmpty(s))
                             {
-                                IList<ICompletionData> data = new List<ICompletionData>();
-                                data.Add(new MyCompletionData(s + ">"));
-                                showCompletion(data);
+                                showCompletion(new List<ICompletionData>
+                                    {
+                                        new MyCompletionData(s + ">")
+                                    });
                                 return true;
+                            }
+                        }
+                        if (_editor.Text.Length > offset + 2 && _editor.Text[offset] == '>')
+                        {
+                            //remove closing tag if exist
+                            string s = XParser.GetElementAtCursor(_editor.Text, offset - 1);
+                            if (!string.IsNullOrWhiteSpace(s))
+                            {
+                                //search closing end tag. Element must be empty (whitespace allowed)  
+                                //"<hallo>  </hallo>" --> enter '/' --> "<hallo/>  "
+                                string expectedEndTag = "</" + s + ">";
+                                for (int i = offset+1; i < _editor.Text.Length - expectedEndTag.Length; i++)
+                                {
+                                    if (!char.IsWhiteSpace(_editor.Text[i]))
+                                    {
+                                        if (_editor.Text.Substring(i, expectedEndTag.Length) == expectedEndTag)
+                                        {
+                                            //remove already existing endTag
+                                            _editor.Document.Remove(i, expectedEndTag.Length);
+                                        }
+                                        break;
+                                    }
+                                }
+
                             }
                         }
                         break;
@@ -139,8 +193,25 @@ namespace XSemmel.Editor
                                 break;
                             }
                         }
+
+                        bool oddLeft = (countApostroph%2 == 1);
+
+                        for (int i = offset; i < _editor.Text.Length; i++)
+                        {
+                            char charAtCursor = _editor.Text[i];
+                            if (charAtCursor == '\"')
+                            {
+                                countApostroph++;
+                            }
+                            else if (charAtCursor == '>')
+                            {
+                                break;
+                            }
+                        }
+
+                        bool oddRight = (countApostroph % 2 == 1);
                         
-                        if (countApostroph % 2 == 1)
+                        if (oddLeft && oddRight)
                         {
                             _editor.TextArea.Document.Insert(offset, "\"");
                             _editor.CaretOffset = offset;
@@ -172,16 +243,16 @@ namespace XSemmel.Editor
                                     {
                                         if (attr.Annotation != null && attr.Annotation.Count > 0)
                                         {
-                                            StringBuilder sb = new StringBuilder();
+                                            StringBuilder description = new StringBuilder();
                                             foreach (string ann in attr.Annotation)
                                             {
-                                                sb.AppendLine(ann);
+                                                description.AppendLine(ann);
                                             }
-                                            data.Add(new MyCompletionData(attr.Name, sb.ToString()));
+                                            data.Add(new MyCompletionData(attr.Name, attr.Name + "=\"", description.ToString()));
                                         }
                                         else
                                         {
-                                            data.Add(new MyCompletionData(attr.Name));
+                                            data.Add(new MyCompletionData(attr.Name, attr.Name+"=\"", null));
                                         }
                                     }
                                     showCompletion(data);

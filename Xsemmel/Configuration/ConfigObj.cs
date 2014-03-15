@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Xml.Serialization;
 using PropertyTools.DataAnnotations;
 
 namespace XSemmel.Configuration
 {
-
-   
 
     public class ConfigObj
     {
@@ -57,6 +56,7 @@ namespace XSemmel.Configuration
 
         [Category("Schema|XSD mapping")]
         [Comment]
+        [XmlIgnore]
         public string Comment
         {
             get { return "All xsd's with the specified name will be replaced by the path of the mapping"; }
@@ -115,6 +115,7 @@ namespace XSemmel.Configuration
 
         [Category("External Tools|")]
         [Comment]
+        [XmlIgnore]
         public string Comment3
         {
             get { return "You can specifiy up to three external tools. Please specify command lines to run the tools:"; }
@@ -147,6 +148,7 @@ namespace XSemmel.Configuration
 
         [Category("External Tools|")]
         [Comment]
+        [XmlIgnore]
         public string Comment2
         {
             get

@@ -1,12 +1,25 @@
 ﻿= Done in current release = 
 
-	* FIX: Auto-complete when cursor is on apostroph
-	* FIX: use XSD file if referenced by noNamespaceLocation
-	* NEW: Run [External tools]
-	* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
-	* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
-	* NEW: ribbon-button to insert XML entities
-	* NEW: Code completion (Ctrl+Space) for closing comments, Auto-complete of opening comment characters ("<!" --> "<!--")
+= 15-MAR-2014 = 
+
+* FIX: Contextmenu in TreeView maybe permanently disabled
+* FIX: Open XML files even if they are not valid according to referenced schema
+* FIX: Open referenced XSD file even if file path contains spaces
+* FIX: Auto-complete when cursor is on apostroph
+* FIX: Some minor issues
+* NEW: remove closing tag on elements when enter '/', e.g. "<text></text>" --> enter '/' --> "<test/>"
+* NEW: code completion to expand empty tags, e.g. "<text/>" --> Ctrl+Space --> "<test></test>"
+* CHG: Improved code-completion of attributes
+
+= 01-MAR-2014 = 
+
+* FIX: Auto-complete when cursor is on apostroph
+* FIX: use XSD file if referenced by noNamespaceLocation
+* NEW: Run [External tools]
+* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
+* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
+* NEW: ribbon-button to insert XML entities
+* NEW: Code completion (Ctrl+Space) for closing comments, Auto-complete of opening comment characters ("<!" --> "<!--")
 
 = TODOs =
 
@@ -44,7 +57,7 @@
 	* Öffnender und schließender Tag synchron halten (vgl. VS)
 	* Highlighting fuer beliebige Dateien ausschalten
     * Nur Teile einer Datei öffnen, siehe XmlReader
-	* Editor: Empty tags collapsen / erweitern
+	* Editor: Empty tags erweitern
 	* package.xsd: SpecialFileSubType wird nicht angezeigt
 	* Aktionen (z.B. Prettyprint) rückgängig machen
 	* ShortcutNavigation erweitern: nach Links, Selektion 

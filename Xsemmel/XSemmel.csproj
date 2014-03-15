@@ -166,6 +166,7 @@
     <Compile Include="Configuration\ConfigurationWnd.xaml.cs">
       <DependentUpon>ConfigurationWnd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Editor\ActionCompletionData.cs" />
     <Compile Include="Editor\ShortcutNavigator.cs" />
     <Compile Include="Editor\GotoLine.cs" />
     <Compile Include="Editor\FindString.xaml.cs">

@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Xml;
+using System.Xml.Schema;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Indentation;
 using ICSharpCode.AvalonEdit;
@@ -87,7 +88,7 @@ namespace XSemmel.Editor
 
             try
             {
-                XmlDocument xmldoc = xml.XmlDoc;  //throws exception if it is not wellformed
+//                XmlDocument xmldoc = xml.XmlDoc;  //throws exception if it is not wellformed or invalid
 
                 string xsd = xml.XsdFile;
                 if (xsd != null)
@@ -99,6 +100,10 @@ namespace XSemmel.Editor
             {
                 //ignore
             }
+//            catch (XmlSchemaValidationException)
+//            {
+//                //ignore
+//            }
         }
 
 

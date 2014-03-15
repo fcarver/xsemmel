@@ -88,12 +88,12 @@ namespace XSemmel
             }
             catch (Exception ex)
             {
-                Application.Current.MainWindow.Cursor = Cursors.Wait;
+                Application.Current.MainWindow.Cursor = null;
                 MessageBox.Show(Application.Current.MainWindow, ex.Message, "Error");
             }
             finally
             {
-                Application.Current.MainWindow.Cursor = Cursors.Wait;
+                Application.Current.MainWindow.Cursor = null;
             }
         }
 

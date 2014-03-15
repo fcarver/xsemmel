@@ -11,6 +11,17 @@ namespace WpfTreeView
         private TreeViewItem _draggedItem, _target;
         private TreeView _parent;
 
+        public delegate void DropEventHandler(TreeViewItem draggedItem, TreeViewItem target);
+
+        public Brush BackgroundOfItemUnderDrag { get; set; }
+        private Brush BackgroundOfNormalItem { get; set; }
+
+        public event DropEventHandler OnDropped;
+
+
+        /// <summary>
+        /// Initializes a new instance
+        /// </summary>
         public TreeViewDragDropHandler()
         {
             BackgroundOfItemUnderDrag = Brushes.Aqua;
@@ -33,8 +44,6 @@ namespace WpfTreeView
             }
         }
 
-        public Brush BackgroundOfItemUnderDrag { get; set; }
-        private Brush BackgroundOfNormalItem { get; set; }
 
         private void treeView_MouseMove(object sender, MouseEventArgs e)
         {
@@ -71,10 +80,6 @@ namespace WpfTreeView
                 }
             }
         }
-
-        public delegate void DropEventHandler(TreeViewItem draggedItem, TreeViewItem target);
-
-        public event DropEventHandler OnDropped;
 
         private void treeView_DragOver(object sender, DragEventArgs e)
         {

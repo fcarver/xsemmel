@@ -168,21 +168,25 @@ namespace XSemmel.TreeView
         /// <param name="e"></param>
         private void tree_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            TreeViewItem treeViewItem = VisualUpwardSearch<TreeViewItem>(e.OriginalSource as DependencyObject) as TreeViewItem;
-
-            if (treeViewItem != null)
+            IInputElement element = _tree.InputHitTest(e.GetPosition(_tree));
+            while (!((element is System.Windows.Controls.TreeView) || element == null))
             {
-                treeViewItem.Focus();
-                e.Handled = true;
+                if (element is TreeViewItem)
+                    break;
+
+                if (element is FrameworkElement)
+                {
+                    FrameworkElement fe = (FrameworkElement)element;
+                    element = (IInputElement)(fe.Parent ?? fe.TemplatedParent);
+                }
+                else
+                    break;
             }
-        }
-
-        private static DependencyObject VisualUpwardSearch<T>(DependencyObject source)
-        {
-            while (source != null && source.GetType() != typeof(T))
-                source = VisualTreeHelper.GetParent(source);
-
-            return source;
+            if (element is TreeViewItem)
+            {
+                element.Focus();
+//                e.Handled = true;
+            }
         }
 
         private ItemCollection Items
