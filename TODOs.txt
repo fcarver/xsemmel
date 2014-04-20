@@ -1,5 +1,12 @@
 ﻿= Done in current release = 
 
+WINDOWS XP IS NO LONGER SUPPORTED
+
+* NEW: Better visualisation of validation issues
+* FIX: Some minor issues
+* CHG: Disabled Jumplist
+* CHG: updated to .net 4.5, WinXP NO LONGER SUPPORTED
+
 = 15-MAR-2014 = 
 
 * FIX: Contextmenu in TreeView maybe permanently disabled
@@ -32,10 +39,6 @@
 	* Forms-Controls: Passt DPI-Anpassung?
 	* show matching closing/opening element (vgl. BracketMatcher)
 	* Icon zum Ein-/Auskommentieren
-	* xsd-Validation einschalten, wieder ausschalten,
-		* Insert XSD location bleibt aktiviert
-		* in Editor-Statusbar wird xsd-Name weiterhin angezeigt
-	* Validation-Tab: Info wenn "Do not check" ausgewählt ist
 	* SchemaInfo
 		* wenn leer, Info wie aktiviert werden kann
 		* schöner formatieren
@@ -57,7 +60,6 @@
 	* Öffnender und schließender Tag synchron halten (vgl. VS)
 	* Highlighting fuer beliebige Dateien ausschalten
     * Nur Teile einer Datei öffnen, siehe XmlReader
-	* Editor: Empty tags erweitern
 	* package.xsd: SpecialFileSubType wird nicht angezeigt
 	* Aktionen (z.B. Prettyprint) rückgängig machen
 	* ShortcutNavigation erweitern: nach Links, Selektion 
@@ -73,8 +75,6 @@
 	* Fehler und Highlights in der Margin anzeigen
 		* https://github.com/icsharpcode/SharpDevelop/blob/master/src/AddIns/DisplayBindings/AvalonEdit.AddIn/Src/CodeEditor.cs
 	* Bulk XSLT, z.B. alle Dateien eines Verzeichnisses mittels search'n'replace ändern
-		
-== Brainstorm ==
 	* Komplexeres Prettyprint
 		* max. Zeilenlaenge
 		* remove comments
@@ -83,7 +83,8 @@
 		* Anm2.: Whitespace zwischen den Elementen wird beachtet, wenn es mind. ein Element gibt, das mixed-content enthält
 	* Drucken: http://wpfprintengine.codeplex.com/
 	* Große XML splitten, vgl XmlReader
-	* xs3p: xsd2html
+	* xsd2html: http://xml.fiforms.org/xs3p/
+	* https://xompare.codeplex.com
 	* AutoCompletion of Visual Studio 2008
 		The XML editor fills in the end tag and positions the cursor after the start tag. The following is an example of this (the "|" notes the cursor position):
 		<book>|</book>

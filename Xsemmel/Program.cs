@@ -2,6 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Shell;
 using XSemmel.Configuration;
 using XSemmel.Helpers;
 
@@ -33,6 +36,8 @@ namespace XSemmel
             app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Generic.xaml") });
             app.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = new Uri("pack://application:,,,/Fluent;component/Themes/Office2010/Silver.xaml") });
             app.Resources.EndInit();
+
+            app.Startup += OnStartup;
 
             MainWindow main = new MainWindow();
             if (args.Length == 1)
@@ -85,6 +90,28 @@ namespace XSemmel
                 }
             }
             app.Run(main);
+        }
+
+        private static void OnStartup(object sender, StartupEventArgs e)
+        {
+//            JumpTask task = new JumpTask
+//            {
+//                Title = "Check for Updates",
+//                Arguments = "/update",
+//                Description = "Cheks for Software Updates",
+//                CustomCategory = "Actions",
+//                IconResourcePath = Assembly.GetEntryAssembly().CodeBase,
+//                ApplicationPath = Assembly.GetEntryAssembly().CodeBase
+//            };
+
+//            RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;  
+
+            JumpList jumpList = new JumpList();
+//            jumpList.JumpItems.Add(task);
+            jumpList.ShowFrequentCategory = false;
+            jumpList.ShowRecentCategory = false;
+
+            JumpList.SetJumpList(Application.Current, jumpList);
         }
     }
 }

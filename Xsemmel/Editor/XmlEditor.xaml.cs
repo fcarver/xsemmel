@@ -109,6 +109,14 @@ namespace XSemmel.Editor
 
         internal void SetXsdFile(string xsdFile)
         {
+            if (string.IsNullOrEmpty(xsdFile))
+            {
+                _codeCompletion.SetXsdFile(null);
+                _lblXsdFile.Text = "";
+                _lblXsdFile.ToolTip = null;
+                return;
+            }
+
             _lblXsdFile.ToolTip = xsdFile;
             try
             {

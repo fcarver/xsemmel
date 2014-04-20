@@ -17,6 +17,11 @@ namespace XSemmel.Schema
         private EditorFrame _editor;
         private readonly DispatcherTimer _validationUpdateTimer;
 
+        private ValidationData _validationData;
+
+        private MarkBackgroundRenderer _errorMarker;
+
+
         public EditorValidation()
         {
             InitializeComponent();
@@ -25,10 +30,6 @@ namespace XSemmel.Schema
             _validationUpdateTimer.Interval = TimeSpan.FromSeconds(2);
             _validationUpdateTimer.Tick += validationUpdateTimer_Tick;
         }
-
-        private ValidationData _validationData;
-
-        private MarkBackgroundRenderer _errorMarker;
 
         public EditorFrame Editor
         {
@@ -60,7 +61,7 @@ namespace XSemmel.Schema
         public void StopValidation()
         {
             _validationUpdateTimer.Stop();
-            lstErrors.Items.Clear();
+            _lstErrors.Items.Clear();
         }
 
         public XSDocument XSDocument
@@ -90,35 +91,42 @@ namespace XSemmel.Schema
         {
             Debug.Assert(_editor != null);
 
-            lstErrors.Items.Clear();
+            _lstErrors.Items.Clear();
             _errorMarker.ClearMarks();
 
             try
             {
-                if (_validationData.CheckWellformedness)
+                if (_validationData.DoNotValidate)
+                {
+                    var i1 = new ValidationIssue(ValidationIssue.Type.Information, 0, 0, "Validation is turned off.\nTo activate, click in ribbon on 'Validation' tab and select 'Check wellformedness' or 'Validate against schema'.");
+                    _lstErrors.Items.Add(i1);
+                }
+                
+                else if (_validationData.CheckWellformedness)
                 {
 
                     try
                     {
                         XmlDocument xmlDoc = _editor.XmlEditor.Text.ToXmlDocument();
                         var i = new ValidationIssue(ValidationIssue.Type.Information, 0, 0, "XML is wellformed");
-                        lstErrors.Items.Add(i);
+                        _lstErrors.Items.Add(i);
                     }
                     catch (XmlException ex)
                     {
                         var i = new ValidationIssue(ValidationIssue.Type.Error, ex.LineNumber, ex.LinePosition,
                                                     ex.Message);
-                        lstErrors.Items.Add(i);
+                        _lstErrors.Items.Add(i);
                     }
                 }
 
-                if (_validationData.CheckXsd)
+                else if (_validationData.CheckXsd)
                 {
                     string xsdFile = _validationData.Xsd;
                     if (!FileHelper.FileExists(xsdFile))
                     {
-                        lstErrors.Items.Add(string.Format("The file '{0}' does not exist, or the path is invalid",
-                                                          xsdFile));
+                        var i = new ValidationIssue(ValidationIssue.Type.Warning, 0, 0, 
+                            string.Format("The file '{0}' does not exist, or the path is invalid", xsdFile));
+                        _lstErrors.Items.Add(i);
                         return;
                     }
 
@@ -127,13 +135,13 @@ namespace XSemmel.Schema
                     if (result.Results.Count == 0)
                     {
                         var i = new ValidationIssue(ValidationIssue.Type.Information, 0, 0, "XML is valid");
-                        lstErrors.Items.Add(i);
+                        _lstErrors.Items.Add(i);
                     }
                     else
                     {
                         foreach (var x in result.Results)
                         {
-                            lstErrors.Items.Add(x);
+                            _lstErrors.Items.Add(x);
                         }
                     }
                 }
@@ -141,26 +149,17 @@ namespace XSemmel.Schema
             catch (Exception ex)
             {
                 var i = new ValidationIssue(ValidationIssue.Type.Error, 0, 0, "Error while validating file: "+ ex.Message);
-                lstErrors.Items.Add(i);
+                _lstErrors.Items.Add(i);
             }
 
-            foreach (var item in lstErrors.Items)
+            foreach (var item in _lstErrors.Items)
             {
                 var error = item as ValidationIssue;
                 if (error != null)
                 {
-                    int offset;
-                    if (error.Line == 0)
-                    {
-                        offset = 0;
-                    }
-                    else
-                    {
-                        offset = _editor.XmlEditor.Document.GetOffset(error.Line, error.Column);    
-                    }
-
                     if (error.IssueType != ValidationIssue.Type.Information)
                     {
+                        int offset = error.Line == 0 ? 0 : _editor.XmlEditor.Document.GetOffset(error.Line, error.Column);
                         _errorMarker.AddOffsetToMark(new MarkBackgroundRenderer.Mark
                         {
                             Offset = offset,
@@ -174,7 +173,7 @@ namespace XSemmel.Schema
 
         private void lstErrors_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ValidationIssue vi = lstErrors.SelectedItem as ValidationIssue;
+            ValidationIssue vi = _lstErrors.SelectedItem as ValidationIssue;
             if (vi != null && vi.Line != 0) 
             {
                 int offset = _editor.XmlEditor.Document.GetOffset(vi.Line, vi.Column);

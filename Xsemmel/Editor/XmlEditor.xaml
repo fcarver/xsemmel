@@ -27,7 +27,7 @@
                 </StackPanel>
             </StatusBarItem>
             <StatusBarItem>
-                <TextBlock x:Name="_lblXsdFile" x:FieldModifier="private" Foreground="DarkGray" />
+                <TextBlock x:Name="_lblXsdFile" x:FieldModifier="private" TextTrimming="CharacterEllipsis" Foreground="DarkGray" />
             </StatusBarItem>
         </StatusBar>
 

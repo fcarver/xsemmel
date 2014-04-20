@@ -18,7 +18,8 @@
 ;#define use_dotnetfx35
 ;#define use_dotnetfx35lp
 
-#define use_dotnetfx40
+;#define use_dotnetfx40
+#define use_dotnetfx45full
 ;#define use_wic
 
 ;#define use_vc2010
@@ -173,6 +174,10 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 #include "scripts\products\dotnetfx40full.iss"
 #endif
 
+#ifdef use_dotnetfx45full
+#include "scripts\products\dotnetfx45full.iss"
+#endif
+
 #ifdef use_wic
 #include "scripts\products\wic.iss"
 #endif
@@ -282,6 +287,10 @@ begin
 #ifdef use_dotnetfx40
 	if (not netfxinstalled(NetFx40Client, '') and not netfxinstalled(NetFx40Full, '')) then
 		dotnetfx40client();
+#endif
+
+#ifdef use_dotnetfx45full
+   dotnetfx45full();
 #endif
 
 #ifdef use_wic
