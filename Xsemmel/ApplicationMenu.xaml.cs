@@ -1,6 +1,10 @@
-﻿using System.IO;
+﻿using System.Drawing.Printing;
+using System.IO;
+using System.Printing;
 using System.Windows;
+using System.Windows.Controls;
 using XSemmel.Configuration;
+using XSemmel.PrintEngine;
 
 namespace XSemmel
 {
@@ -44,5 +48,41 @@ namespace XSemmel
             }
         }
 
+        private void _pnlPrinting_OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ContentPresenter cp = (ContentPresenter) sender;
+            var ef = ((MainWindow)Application.Current.MainWindow).Data.EditorFrame;
+
+            if (ef == null || ef.XmlEditor == null || ef.XSDocument == null)
+            {
+                cp.Content = new Label {Content = "No file loaded"};
+                return;
+            }
+
+            PageSettings pageSettings = new PageSettings {Margins = new Margins(40, 40, 40, 40)};
+
+            PrintQueue printQueue = LocalPrintServer.GetDefaultPrintQueue();
+            PrintTicket printTicket = printQueue.DefaultPrintTicket;
+
+            PrintPreviewControl printPreview = new PrintPreviewControl();
+            printPreview.DocumentViewer.FitToMaxPagesAcross(1);
+
+            printPreview.DocumentViewer.PrintQueue = printQueue;
+
+            if (pageSettings.Landscape)
+            {
+                printTicket.PageOrientation = PageOrientation.Landscape;
+            }
+
+            printPreview.DocumentViewer.PrintTicket = printTicket;
+            printPreview.DocumentViewer.PrintQueue.DefaultPrintTicket.PageOrientation = printTicket.PageOrientation;
+
+            printPreview.LoadDocument(Printing.CreateDocumentPaginatorToPrint(ef.XmlEditor, pageSettings, printTicket, ef.XSDocument.Filename));
+
+            // this is stupid, but must be done to view a whole page:
+            DocumentViewer.FitToMaxPagesAcrossCommand.Execute("1", printPreview.DocumentViewer);
+            
+            cp.Content = printPreview;
+        }
     }
 }

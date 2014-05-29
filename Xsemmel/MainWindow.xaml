@@ -16,7 +16,7 @@
         TextOptions.TextFormattingMode="Display"        
         Icon="/XSemmel;component/AppIcon.ico" SizeToContent="Manual"
         Closed="RibbonWindow_Closed"
-        Loaded="MainWindow_OnLoaded">
+        Loaded="MainWindow_OnLoaded" >
     <DockPanel>
         <DockPanel.Resources>
             <prettyPrinter:PrettyPrintCommand x:Key="PrettyPrintCommand"/>

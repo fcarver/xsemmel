@@ -17,6 +17,25 @@
           
             <!-- links -->
             <ad:DockablePane ad:ResizingPanel.ResizeWidth="400" MinWidth="50">
+
+<!--                <WPF:MaximizableDockableContent x:Name="_editorTreeDockableXXX" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Tree">
+                    <TabControl>
+                        <TabItem Header="XPath Query" x:Name="_xPathQueryDockable">
+                            <DockPanel>
+                                <XPath:XPathQueries x:Name="_xPathQuery" />
+                            </DockPanel>
+
+                        </TabItem>
+                        <TabItem Header="Search'n'Replace" x:Name="_xPathSearchAndReplaceDockable">
+                            <XPath:XPathSearchAndReplace x:Name="_xPathSearchAndReplace" x:FieldModifier="private" />
+                        </TabItem>
+                        <TabItem Header="Tree" x:Name="_editorTreeDockable">
+                            <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
+                        </TabItem>
+                    </TabControl>
+                </WPF:MaximizableDockableContent>-->
+
+
                 <WPF:MaximizableDockableContent x:Name="_editorTreeDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Tree">
                     <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
                 </WPF:MaximizableDockableContent>

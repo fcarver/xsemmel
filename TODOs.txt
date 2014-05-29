@@ -2,8 +2,9 @@
 
 WINDOWS XP IS NO LONGER SUPPORTED
 
-* NEW: Better visualisation of validation issues
 * FIX: Some minor issues
+* NEW: Better visualisation of validation issues
+* NEW: Printing
 * CHG: Disabled Jumplist
 * CHG: updated to .net 4.5, WinXP NO LONGER SUPPORTED
 
@@ -30,6 +31,7 @@ WINDOWS XP IS NO LONGER SUPPORTED
 
 = TODOs =
 
+	* optional set RibbonWindow.DontUseDwm="True"
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
 	* Refactoring: rename (Editor)
@@ -81,7 +83,6 @@ WINDOWS XP IS NO LONGER SUPPORTED
 		* Intendation
 		* Anm.: Un-Prettyprint funktioniert, wenn man indent ausschaltet. 
 		* Anm2.: Whitespace zwischen den Elementen wird beachtet, wenn es mind. ein Element gibt, das mixed-content enthält
-	* Drucken: http://wpfprintengine.codeplex.com/
 	* Große XML splitten, vgl XmlReader
 	* xsd2html: http://xml.fiforms.org/xs3p/
 	* https://xompare.codeplex.com

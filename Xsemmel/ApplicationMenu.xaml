@@ -26,15 +26,18 @@
     </fluent:Backstage.Resources>
 
     <fluent:BackstageTabControl>
-    
+
+
         <fluent:Button
-            Header="Save" Icon="/Images/SaveHH.png" 
-            Command="{StaticResource SaveCommand}"
+            Header="New file"
+            Icon="/Images/Document_blank_32x32.png"
+            Command="{StaticResource NewFileCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
         <fluent:Button
-            Header="Save As..." Icon="/Images/SaveAsHH.png" 
-            Command="{StaticResource SaveAsCommand}"
+            Header="New window" 
+            Icon="/Images/Document_blank_32x32.png" 
+            Command="{StaticResource NewWindowCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
 
@@ -68,24 +71,34 @@
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                 />
                 <fluent:SeparatorTabItem Header="Recent" />
-            
+
                 <StackPanel x:Name="_mnuOpen" x:FieldModifier="private" Orientation="Vertical" />
             </StackPanel>
         </fluent:BackstageTabItem>
 
         <fluent:Button
-            Header="New file"
-            Icon="/Images/Document_blank_32x32.png"
-            Command="{StaticResource NewFileCommand}"
+            Header="Save" Icon="/Images/SaveHH.png" 
+            Command="{StaticResource SaveCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
         <fluent:Button
-            Header="New window" 
-            Icon="/Images/Document_blank_32x32.png" 
-            Command="{StaticResource NewWindowCommand}"
+            Header="Save As..." Icon="/Images/SaveAsHH.png" 
+            Command="{StaticResource SaveAsCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
 
+        <fluent:BackstageTabItem>
+            <fluent:BackstageTabItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Images/007_PrintView_32x32_72.png" Height="16" Width="16"/>
+                    <TextBlock Text="Print" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                </StackPanel>
+            </fluent:BackstageTabItem.Header>
+            <DockPanel>
+                <ContentPresenter IsVisibleChanged="_pnlPrinting_OnIsVisibleChanged" />
+            </DockPanel>
+        </fluent:BackstageTabItem>
+          
         <fluent:SeparatorTabItem Header="" />
 
         <fluent:BackstageTabItem>

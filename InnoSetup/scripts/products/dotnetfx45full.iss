@@ -11,7 +11,7 @@ dotnetfx45full_size=3 MB - 197 MB
  
 ;http://www.microsoft.com/globaldev/reference/lcid-all.mspx
 en.dotnetfx45full_lcid=''
-de.dotnetfx45full_lcid='/lcid 1031 '
+;de.dotnetfx45full_lcid='/lcid 1031 '
  
 
 [Code]

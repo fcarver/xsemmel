@@ -114,11 +114,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\PropertyTools.Wpf.2013.1.12.1\lib\NET40\PropertyTools.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Printing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -193,6 +195,12 @@
     <Compile Include="Helpers\BulkWindow.xaml.cs">
       <DependentUpon>BulkWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PrintEngine\DocumentPaginatorWrapper.cs" />
+    <Compile Include="PrintEngine\Printing.cs" />
+    <Compile Include="PrintEngine\PrintPreviewControl.xaml.cs">
+      <DependentUpon>PrintPreviewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrintEngine\PrintPreviewDocumentViewer.cs" />
     <Compile Include="Schema\BulkXsdValidation.cs" />
     <Compile Include="Schema\Commands\Xml2XsdGeneratorCommand.cs" />
     <Compile Include="Configuration\XSConfiguration.cs" />
@@ -453,6 +461,10 @@
     <Page Include="Helpers\BulkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrintEngine\PrintPreviewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="SampleGenerator\Xsd2XmlGenerator.xaml">
       <SubType>Designer</SubType>
@@ -744,6 +756,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Tools_Hammer_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\007_PrintView_32x32_72.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,6 @@
-﻿using XSemmel.Editor;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
+using XSemmel.Editor;
 using XSemmel.Helpers.WPF;
 
 namespace XSemmel
@@ -405,6 +407,15 @@ namespace XSemmel
             {
                 if (EditorFrame != null && EditorFrame._xPathQueryDockable != null)
                 {
+//                    TabControl tc = EditorFrame._xPathQueryDockable.Parent as TabControl;
+//                    Debug.Assert(tc != null);
+//                    if (tc != null)
+//                    {
+//                        tc.SelectedIndex = 1;
+////                        tc.SelectedItem = EditorFrame._xPathQueryDockable;
+//                    }
+                    
+//                    EditorFrame._xPathQueryDockable.Focus();
                     EditorFrame._xPathQueryDockable.Activate();
                 }
                 OnPropertyChanged("ShowFindDialog");
