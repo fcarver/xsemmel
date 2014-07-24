@@ -22,7 +22,7 @@
             <Button Width="80" Click="btnCancel_Click" IsCancel="True">Cancel</Button>
         </StackPanel>
         <TextBlock DockPanel.Dock="Bottom" Margin="5,0,5,0" Foreground="DarkRed">Xsemmel needs to be restarted before changes take effect.</TextBlock>
-        <pt:PropertyControl 
+        <pt:PropertyGrid 
             x:Name="_propertyControl" x:FieldModifier="private" 
             Margin="5"
             ShowDescriptionIcons="True"

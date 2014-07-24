@@ -8,6 +8,7 @@ using System.Windows;
 using ICSharpCode.AvalonEdit;
 using System.Windows.Input;
 using XSemmel.Configuration;
+using XSemmel.Helpers;
 using XSemmel.Schema.Parser;
 using ICSharpCode.AvalonEdit.CodeCompletion;
 
@@ -78,20 +79,30 @@ namespace XSemmel.Editor
 
                 IList<ICompletionData> data = new List<ICompletionData>();
 
-                int idxStart = _editor.Text.LastIndexOf('<', _editor.CaretOffset);
-                int idxEnd = _editor.Text.IndexOf('>', _editor.CaretOffset);
-                Debug.Assert(idxStart !=-1 && idxEnd != -1, "Can only happen of XParser.IsInsideEmptyElement is incorrect");
-
-                if (idxStart >= 0 && idxEnd > idxStart)
-                {
+//                int idxStart = _editor.Text.LastIndexOf('<', _editor.CaretOffset);
+//                int idxEnd = _editor.Text.IndexOf('>', _editor.CaretOffset);
+//                Debug.Assert(idxStart !=-1 && idxEnd != -1, "Can only happen of XParser.IsInsideEmptyElement is incorrect");
+//
+//                if (idxStart >= 0 && idxEnd > idxStart)
+//                {
                     data.Add(new ActionCompletionData("Expand empty tag", null, (textArea, completionSegment, eventArgs) =>
                         {
-                            string tag = XParser.GetElementAtCursor(_editor.Text, _editor.CaretOffset - 1);
-                            string element = string.Format("<{0}></{0}>", tag);
-                            textArea.Document.Replace(idxStart, idxEnd - idxStart + 1, element);
-                            _editor.CaretOffset = idxStart + tag.Length + 2;
+                            int newCursor;
+                            int startReplace;
+                            int lengthReplace;
+                            string replaceWith;
+                            XActor.ExpandEmptyTag(_editor.Text, _editor.CaretOffset, out newCursor, out startReplace,
+                                out lengthReplace, out replaceWith);
+        
+                            textArea.Document.Replace(startReplace, lengthReplace, replaceWith);
+                            _editor.CaretOffset = newCursor;
+
+//                            string tag = XParser.GetElementAtCursor(_editor.Text, _editor.CaretOffset - 1);
+//                            string element = string.Format("<{0}></{0}>", tag);
+//                            textArea.Document.Replace(idxStart, idxEnd - idxStart + 1, element);
+//                            _editor.CaretOffset = idxStart + tag.Length + 2;
                         }));
-                }
+//                }
 
                 showCompletion(data);
                 return true;

@@ -125,7 +125,6 @@ namespace XSemmel.Test
             const string xml =
                 "<file id=\"1\">\r\n        <name>uImage-2.6.33-omap-pm</name>\r\n        <checksum type=\"md5\">0E49369FCCD724CB7E44AC401902E2D8</checksum>\r\n      </file>";
             Assert.IsFalse(XParser.IsInsideAttributeKey(xml, 9));
-
         }
 
         [TestMethod]
@@ -145,6 +144,16 @@ namespace XSemmel.Test
 
             Assert.IsFalse(XParser.IsInsideEmptyElement("<elem></elem> ", 3));
             Assert.IsTrue(XParser.IsInsideEmptyElement("<elem/> ", 3));
+
+            string s = @"<hallo datum=""2014-02-24 15:45:00"">
+		                    <lastName>Duck</lastName>
+		                    <proto>GUSTAV</proto>
+	                    </hallo>";
+            for (int i = 1; i < s.Length; i++)
+            {
+                Assert.IsFalse(XParser.IsInsideEmptyElement(s, i));
+            }
+
         }
 
         [TestMethod]

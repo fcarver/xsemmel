@@ -1,5 +1,10 @@
 ﻿= Done in current release = 
 
+* FIX: "expand empty tags" was sometimes offered for non-empty tags
+
+
+= 29-MAY-2014 = 
+
 WINDOWS XP IS NO LONGER SUPPORTED
 
 * FIX: Some minor issues

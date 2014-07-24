@@ -233,8 +233,10 @@ namespace XSemmel.Editor
         {
             if (IsInsideElementDeclaration(xml, offset))
             {
-                int idxClose = xml.LastIndexOf('>', offset);
-                int idxEmptyClose = xml.LastIndexOf("/>", offset);
+                int idxClose = xml.IndexOf('>', offset);
+                int idxEmptyClose = xml.IndexOf("/>", offset, StringComparison.InvariantCulture);
+                if (idxClose == -1 && idxEmptyClose >= 0) return true;
+                if (idxEmptyClose == -1 && idxClose >= 0) return false;
                 return idxEmptyClose < idxClose;
             }
             return false;
@@ -251,12 +253,19 @@ namespace XSemmel.Editor
             }
             else
             {
-                idxClose = xml.LastIndexOf('>', offset);
+                idxClose = xml.IndexOf('>', offset);
             }
 
             if (idxOpen == -1 && idxClose == -1) return false;
-            if (idxClose > idxOpen) return false;
-            return true;
+            if (idxOpen >= 0 && idxClose == -1) return true;
+
+            string subString = xml.Substring(idxOpen + 1, idxClose - idxOpen - 1);
+            if (subString.Contains(">"))
+            {
+                return false;
+            }
+            if (idxClose > idxOpen) return true;
+            return false;
         }
 
         public static bool IsInsideComment(string text, int offset)

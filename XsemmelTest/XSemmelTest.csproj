@@ -57,6 +57,7 @@
     <Compile Include="PrettyPrinterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WellformedCheckerTest.cs" />
+    <Compile Include="XActorTest.cs" />
     <Compile Include="XParserTest.cs" />
     <Compile Include="XPathTest.cs" />
     <Compile Include="XQueryTest.cs" />
@@ -113,6 +114,7 @@
     <Content Include="SampleFiles\Xml\ugly.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="SampleFiles\Xml\note.xsd">
       <SubType>Designer</SubType>
     </None>

@@ -193,7 +193,7 @@ namespace XSemmel
                     }
                     else
                     {
-                        str = LocalName + " [" + TypeName + "]";
+                        str = string.Format("{0} [{1}]", LocalName, TypeName);
                     }
                     break;
                 default:
@@ -202,7 +202,7 @@ namespace XSemmel
             }
             if ((ChildNodes.Count == 0) && !string.IsNullOrEmpty(Value))
             {
-                str = str + ": " + Value;
+                str = string.Format("{0}: {1}", str, Value);
             }
             return str;
         }
