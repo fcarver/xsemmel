@@ -67,6 +67,8 @@ namespace XSemmel
             
             createTaskPanes(null);
 
+            setupExternalTools();
+
             Application.Current.SessionEnding += (sender, y) => { y.Cancel = !allowToClose(); };
 
             Closing += (sender, y) => { y.Cancel = !allowToClose(); };
@@ -75,8 +77,9 @@ namespace XSemmel
 
         private void setupExternalTools()
         {
-            var et = new ExternalTools(Editor);
+            var et = new ExternalTools();
             _ribbongroupExternalTools.Visibility = et.IsAnySpecified() ? Visibility.Visible : Visibility.Collapsed;
+            _ribbongroupExternalTools.IsEnabled = false;
             et.Configure(_ribbongroupExternalTools);
         }
 
@@ -189,7 +192,7 @@ namespace XSemmel
                 createTaskPanes(doc);
                 setFilename();
 
-                setupExternalTools();
+                _ribbongroupExternalTools.IsEnabled = true;
 
                 //http://stackoverflow.com/questions/3109080/focus-on-textbox-when-usercontrol-change-visibility
                 Dispatcher.BeginInvoke((Action)delegate

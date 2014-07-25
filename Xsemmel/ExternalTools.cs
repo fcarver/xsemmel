@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using Fluent;
 using XSemmel.Configuration;
-using XSemmel.Editor;
 
 namespace XSemmel
 {
     internal class ExternalTools
     {
 
-        private readonly EditorFrame _editor;
-
-        public ExternalTools(EditorFrame editor)
+        public ExternalTools()
         {
-            _editor = editor;
         }
 
         public bool IsAnySpecified()
@@ -72,6 +69,15 @@ namespace XSemmel
         {
             try
             {
+                if (!File.Exists(tool))
+                {
+                    MessageBox.Show(
+                        Application.Current.MainWindow, 
+                        "The specified application was not found: '" + tool + "'", 
+                        "File not found");
+                    return;
+                }
+
                 Application.Current.MainWindow.Cursor = Cursors.Wait;
 
                 Process p = new Process();
@@ -102,7 +108,9 @@ namespace XSemmel
         {
             string res = args;
 
-            string item = _editor.XSDocument.Filename;
+            var editor = ((MainWindow) Application.Current.MainWindow).Data.EditorFrame;
+
+            string item = editor.XSDocument.Filename;
 
             res = res.Replace("$(ItemPath)", item);
             res = res.Replace("$(ItemDir)", Path.GetDirectoryName(item));
@@ -111,13 +119,13 @@ namespace XSemmel
             res = res.Replace("$(ItemFilenameWithoutExt)", Path.GetFileNameWithoutExtension(item));
             if (res.Contains("$(CurText"))
             {
-                res = res.Replace("$(CurText)", _editor.XmlEditor.SelectedText);
+                res = res.Replace("$(CurText)", editor.XmlEditor.SelectedText);
             }
             if (res.Contains("$(CurLine") || res.Contains("$(CurCol)"))
             {
-                var loc = _editor.XmlEditor.Document.GetLocation(_editor.XmlEditor.CaretOffset);
-                res = res.Replace("$(CurLine)", loc.Line.ToString());
-                res = res.Replace("$(CurCol)", loc.Column.ToString());
+                var loc = editor.XmlEditor.Document.GetLocation(editor.XmlEditor.CaretOffset);
+                res = res.Replace("$(CurLine)", loc.Line.ToString(CultureInfo.InvariantCulture));
+                res = res.Replace("$(CurCol)", loc.Column.ToString(CultureInfo.InvariantCulture));
             }
 
             return res;
@@ -125,16 +133,23 @@ namespace XSemmel
 
         private string getAppname(string filename)
         {
-            var fvi = FileVersionInfo.GetVersionInfo(filename);
-            string productname = fvi.ProductName;
+            try
+            {
+                var fvi = FileVersionInfo.GetVersionInfo(filename);
+                string productname = fvi.ProductName;
 
-            if (!string.IsNullOrEmpty(productname))
-            {
-                return productname;
+                if (!string.IsNullOrEmpty(productname))
+                {
+                    return productname;
+                }
+                else
+                {
+                    return Path.GetFileNameWithoutExtension(filename);
+                }
             }
-            else
+            catch (FileNotFoundException)
             {
-                return Path.GetFileNameWithoutExtension(filename);                
+                return filename + " (not found)";
             }
         }
 

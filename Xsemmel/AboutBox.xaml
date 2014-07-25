@@ -34,17 +34,6 @@
                         </ListItem>
                         <ListItem>
                             <Paragraph>
-                                SharpDevelop AvalonDock
-                                <LineBreak/>
-                                Version 1.3.3571, New BSD
-                                <LineBreak/>
-                                Copyright (c) 2007-2012, Adolfo Marinucci
-                                <LineBreak/>
-                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://avalondock.codeplex.com/">http://avalondock.codeplex.com/</Hyperlink>
-                            </Paragraph>
-                        </ListItem>
-                        <ListItem>
-                            <Paragraph>
                                 XmlGridControl
                                 <LineBreak/>
                                 Version 1.2, LGPL

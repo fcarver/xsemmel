@@ -185,7 +185,6 @@
     <Compile Include="Helpers\NamedPipeHelper.cs" />
     <Compile Include="Helpers\NodeMover.cs" />
     <Compile Include="Helpers\WPF\ControlBox.cs" />
-    <Compile Include="Helpers\WPF\MaximizableDockableContent.cs" />
     <Compile Include="Helpers\WPF\Wpf32Window.cs" />
     <Compile Include="Helpers\WPF\InputBox.xaml.cs">
       <DependentUpon>InputBox.xaml</DependentUpon>

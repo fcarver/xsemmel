@@ -17,7 +17,7 @@ namespace XSemmel.Commands
             {
                 return false;
             }
-            return ef._xsdVisualizerDockable.IsActiveContent;
+            return ef._xsdVisualizerDockable.IsSelected; //IsActiveContent;
         }
 
         protected abstract void Execute(XsdVisualizer xsdVisualizer);

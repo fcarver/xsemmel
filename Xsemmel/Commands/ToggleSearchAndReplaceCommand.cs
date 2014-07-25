@@ -18,13 +18,13 @@ namespace XSemmel.Commands
         {
             if (ef._xPathSearchAndReplaceDockable.Visibility == Visibility.Visible)
             {
-                ef._xPathSearchAndReplaceDockable.Hide();
+                ef._xPathQueryDockable.Focus();
                 ef._xPathSearchAndReplaceDockable.Visibility = Visibility.Collapsed;
             }
             else
             {
-                ef._xPathSearchAndReplaceDockable.Show();
                 ef._xPathSearchAndReplaceDockable.Visibility = Visibility.Visible;
+                ef._xPathSearchAndReplaceDockable.Focus();
             }
         }
 

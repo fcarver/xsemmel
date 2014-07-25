@@ -80,7 +80,6 @@ Name: "xmlAssociation"; Description: "Open all "".xml"" files with Xsemmel"; Gro
 
 [Files]
 Source: "..\Xsemmel\bin\Release\Xsemmel.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\Xsemmel\bin\Release\AvalonDock.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\DiffPlex.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\ICSharpCode.AvalonEdit.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\Fluent.dll"; DestDir: "{app}"; Flags: ignoreversion

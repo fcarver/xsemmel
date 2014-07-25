@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
 using System.Windows;
-using System.Xml;
+using System.Windows.Controls;
 using System.Xml.Schema;
 using ICSharpCode.AvalonEdit;
 using XSemmel.Commands;
@@ -71,16 +70,16 @@ namespace XSemmel.Editor
 
             _xPathSearchAndReplaceDockable.Visibility = Visibility.Collapsed;
 
-            _editorTreeDockable.Activate();
-            _editorValidationDockable.Activate();
-            _xmlEditorDockable.Activate();
+//            _editorTreeDockable.Activate();
+//            _editorValidationDockable.Activate();
+//            _xmlEditorDockable.Activate();
         }
 
         public void SetFragmentText(string fragment, bool showDockableIfHidden = false)
         {
             if (showDockableIfHidden)
             {
-                _fragmentDockable.Show();
+                _fragmentDockable.Focus();
                 _fragmentDockable.Visibility = Visibility.Visible;
             }
             _fragment.SetText(fragment);
@@ -101,7 +100,7 @@ namespace XSemmel.Editor
 
         public void SetSchemaInfo(IXmlSchemaInfo schemaInfo)
         {
-            _schemaInfoDockable.Show();
+            _schemaInfoDockable.Focus();
             _schemaInfoDockable.Visibility = Visibility.Visible;
             _schemaInfo.SetSchemaInfo(schemaInfo);
         }
@@ -135,26 +134,30 @@ namespace XSemmel.Editor
             return true;
         }
 
-        private void dockManager_ActiveContentChanged(object sender, EventArgs e)
+
+        private void Selector_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //(De-)activate ContextualRibbonTabs
-            var actContent = dockManager.ActiveContent;
             MainWindow wnd = (MainWindow)Application.Current.MainWindow;
-            if (actContent == _editorTreeDockable)
+            if (e.AddedItems.Count > 0)
             {
-                wnd.contextribTree.Visibility = Visibility.Visible;
-                wnd.Ribbon.SelectedTabItem = wnd.ribbonTabTreeView;
-            }
-            else
-            {
-                wnd.contextribTree.Visibility = Visibility.Collapsed;
-                if (wnd.Ribbon.SelectedTabItem == wnd.ribbonTabTreeView)
+                var ti = e.AddedItems[0] as TabItem;
+                if (ti != null && "Tree".Equals(ti.Header) && e.RemovedItems.Count > 0)  // "==" dont work
                 {
-                    wnd.Ribbon.SelectedTabItem = null;
+                    wnd.contextribTree.Visibility = Visibility.Visible;
+                    wnd.Ribbon.SelectedTabItem = wnd.ribbonTabTreeView;
+                    return;
                 }
             }
-            //            wnd.contextribGrid.Visibility = (actContent == gridViewDockable) ? Visibility.Visible : Visibility.Collapsed;
+            //else
+
+            wnd.contextribTree.Visibility = Visibility.Collapsed;
+            if (wnd.Ribbon.SelectedTabItem == wnd.ribbonTabTreeView)
+            {
+                wnd.Ribbon.SelectedTabItem = null;
+            }
+
+            e.Handled = true;
         }
 
-     }
+    }
 }

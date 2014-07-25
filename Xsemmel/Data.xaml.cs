@@ -407,16 +407,7 @@ namespace XSemmel
             {
                 if (EditorFrame != null && EditorFrame._xPathQueryDockable != null)
                 {
-//                    TabControl tc = EditorFrame._xPathQueryDockable.Parent as TabControl;
-//                    Debug.Assert(tc != null);
-//                    if (tc != null)
-//                    {
-//                        tc.SelectedIndex = 1;
-////                        tc.SelectedItem = EditorFrame._xPathQueryDockable;
-//                    }
-                    
-//                    EditorFrame._xPathQueryDockable.Focus();
-                    EditorFrame._xPathQueryDockable.Activate();
+                    EditorFrame._xPathQueryDockable.Focus();
                 }
                 OnPropertyChanged("ShowFindDialog");
             }

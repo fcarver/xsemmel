@@ -8,94 +8,75 @@
              xmlns:editor="clr-namespace:XSemmel.Editor"
              xmlns:schema="clr-namespace:XSemmel.Schema"
              xmlns:XPath="clr-namespace:XSemmel.XPath" 
-             xmlns:ad="clr-namespace:AvalonDock;assembly=AvalonDock" 
              xmlns:WebBrowser="clr-namespace:XSemmel.WebBrowser" 
-             xmlns:TreeView="clr-namespace:XSemmel.TreeView" 
-             xmlns:WPF="clr-namespace:XSemmel.Helpers.WPF">
-    <ad:DockingManager x:Name="dockManager" ActiveContentChanged="dockManager_ActiveContentChanged">
-        <ad:ResizingPanel Orientation="Horizontal" Margin="5,0,5,5">
-          
-            <!-- links -->
-            <ad:DockablePane ad:ResizingPanel.ResizeWidth="400" MinWidth="50">
+             xmlns:TreeView="clr-namespace:XSemmel.TreeView">
+    <Grid>
 
-<!--                <WPF:MaximizableDockableContent x:Name="_editorTreeDockableXXX" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Tree">
-                    <TabControl>
-                        <TabItem Header="XPath Query" x:Name="_xPathQueryDockable">
-                            <DockPanel>
-                                <XPath:XPathQueries x:Name="_xPathQuery" />
-                            </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" MinHeight="125px" />
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="1*" MinHeight="100px"/>
+        </Grid.RowDefinitions>
 
-                        </TabItem>
-                        <TabItem Header="Search'n'Replace" x:Name="_xPathSearchAndReplaceDockable">
-                            <XPath:XPathSearchAndReplace x:Name="_xPathSearchAndReplace" x:FieldModifier="private" />
-                        </TabItem>
-                        <TabItem Header="Tree" x:Name="_editorTreeDockable">
-                            <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
-                        </TabItem>
-                    </TabControl>
-                </WPF:MaximizableDockableContent>-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" MinWidth="300px" />
+            <ColumnDefinition Width="4"/>
+            <ColumnDefinition Width="4*" MinWidth="100px"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" TabStripPlacement="Bottom" Margin="5 4 3 5" Background="Transparent"
+                    SelectionChanged="Selector_OnSelectionChanged">
+            <TabItem Header="Tree">
+                <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
+            </TabItem>
+            <TabItem Header="XPath Query" x:Name="_xPathQueryDockable">
+                <XPath:XPathQueries x:Name="_xPathQuery" />
+            </TabItem>
+            <TabItem Header="Search'n'Replace" x:Name="_xPathSearchAndReplaceDockable">
+                <XPath:XPathSearchAndReplace x:Name="_xPathSearchAndReplace" x:FieldModifier="private" />
+            </TabItem>
+        </TabControl>
+
+        <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" />
+
+        <TabControl Grid.Column="2" Grid.Row="2" TabStripPlacement="Bottom" Margin="2 2 5 5" Background="Transparent">
+            <TabItem x:Name="_editorValidationDockable" x:FieldModifier="private" Header="Validation">
+                <schema:EditorValidation x:Name="_editorValidation" x:FieldModifier="private" />
+            </TabItem>
+
+            <TabItem x:Name="_xsdPropertiesDockable" x:FieldModifier="private" Header="Xsd Properties">
+                <ListBox x:Name="_lstXsdSelectedProperties" x:FieldModifier="internal" Background="{x:Static SystemColors.InfoBrush}" />
+            </TabItem>
+
+            <TabItem x:Name="_fragmentDockable" x:FieldModifier="private" Header="Fragment">
+                <editor:FragmentView x:Name="_fragment" x:FieldModifier="private"/>
+            </TabItem>
+
+            <TabItem x:Name="_schemaInfoDockable" x:FieldModifier="private" Header="Schema Info">
+                <schema:SchemaInfoView x:Name="_schemaInfo" x:FieldModifier="private"/>
+            </TabItem>
+        </TabControl>
+
+        <GridSplitter Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" />
+
+        <TabControl Grid.Column="2" Grid.Row="0" TabStripPlacement="Bottom" Margin="2 4 5 3" Background="Transparent">
+            <TabItem x:Name="_xmlEditorDockable" x:FieldModifier="private" Header="Editor">
+                <editor:XmlEditor Grid.Row="0" x:Name="_xmlEditor" x:FieldModifier="private" />
+            </TabItem>
+
+            <TabItem x:Name="_gridViewDockable" x:FieldModifier="private" Header="Grid" >
+                <editor:XmlGridView x:Name="_gridView" x:FieldModifier="private" />
+            </TabItem>
+
+            <TabItem x:Name="_xsdVisualizerDockable" x:FieldModifier="internal" Header="Xsd Visualizer">
+                <schema:XsdVisualizer x:Name="_xsdVisualizer" x:FieldModifier="internal" />
+            </TabItem>
+
+            <TabItem x:Name="_webBrowserDockable" x:FieldModifier="private" Header="Web Browser">
+                <WebBrowser:WebBrowserView x:Name="_webBrowser" x:FieldModifier="private" />
+            </TabItem>
+        </TabControl>
 
 
-                <WPF:MaximizableDockableContent x:Name="_editorTreeDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Tree">
-                    <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
-                </WPF:MaximizableDockableContent>
-
-                <WPF:MaximizableDockableContent x:Name="_xPathQueryDockable" x:FieldModifier="internal" 
-                        IsCloseable="False" HideOnClose="False" 
-                        Title="XPath Query">
-                    <XPath:XPathQueries x:Name="_xPathQuery" />
-                </WPF:MaximizableDockableContent>
-
-                <WPF:MaximizableDockableContent x:Name="_xPathSearchAndReplaceDockable" x:FieldModifier="internal" 
-                        IsCloseable="False" HideOnClose="False" 
-                        Title="Search'n'Replace">
-                    <XPath:XPathSearchAndReplace x:Name="_xPathSearchAndReplace" x:FieldModifier="private" />
-                </WPF:MaximizableDockableContent>
-            </ad:DockablePane>
-
-            <ad:ResizingPanel Orientation="Vertical">
-                <!-- Hauptbereich -->
-                <ad:DockablePane MinWidth="50" ad:ResizingPanel.ResizeHeight="2*" >
-                    <WPF:MaximizableDockableContent x:Name="_xmlEditorDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Editor">
-                        <editor:XmlEditor Grid.Row="0" x:Name="_xmlEditor" x:FieldModifier="private" />
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_gridViewDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Grid" >
-                        <editor:XmlGridView x:Name="_gridView" x:FieldModifier="private" />
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_xsdVisualizerDockable" x:FieldModifier="internal" IsCloseable="False" HideOnClose="False" Title="Xsd Visualizer">
-                        <schema:XsdVisualizer x:Name="_xsdVisualizer" x:FieldModifier="internal" />
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_webBrowserDockable" x:FieldModifier="private" Title="Web Browser">
-                        <WebBrowser:WebBrowserView x:Name="_webBrowser" x:FieldModifier="private" />
-                    </WPF:MaximizableDockableContent>
-                </ad:DockablePane>
-              
-                <!-- unten -->
-                <ad:DockablePane ad:ResizingPanel.ResizeHeight="1*" MinWidth="50" MinHeight="100">
-                    <WPF:MaximizableDockableContent x:Name="_editorValidationDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Validation">
-                        <schema:EditorValidation x:Name="_editorValidation" x:FieldModifier="private" />
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_xsdPropertiesDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Xsd Properties">
-                        <ListBox x:Name="_lstXsdSelectedProperties" x:FieldModifier="internal" Background="{x:Static SystemColors.InfoBrush}" />
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_fragmentDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Fragment">
-                        <editor:FragmentView x:Name="_fragment" x:FieldModifier="private"/>
-                    </WPF:MaximizableDockableContent>
-
-                    <WPF:MaximizableDockableContent x:Name="_schemaInfoDockable" x:FieldModifier="private" IsCloseable="False" HideOnClose="False" Title="Schema Info">
-                        <schema:SchemaInfoView x:Name="_schemaInfo" x:FieldModifier="private"/>
-                    </WPF:MaximizableDockableContent>
-                </ad:DockablePane>
-            </ad:ResizingPanel>
-
-<!--        <ad:DocumentPane>
-                <ad:DocumentContent Title="MyDocument!"/>
-            </ad:DocumentPane>-->
-        </ad:ResizingPanel>
-    </ad:DockingManager>
+    </Grid>
 </UserControl>

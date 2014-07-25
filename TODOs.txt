@@ -1,7 +1,7 @@
 ﻿= Done in current release = 
 
 * FIX: "expand empty tags" was sometimes offered for non-empty tags
-
+* CHG: Docking framework removed
 
 = 29-MAY-2014 = 
 
