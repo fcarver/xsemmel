@@ -76,7 +76,8 @@ namespace XSemmel.Schema.Parser
 
         public override UIElement GetPaintComponent(XsdVisualizer.PaintOptions po, int fontSize)
         {
-            if (fontSize <= 0) return null;
+            StackPanel pnl = new StackPanel();
+            if (fontSize <= 0) return pnl;
 
             Brush foreground = Brushes.Gray;
             string displayName = Name;
@@ -85,9 +86,6 @@ namespace XSemmel.Schema.Parser
                 displayName += " (opt)";
                 foreground = Brushes.DarkGray;  //darkGray is lighter than gray
             }
-
-            StackPanel pnl = new StackPanel();
-
 
             TextBlock tb = new TextBlock
                                {

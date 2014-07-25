@@ -107,9 +107,8 @@ namespace XSemmel.Schema.Parser {
 
         public virtual UIElement GetPaintComponent(XsdVisualizer.PaintOptions po, int fontSize)
         {
-            if (fontSize <= 0) return null;
-
             StackPanel pnl = new StackPanel();
+            if (fontSize <= 0) return pnl;
 
             pnl.Children.Add(GetPaintTitle(po, fontSize));
             pnl.Children.Add(GetPaintChildren(po, fontSize - 1));

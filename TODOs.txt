@@ -2,6 +2,7 @@
 
 * FIX: "Current file has changed" seldom comes up when file was saved by Xsemmel itself
 * FIX: "expand empty tags" was sometimes offered for non-empty tags
+* FIX: Crash in Schema Visualizer if schema contains extension-base of self
 * NEW: code-completion of attributed with Ctrl+Space
 * CHG: Docking framework removed
 
