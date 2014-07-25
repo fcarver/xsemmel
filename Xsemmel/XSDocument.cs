@@ -100,7 +100,7 @@ namespace XSemmel
             {
                 if (_xmlDoc == null)
                 {
-                    XmlDocument document = new XmlDocument() { PreserveWhitespace = true };
+                    XmlDocument document = new XmlDocument { PreserveWhitespace = true };
                     document.Load(getXmlReader());
 
                     if (XsdFile != null)

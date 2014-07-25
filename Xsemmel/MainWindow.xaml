@@ -361,8 +361,8 @@
             </fluent:RibbonTabItem>
 
             <fluent:Ribbon.ContextualGroups>
-                <fluent:RibbonContextualTabGroup x:Name="contextribGrid" Header="Grid View"  />
-                <fluent:RibbonContextualTabGroup x:Name="contextribTree" Header="Tree View"  />
+                <fluent:RibbonContextualTabGroup x:Name="contextribGrid" Header="Grid View" />
+                <fluent:RibbonContextualTabGroup x:Name="contextribTree" Header="Tree View" />
             </fluent:Ribbon.ContextualGroups>
         </fluent:Ribbon>
 

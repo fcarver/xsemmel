@@ -1,6 +1,8 @@
 ﻿= Done in current release = 
 
+* FIX: "Current file has changed" seldom comes up when file was saved by Xsemmel itself
 * FIX: "expand empty tags" was sometimes offered for non-empty tags
+* NEW: code-completion of attributed with Ctrl+Space
 * CHG: Docking framework removed
 
 = 29-MAY-2014 = 

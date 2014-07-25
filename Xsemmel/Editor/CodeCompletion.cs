@@ -79,33 +79,26 @@ namespace XSemmel.Editor
 
                 IList<ICompletionData> data = new List<ICompletionData>();
 
-//                int idxStart = _editor.Text.LastIndexOf('<', _editor.CaretOffset);
-//                int idxEnd = _editor.Text.IndexOf('>', _editor.CaretOffset);
-//                Debug.Assert(idxStart !=-1 && idxEnd != -1, "Can only happen of XParser.IsInsideEmptyElement is incorrect");
-//
-//                if (idxStart >= 0 && idxEnd > idxStart)
-//                {
-                    data.Add(new ActionCompletionData("Expand empty tag", null, (textArea, completionSegment, eventArgs) =>
-                        {
-                            int newCursor;
-                            int startReplace;
-                            int lengthReplace;
-                            string replaceWith;
-                            XActor.ExpandEmptyTag(_editor.Text, _editor.CaretOffset, out newCursor, out startReplace,
-                                out lengthReplace, out replaceWith);
+                data.Add(new ActionCompletionData("Expand empty tag", null, (textArea, completionSegment, eventArgs) =>
+                    {
+                        int newCursor;
+                        int startReplace;
+                        int lengthReplace;
+                        string replaceWith;
+                        XActor.ExpandEmptyTag(_editor.Text, _editor.CaretOffset, out newCursor, out startReplace,
+                            out lengthReplace, out replaceWith);
         
-                            textArea.Document.Replace(startReplace, lengthReplace, replaceWith);
-                            _editor.CaretOffset = newCursor;
-
-//                            string tag = XParser.GetElementAtCursor(_editor.Text, _editor.CaretOffset - 1);
-//                            string element = string.Format("<{0}></{0}>", tag);
-//                            textArea.Document.Replace(idxStart, idxEnd - idxStart + 1, element);
-//                            _editor.CaretOffset = idxStart + tag.Length + 2;
-                        }));
-//                }
+                        textArea.Document.Replace(startReplace, lengthReplace, replaceWith);
+                        _editor.CaretOffset = newCursor;
+                    }));
 
                 showCompletion(data);
                 return true;
+            }
+
+            {
+                bool result = checkAttributeCompletion();
+                if (result) return true;
             }
             
             return false;
@@ -171,7 +164,6 @@ namespace XSemmel.Editor
                                         break;
                                     }
                                 }
-
                             }
                         }
                         break;
@@ -232,46 +224,9 @@ namespace XSemmel.Editor
                     }
                     case " ":
                     {
-                        if (_schemaParser == null)
-                        {
-                            return false;
-                        }
-
-                        int offset = _editor.CaretOffset;
-                        if (XParser.IsInsideElementDeclaration(_editor.Text, offset - 1))
-                        {
-                            string element = XParser.GetElementAtCursorFuzzy(_editor.Text, offset - 1);
-
-                            IList<IXsdNode> all = _schemaParser.GetAllNodes();
-                            IXsdNode node = getNodeWithName(all, element);
-                            if (node != null)
-                            {
-                                ICollection<XsdAttribute> attrs = getAttributeNames(node);
-                                if (attrs != null && attrs.Count > 0)
-                                {
-                                    IList<ICompletionData> data = new List<ICompletionData>();
-                                    foreach (XsdAttribute attr in attrs)
-                                    {
-                                        if (attr.Annotation != null && attr.Annotation.Count > 0)
-                                        {
-                                            StringBuilder description = new StringBuilder();
-                                            foreach (string ann in attr.Annotation)
-                                            {
-                                                description.AppendLine(ann);
-                                            }
-                                            data.Add(new MyCompletionData(attr.Name, attr.Name + "=\"", description.ToString()));
-                                        }
-                                        else
-                                        {
-                                            data.Add(new MyCompletionData(attr.Name, attr.Name+"=\"", null));
-                                        }
-                                    }
-                                    showCompletion(data);
-                                    return true;
-                                }
-                            }
-                        }
-
+                        //when user writes an element/attribute, completion shall pop up on whitespace
+                        bool result = checkAttributeCompletion();
+                        if (result) return true;
                         break;
                     }
                     case "<":
@@ -350,6 +305,72 @@ namespace XSemmel.Editor
             {
                 _completionWindow = null;
             };
+        }
+
+        private bool checkAttributeCompletion()
+        {
+            if (_schemaParser == null)
+            {
+                return false;
+            }
+
+            int offset = _editor.CaretOffset;
+            if (XParser.IsInsideElementDeclaration(_editor.Text, offset - 1))
+            {
+                string element = XParser.GetElementAtCursorFuzzy(_editor.Text, offset - 1);
+
+                IList<IXsdNode> all = _schemaParser.GetAllNodes();
+                IXsdNode node = getNodeWithName(all, element);
+                if (node != null)
+                {
+                    ICollection<XsdAttribute> attrs = getAttributeNames(node);
+                    if (attrs != null && attrs.Count > 0)
+                    {
+                        IList<ICompletionData> data = new List<ICompletionData>();
+                        foreach (XsdAttribute attr in attrs)
+                        {
+                            string desc = null;
+                            if (attr.Annotation != null && attr.Annotation.Count > 0)
+                            {
+                                StringBuilder description = new StringBuilder();
+                                foreach (string ann in attr.Annotation)
+                                {
+                                    description.AppendLine(ann);
+                                }
+
+                                desc = description.ToString();
+                            }
+
+                            data.Add(new ActionCompletionData(attr.Name, desc, (area, segment, args) =>
+                            {
+                                int idxOfSpace = area.Document.Text.IndexOf(' ', offset - 1);
+                                int idxOfElementClose = area.Document.Text.IndexOf('>', offset - 1);
+
+                                int insertAt = Math.Min(idxOfSpace, idxOfElementClose);
+
+                                if (insertAt < 0)
+                                {
+                                    insertAt = offset;
+                                }
+                                else
+                                {
+                                    if (idxOfElementClose == insertAt)
+                                    {
+                                        area.Document.Insert(insertAt, " ");
+                                    }
+                                    insertAt = insertAt + 1;                                            
+                                }
+
+                                area.Document.Insert(insertAt, attr.Name + "=\"");
+                                _editor.CaretOffset = insertAt + attr.Name.Length + 2;
+                            }));
+                        }
+                        showCompletion(data);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         private IXsdNode getNodeWithName(IEnumerable<IXsdNode> nodes, string name)

@@ -26,7 +26,7 @@
 
         <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" TabStripPlacement="Bottom" Margin="5 4 3 5" Background="Transparent"
                     SelectionChanged="Selector_OnSelectionChanged">
-            <TabItem Header="Tree">
+            <TabItem Header="Tree" x:Name="_editorTreeDockable">
                 <TreeView:EditorTree x:Name="_editorTree" x:FieldModifier="internal" />
             </TabItem>
             <TabItem Header="XPath Query" x:Name="_xPathQueryDockable">

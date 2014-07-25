@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Xml;
 using XSemmel.Commands;
 using XSemmel.Editor;
@@ -8,12 +7,6 @@ namespace XSemmel.TreeView.Commands
 {
     class ShowSchemaInfoCommand : XSemmelCommand
     {
-        protected override void Execute(EditorFrame ef)
-        {
-            TreeViewItem selected = ((TreeViewItem)ef._editorTree.tree.SelectedItem);
-            ViewerNode node = (ViewerNode)selected.Tag;
-            ef.SetSchemaInfo(node.SchemaInfo);
-        }
 
         protected override bool CanExecute(EditorFrame ef)
         {
@@ -48,6 +41,13 @@ namespace XSemmel.TreeView.Commands
             }
 
             return true;
+        }
+
+        protected override void Execute(EditorFrame ef)
+        {
+            TreeViewItem selected = ((TreeViewItem)ef._editorTree.tree.SelectedItem);
+            ViewerNode node = (ViewerNode)selected.Tag;
+            ef.SetSchemaInfo(node.SchemaInfo);
         }
 
     }

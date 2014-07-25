@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
 using ICSharpCode.AvalonEdit;
@@ -296,11 +297,21 @@ namespace XSemmel
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                var res = MessageBox.Show(this, "Current file was changed by external process. Do you want to reload?",
-                    "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (res == MessageBoxResult.Yes)
+                //there seems to be a race-condition between SaveFile/_watcher.EnableRaisingEvents 
+                //and actually flushing the stream to disc...
+                //this will avoid this race-condition
+
+                string fileContent = File.ReadAllText(e.FullPath);
+                string editorContent = Editor.XmlEditor.Text;
+
+                if (!fileContent.Equals(editorContent))
                 {
-                    OpenFile(e.FullPath);
+                    var res = MessageBox.Show(this, "Current file was changed by external process. Do you want to reload?",
+                    "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (res == MessageBoxResult.Yes)
+                    {
+                        OpenFile(e.FullPath);
+                    }
                 }
             }));
             _watcher.EnableRaisingEvents = false;

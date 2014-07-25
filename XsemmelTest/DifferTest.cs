@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using XSemmel.Differ;
 using System.Xml;
-using System.IO;
 using XSemmel.Helpers;
 
 namespace XSemmel.Test
@@ -30,8 +25,8 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-b2.xml")]
         public void DiffDifferentTest()
         {
-            string f_alt = @"diff-b1.xml";
-            string f_neu = @"diff-b2.xml";
+            const string f_alt = @"diff-b1.xml";
+            const string f_neu = @"diff-b2.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_neu)));
@@ -67,7 +62,7 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-b1.xml")]
         public void DiffEqualTest()
         {
-            string f_alt = @"diff-b1.xml";
+            const string f_alt = @"diff-b1.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
@@ -82,7 +77,7 @@ namespace XSemmel.Test
         [TestMethod]
         public void DiffEqualShortTest()
         {
-            string xml = "<xml><hallo/></xml>";
+            const string xml = "<xml><hallo/></xml>";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(xml.ToStream())));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(xml.ToStream())));
@@ -101,8 +96,8 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-f2.xml")]
         public void DiffEqualFTest()
         {
-            string f_alt = @"diff-f1.xml";
-            string f_neu = @"diff-f2.xml";
+            const string f_alt = @"diff-f1.xml";
+            const string f_neu = @"diff-f2.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_neu)));
@@ -121,8 +116,8 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-c2.xml")]
         public void DiffEqualCTest()
         {
-            string f_alt = @"diff-c1.xml";
-            string f_neu = @"diff-c2.xml";
+            const string f_alt = @"diff-c1.xml";
+            const string f_neu = @"diff-c2.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_neu)));
@@ -141,8 +136,8 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-d2.xml")]
         public void DiffAddedTest()
         {
-            string f_alt = @"diff-d1.xml";
-            string f_neu = @"diff-d2.xml";
+            const string f_alt = @"diff-d1.xml";
+            const string f_neu = @"diff-d2.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_neu)));
@@ -170,8 +165,8 @@ namespace XSemmel.Test
         [DeploymentItem(@"SampleFiles\Xml\diff-a2.xml")]
         public void DiffEqualMovesTest()
         {
-            string f_alt = @"diff-a1.xml";
-            string f_neu = @"diff-a2.xml";
+            const string f_alt = @"diff-a1.xml";
+            const string f_neu = @"diff-a2.xml";
 
             Knoten alt = Knoten.createOf(createDOM(XmlReader.Create(f_alt)));
             Knoten neu = Knoten.createOf(createDOM(XmlReader.Create(f_neu)));

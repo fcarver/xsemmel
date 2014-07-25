@@ -70,9 +70,9 @@ namespace XSemmel.Editor
 
             _xPathSearchAndReplaceDockable.Visibility = Visibility.Collapsed;
 
-//            _editorTreeDockable.Activate();
-//            _editorValidationDockable.Activate();
-//            _xmlEditorDockable.Activate();
+            //trigger Selector_OnSelectionChanged...
+            _xPathQueryDockable.IsSelected = true;
+            _editorTreeDockable.IsSelected = true;
         }
 
         public void SetFragmentText(string fragment, bool showDockableIfHidden = false)
