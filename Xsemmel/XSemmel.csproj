@@ -154,6 +154,8 @@
       <DependentUpon>ApplicationMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AttributeType.cs" />
+    <Compile Include="Commands\Hex2DecCommand.cs" />
+    <Compile Include="Commands\Dec2HexCommand.cs" />
     <Compile Include="Commands\StartSearchCommand.cs" />
     <Compile Include="Commands\UnescapeBase64StringCommand.cs" />
     <Compile Include="Commands\EscapeBase64StringCommand.cs" />

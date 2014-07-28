@@ -301,17 +301,25 @@ namespace XSemmel
                 //and actually flushing the stream to disc...
                 //this will avoid this race-condition
 
-                string fileContent = File.ReadAllText(e.FullPath);
-                string editorContent = Editor.XmlEditor.Text;
-
-                if (!fileContent.Equals(editorContent))
+                try
                 {
-                    var res = MessageBox.Show(this, "Current file was changed by external process. Do you want to reload?",
-                    "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (res == MessageBoxResult.Yes)
+                    string fileContent = File.ReadAllText(e.FullPath);
+                    string editorContent = Editor.XmlEditor.Text;
+
+                    if (!fileContent.Equals(editorContent))
                     {
-                        OpenFile(e.FullPath);
+                        var res = MessageBox.Show(this, "Current file was changed by external process. Do you want to reload?",
+                            "Question", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (res == MessageBoxResult.Yes)
+                        {
+                            OpenFile(e.FullPath);
+                        }
                     }
+                }
+                catch
+                {
+                    MessageBox.Show(this, "Current file was changed by external process.",
+                            "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }));
             _watcher.EnableRaisingEvents = false;

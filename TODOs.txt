@@ -3,7 +3,9 @@
 * FIX: "Current file has changed" seldom comes up when file was saved by Xsemmel itself
 * FIX: "expand empty tags" was sometimes offered for non-empty tags
 * FIX: Crash in Schema Visualizer if schema contains extension-base of self
+* FIX: Fixed rare crash when open file was deleted by another process
 * NEW: code-completion of attributed with Ctrl+Space
+* NEW: Convert decimal to hexadecimal numbers and v.v.
 * CHG: Docking framework removed
 
 = 29-MAY-2014 = 
@@ -16,29 +18,10 @@ WINDOWS XP IS NO LONGER SUPPORTED
 * CHG: Disabled Jumplist
 * CHG: updated to .net 4.5, WinXP NO LONGER SUPPORTED
 
-= 15-MAR-2014 = 
-
-* FIX: Contextmenu in TreeView maybe permanently disabled
-* FIX: Open XML files even if they are not valid according to referenced schema
-* FIX: Open referenced XSD file even if file path contains spaces
-* FIX: Auto-complete when cursor is on apostroph
-* FIX: Some minor issues
-* NEW: remove closing tag on elements when enter '/', e.g. "<text></text>" --> enter '/' --> "<test/>"
-* NEW: code completion to expand empty tags, e.g. "<text/>" --> Ctrl+Space --> "<test></test>"
-* CHG: Improved code-completion of attributes
-
-= 01-MAR-2014 = 
-
-* FIX: Auto-complete when cursor is on apostroph
-* FIX: use XSD file if referenced by noNamespaceLocation
-* NEW: Run [External tools]
-* NEW: Added ribbon-button to start search (same as Ctrl+F) to improve usability
-* NEW: Doubleclick on cursor position in statusbar opens "goto line"-dialog (same as Ctrl+G) to improve usability
-* NEW: ribbon-button to insert XML entities
-* NEW: Code completion (Ctrl+Space) for closing comments, Auto-complete of opening comment characters ("<!" --> "<!--")
-
 = TODOs =
 
+	* case-insensitives Suchen in Datei
+	* Code Completion tut nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* optional set RibbonWindow.DontUseDwm="True"
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren

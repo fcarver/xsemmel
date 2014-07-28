@@ -48,7 +48,6 @@ namespace XSemmel.Editor
                 Data.ValidationData.Xsd = null;
             }
             
-
             if (!(doc.Filename != null && doc.Filename.ToLower().EndsWith(".xsd")))
             {
                 _xsdPropertiesDockable.Visibility = Visibility.Collapsed;
@@ -73,6 +72,9 @@ namespace XSemmel.Editor
             //trigger Selector_OnSelectionChanged...
             _xPathQueryDockable.IsSelected = true;
             _editorTreeDockable.IsSelected = true;
+
+            MainWindow wnd = (MainWindow)Application.Current.MainWindow;
+            wnd.Ribbon.SelectedTabIndex = 0;  //do not select TreeView-ContextRib initially
         }
 
         public void SetFragmentText(string fragment, bool showDockableIfHidden = false)

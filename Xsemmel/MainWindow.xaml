@@ -37,6 +37,8 @@
             <commands:UnescapeXmlStringCommand x:Key="UnescapeXmlStringCommand"/>
             <commands:UnescapeBase64StringCommand x:Key="UnescapeBase64StringCommand"/>
             <commands:EscapeXmlStringCommand x:Key="EscapeXmlStringCommand"/>
+            <commands:Dec2HexCommand x:Key="Dec2HexCommand"/>
+            <commands:Hex2DecCommand x:Key="Hex2DecCommand"/>
             <commands:EscapeBase64StringCommand x:Key="EscapeBase64StringCommand"/>
             <commands:ToggleSearchAndReplaceCommand x:Key="ToggleSearchAndReplaceCommand"/>
             <commands:StartSearchCommand x:Key="StartSearchCommand"/>
@@ -186,6 +188,13 @@
                                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
                             <fluent:MenuItem Header="Escape Base64"
                                 Command="{StaticResource EscapeBase64StringCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
+                            <Separator />
+                            <fluent:MenuItem Header="Numbers: decimal to hex"
+                                Command="{StaticResource Dec2HexCommand}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
+                            <fluent:MenuItem Header="Numbers: Hex to decimal"
+                                Command="{StaticResource Hex2DecCommand}"
                                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
                         </fluent:SplitButton.Items>
                     </fluent:SplitButton>
