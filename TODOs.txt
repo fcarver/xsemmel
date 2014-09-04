@@ -4,8 +4,10 @@
 * FIX: "expand empty tags" was sometimes offered for non-empty tags
 * FIX: Crash in Schema Visualizer if schema contains extension-base of self
 * FIX: Fixed rare crash when open file was deleted by another process
-* NEW: code-completion of attributed with Ctrl+Space
+* FIX: Sometimes black window title on Win8 with multiple displays
+* NEW: Code-completion of attributed with Ctrl+Space
 * NEW: Convert decimal to hexadecimal numbers and v.v.
+* NEW: Installer is now signed to reduce issues with Win8 SmartScreen
 * CHG: Docking framework removed
 
 = 29-MAY-2014 = 
@@ -22,7 +24,6 @@ WINDOWS XP IS NO LONGER SUPPORTED
 
 	* case-insensitives Suchen in Datei
 	* Code Completion tut nicht für Typen mit restriction-base, wenn Basis Attribute definiert
-	* optional set RibbonWindow.DontUseDwm="True"
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
 	* Refactoring: rename (Editor)
@@ -61,7 +62,6 @@ WINDOWS XP IS NO LONGER SUPPORTED
 		* xsd-Annotations zeigen -> Tooltip für XML-Elemente im Editor
 		* Annotation in CodeCompletion zeigen
 		* XSDs selber schreiben mit CodeCompletion-Unterstützung
-	* Docking Layout serialization
 	* Xsd2Xml generator: voraussichtliche Dateigroesse anzeigen
 	* XQuery überarbeiten und durch Tests abdecken
 	* XPathFunction.cs unter Configuration einstellbar machen

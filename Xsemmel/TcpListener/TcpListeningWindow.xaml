@@ -27,21 +27,21 @@
                         Header="Copy to clipboard" 
                         ToolTip="Copy to clipboard" 
                         Icon="/Images/Copy.png"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Click="mnuCopyToClipboard_Click"
                     />
                     <fluent:Button
                         Header="Save as..."
                         ToolTip="Save as..."
                         Icon="\Images\SaveAsHH.png"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Click="mnuSaveAs_Click"
                     />
                     <fluent:Button
                         Header="Open in new Xsemmel" 
                         ToolTip="Open in new Xsemmel" 
                         Icon="\AppIcon.ico"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Click="mnuOpenInNewXSemmel_Click"
                     />
                 </fluent:RibbonGroupBox>
@@ -58,7 +58,7 @@
                         x:Name="_btnWordWrap" x:FieldModifier="private"
                         Header="WordWrap"
                         ToolTip="WordWrap"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         IsChecked="False"
                     />
                     <fluent:CheckBox
@@ -66,7 +66,7 @@
                         Unchecked="chkShowSpecialCharacters_Click"
                         Header="Special chars"
                         ToolTip="Show special characters"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         IsChecked="True"
                     />
                 </fluent:RibbonGroupBox>

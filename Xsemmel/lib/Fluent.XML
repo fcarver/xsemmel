@@ -4,29 +4,6 @@
         <name>Fluent</name>
     </assembly>
     <members>
-        <member name="T:Fluent.ApplicationMenuRightContentExtractorConverter">
-            <summary>
-            Extracts right content presenter of application menu converter
-            </summary>
-        </member>
-        <member name="M:Fluent.ApplicationMenuRightContentExtractorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Converts a value. 
-            </summary>
-            <returns>
-            A converted value. If the method returns null, the valid null value is used.
-            </returns>
-            <param name="value">The value produced by the binding source.</param><param name="targetType">The type of the binding target property.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
-        </member>
-        <member name="M:Fluent.ApplicationMenuRightContentExtractorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Converts a value. 
-            </summary>
-            <returns>
-            A converted value. If the method returns null, the valid null value is used.
-            </returns>
-            <param name="value">The value that is produced by the binding target.</param><param name="targetType">The type to convert to.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
-        </member>
         <member name="T:Fluent.ApplicationMenu">
             <summary>
             Represents backstage button
@@ -76,6 +53,21 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.IKeyTipedControl.KeyTip">
+            <summary>
+            Get and sets KeyTip for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.IRibbonControl.Size">
+            <summary>
+            Gets or sets Size for the element
+            </summary>
+        </member>
+        <member name="P:Fluent.IRibbonControl.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element
+            </summary>
+        </member>
         <member name="P:Fluent.IRibbonControl.Header">
             <summary>
             Gets or sets element Text
@@ -104,6 +96,24 @@
         <member name="P:Fluent.IDropDownControl.IsDropDownOpen">
             <summary>
             Gets or sets a value indicating whether drop down is opened
+            </summary>
+        </member>
+        <member name="F:Fluent.DropDownButton.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.DropDownButton.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.DropDownButton.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.DropDownButton.HeaderProperty">
@@ -249,6 +259,21 @@
             Using a DependencyProperty as the backing store for CanAddToQuickAccessToolBar.  This enables animation, styling, binding, etc...
             </summary>
         </member>
+        <member name="P:Fluent.DropDownButton.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.DropDownButton.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.DropDownButton.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.DropDownButton.DropDownPopup">
             <summary>
             Gets drop down popup
@@ -362,56 +387,50 @@
             Gets or sets application menu bottom pane content
             </summary>
         </member>
-        <member name="T:Fluent.RibbonAttachedProperties">
+        <member name="T:Fluent.RibbonProperties">
             <summary>
             Attached Properties for the Fluent Ribbon library
             </summary>
         </member>
-        <member name="F:Fluent.RibbonAttachedProperties.RibbonSizeProperty">
+        <member name="F:Fluent.RibbonProperties.SizeProperty">
             <summary>
             Using a DependencyProperty as the backing store for Size.  
             This enables animation, styling, binding, etc...
             </summary>
         </member>
-        <member name="M:Fluent.RibbonAttachedProperties.SetRibbonSize(System.Windows.DependencyObject,Fluent.RibbonControlSize)">
+        <member name="M:Fluent.RibbonProperties.SetSize(System.Windows.DependencyObject,Fluent.RibbonControlSize)">
             <summary>
             Sets SizeDefinition for element
             </summary>
         </member>
-        <member name="M:Fluent.RibbonAttachedProperties.GetRibbonSize(System.Windows.DependencyObject)">
+        <member name="M:Fluent.RibbonProperties.GetSize(System.Windows.DependencyObject)">
             <summary>
             Gets SizeDefinition for element
             </summary>
         </member>
-        <member name="F:Fluent.RibbonAttachedProperties.RibbonSizeDefinitionProperty">
+        <member name="F:Fluent.RibbonProperties.SizeDefinitionProperty">
             <summary>
             Using a DependencyProperty as the backing store for SizeDefinition.  
             This enables animation, styling, binding, etc...
             </summary>
         </member>
-        <member name="M:Fluent.RibbonAttachedProperties.SetRibbonSizeDefinition(System.Windows.DependencyObject,System.String)">
-            <summary>
-            Sets SizeDefinition for element
-            </summary>
-        </member>
-        <member name="M:Fluent.RibbonAttachedProperties.GetRibbonSizeDefinition(System.Windows.DependencyObject)">
+        <member name="M:Fluent.RibbonProperties.GetSizeDefinition(System.Windows.DependencyObject)">
             <summary>
             Gets SizeDefinition for element
             </summary>
         </member>
-        <member name="M:Fluent.RibbonAttachedProperties.SetAppropriateSize(System.Windows.DependencyObject,Fluent.RibbonGroupBoxState)">
+        <member name="M:Fluent.RibbonProperties.SetSizeDefinition(System.Windows.DependencyObject,Fluent.RibbonControlSizeDefinition)">
+            <summary>
+            Sets SizeDefinition for element
+            </summary>
+        </member>
+        <member name="M:Fluent.RibbonProperties.SetAppropriateSize(System.Windows.DependencyObject,Fluent.RibbonGroupBoxState)">
             <summary>
             Sets appropriate size of the control according to the 
             given group box state and control's size definition
             </summary>
             <param name="element">UI Element</param>
             <param name="state">Group box state</param>
-        </member>
-        <member name="M:Fluent.RibbonAttachedProperties.GetThreeRibbonSizeDefinition(System.Windows.DependencyObject)">
-            <summary>
-            Gets value of the attached property SizeDefinition of the given element
-            </summary>
-            <param name="element">The given element</param>
         </member>
         <member name="T:Fluent.BackstageAdorner">
             <summary>
@@ -467,6 +486,12 @@
             Represent base class for Fluent controls
             </summary>
         </member>
+        <member name="F:Fluent.RibbonControl.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.RibbonControl.HeaderProperty">
             <summary>
             Using a DependencyProperty as the backing store for Header.  
@@ -518,13 +543,17 @@
             </summary>
             <returns>Returns Command CanExecute</returns>
         </member>
-        <member name="M:Fluent.RibbonControl.CoerceIsEnabled(System.Windows.DependencyObject,System.Object)">
+        <member name="F:Fluent.RibbonControl.SizeProperty">
             <summary>
-            Coerces IsEnabled 
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
             </summary>
-            <param name="d"></param>
-            <param name="basevalue"></param>
-            <returns></returns>
+        </member>
+        <member name="F:Fluent.RibbonControl.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
         </member>
         <member name="M:Fluent.RibbonControl.#cctor">
             <summary>
@@ -587,6 +616,11 @@
             <param name="control">Control</param>
             <returns>Workarea in witch control is placed</returns>
         </member>
+        <member name="P:Fluent.RibbonControl.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.RibbonControl.Header">
             <summary>
             Gets or sets element header
@@ -620,6 +654,16 @@
             <returns>
             true if the element is enabled; otherwise, false.
             </returns>
+        </member>
+        <member name="P:Fluent.RibbonControl.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonControl.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
         </member>
         <member name="P:Fluent.RibbonControl.CanAddToQuickAccessToolBar">
             <summary>
@@ -716,6 +760,36 @@
             Dependency property SelectedContent
             </summary>
         </member>
+        <member name="F:Fluent.BackstageTabControl.ContentStringFormatProperty">
+            <summary>
+            Dependency property ContentStringFormat
+            </summary>
+        </member>
+        <member name="F:Fluent.BackstageTabControl.ContentTemplateProperty">
+            <summary>
+            Dependency property ContentTemplate
+            </summary>
+        </member>
+        <member name="F:Fluent.BackstageTabControl.ContentTemplateSelectorProperty">
+            <summary>
+            Dependency property ContentTemplateSelector
+            </summary>
+        </member>
+        <member name="F:Fluent.BackstageTabControl.SelectedContentStringFormatProperty">
+            <summary>
+            Dependency property SelectedContentStringFormat
+            </summary>
+        </member>
+        <member name="F:Fluent.BackstageTabControl.SelectedContentTemplateProperty">
+            <summary>
+            Dependency property SelectedContentTemplate
+            </summary>
+        </member>
+        <member name="F:Fluent.BackstageTabControl.SelectedContentTemplateSelectorProperty">
+            <summary>
+            Dependency property SelectedContentTemplateSelector
+            </summary>
+        </member>
         <member name="F:Fluent.BackstageTabControl.ItemsPanelBackgroundProperty">
             <summary>
             Using a DependencyProperty as the backing store for Foreground.
@@ -788,6 +862,12 @@
             Represents backstage tab item
             </summary>
         </member>
+        <member name="F:Fluent.BackstageTabItem.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.BackstageTabItem.IsSelectedProperty">
             <summary>
             Dependency property for isSelected
@@ -852,6 +932,11 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.BackstageTabItem.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.BackstageTabItem.IsSelected">
             <summary>
             Gets or sets whether the tab is selected
@@ -870,6 +955,24 @@
         <member name="T:Fluent.Button">
             <summary>
             Represents button
+            </summary>
+        </member>
+        <member name="F:Fluent.Button.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.Button.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.Button.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.Button.HeaderProperty">
@@ -932,6 +1035,21 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.Button.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.Button.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.Button.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.Button.Header">
             <summary>
             Gets or sets element Text
@@ -960,6 +1078,24 @@
         <member name="T:Fluent.CheckBox">
             <summary>
             Represents Fluent UI specific CheckBox
+            </summary>
+        </member>
+        <member name="F:Fluent.CheckBox.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.CheckBox.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.CheckBox.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.CheckBox.HeaderProperty">
@@ -1010,6 +1146,21 @@
         <member name="M:Fluent.CheckBox.OnKeyTipBack">
             <summary>
             Handles back navigation with KeyTips
+            </summary>
+        </member>
+        <member name="P:Fluent.CheckBox.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.CheckBox.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.CheckBox.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
             </summary>
         </member>
         <member name="P:Fluent.CheckBox.Header">
@@ -1306,6 +1457,24 @@
             Represents custom Fluent UI ComboBox
             </summary>
         </member>
+        <member name="F:Fluent.ComboBox.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.ComboBox.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.ComboBox.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.ComboBox.HeaderProperty">
             <summary>
             Using a DependencyProperty as the backing store for Header.  
@@ -1423,6 +1592,21 @@
             <param name="targetsize"></param>
             <param name="offset"></param>
             <returns></returns>
+        </member>
+        <member name="P:Fluent.ComboBox.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.ComboBox.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.ComboBox.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
         </member>
         <member name="P:Fluent.ComboBox.DropDownPopup">
             <summary>
@@ -1573,6 +1757,29 @@
             </summary>
             <param name="o">Control</param>
         </member>
+        <member name="T:Fluent.Converters.ApplicationMenuRightContentExtractorConverter">
+            <summary>
+            Extracts right content presenter of application menu converter
+            </summary>
+        </member>
+        <member name="M:Fluent.Converters.ApplicationMenuRightContentExtractorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value produced by the binding source.</param><param name="targetType">The type of the binding target property.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
+        </member>
+        <member name="M:Fluent.Converters.ApplicationMenuRightContentExtractorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value that is produced by the binding target.</param><param name="targetType">The type to convert to.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
+        </member>
         <member name="M:Fluent.Converters.InvertNumericConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
             Converts a value. 
@@ -1591,6 +1798,47 @@
             </returns>
             <param name="value">The value that is produced by the binding target.</param><param name="targetType">The type to convert to.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
         </member>
+        <member name="T:Fluent.Converters.ObjectToImageConverter">
+            <summary>
+            Converts string or ImageSource to Image control
+            </summary>
+        </member>
+        <member name="M:Fluent.Converters.ObjectToImageConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value produced by the binding source.</param><param name="targetType">The type of the binding target property.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
+        </member>
+        <member name="M:Fluent.Converters.ObjectToImageConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">The value that is produced by the binding target.</param><param name="targetType">The type to convert to.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
+        </member>
+        <member name="M:Fluent.Converters.SizeDefinitionConverter.CanConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Type)">
+            <summary>
+            Returns whether this converter can convert an object of the given type to the type of this converter, using the specified context.
+            </summary>
+            <returns>
+            true if this converter can perform the conversion; otherwise, false.
+            </returns>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param><param name="sourceType">A <see cref="T:System.Type"/> that represents the type you want to convert from. </param>
+        </member>
+        <member name="M:Fluent.Converters.SizeDefinitionConverter.ConvertFrom(System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,System.Object)">
+            <summary>
+            Converts the given object to the type of this converter, using the specified context and culture information.
+            </summary>
+            <returns>
+            An <see cref="T:System.Object"/> that represents the converted value.
+            </returns>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that provides a format context. </param><param name="culture">The <see cref="T:System.Globalization.CultureInfo"/> to use as the current culture. </param><param name="value">The <see cref="T:System.Object"/> to convert. </param><exception cref="T:System.NotSupportedException">The conversion cannot be performed. </exception>
+        </member>
         <member name="M:Fluent.Converters.ThicknessConverter.Convert(System.Object[],System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
             Converts source values to a value for the binding target. The data binding engine calls this method when it propagates the values from source bindings to the binding target.
@@ -1608,6 +1856,56 @@
             An array of values that have been converted from the target value back to the source values.
             </returns>
             <param name="value">The value that the binding target produces.</param><param name="targetTypes">The array of types to convert to. The array length indicates the number and types of values that are suggested for the method to return.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
+        </member>
+        <member name="T:Fluent.RibbonControlSize">
+            <summary>
+            Represents logical sizes of a ribbon control 
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonControlSize.Large">
+            <summary>
+            Large size of a control
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonControlSize.Middle">
+            <summary>
+            Middle size of a control
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonControlSize.Small">
+            <summary>
+            Small size of a control
+            </summary>
+        </member>
+        <member name="T:Fluent.RibbonGroupBoxState">
+            <summary>
+            Represents states of ribbon group 
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBoxState.Large">
+            <summary>
+            Large. All controls in the group will try to be large size
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBoxState.Middle">
+            <summary>
+            Middle. All controls in the group will try to be middle size
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBoxState.Small">
+            <summary>
+            Small. All controls in the group will try to be small size
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBoxState.Collapsed">
+            <summary>
+            Collapsed. Group will collapse its content in a single button
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBoxState.QuickAccess">
+            <summary>
+            QuickAccess. Group will collapse its content in a single button in quick access toolbar
+            </summary>
         </member>
         <member name="T:Fluent.FrameworkHelper">
             <summary>
@@ -1636,6 +1934,21 @@
         <member name="F:Fluent.FrameworkHelper.UseLayoutRoundingProperty">
             <summary>
              Using a DependencyProperty as the backing store for UseLayoutRounding.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="T:Fluent.EasingThicknessKeyFrame">
+            <summary>
+            Forwards to <see cref="T:System.Windows.Media.Animation.EasingThicknessKeyFrame"/>
+            </summary>
+        </member>
+        <member name="T:Fluent.CubicEase">
+            <summary>
+            Forwards to <see cref="T:System.Windows.Media.Animation.CubicEase"/>
+            </summary>
+        </member>
+        <member name="T:Fluent.EasingDoubleKeyFrame">
+            <summary>
+            Forwards to <see cref="T:System.Windows.Media.Animation.EasingDoubleKeyFrame"/>
             </summary>
         </member>
         <member name="T:Fluent.GalleryGroupContainer">
@@ -1955,25 +2268,82 @@
             Gets the number of visual child elements within this element.
             </summary>
         </member>
-        <member name="T:Fluent.RibbonControlSize">
+        <member name="M:Fluent.Internal.DpiHelper.LogicalPixelsToDevice(System.Windows.Point)">
             <summary>
-            Represents logical sizes of a ribbon control 
+            Convert a point in device independent pixels (1/96") to a point in the system coordinates.
+            </summary>
+            <param name="logicalPoint">A point in the logical coordinate system.</param>
+            <returns>Returns the parameter converted to the system's coordinates.</returns>
+        </member>
+        <member name="M:Fluent.Internal.DpiHelper.DevicePixelsToLogical(System.Windows.Point)">
+            <summary>
+            Convert a point in system coordinates to a point in device independent pixels (1/96").
+            </summary>
+            <param name="devicePoint">A point in the physical coordinate system.</param>
+            <returns>Returns the parameter converted to the device independent coordinate system.</returns>
+        </member>
+        <member name="T:Fluent.Internal.ItemContainerGeneratorAction">
+            <summary>
+            Helper class used to queue action for completion or items changes of <see cref="T:System.Windows.Controls.ItemContainerGenerator"/>
             </summary>
         </member>
-        <member name="F:Fluent.RibbonControlSize.Large">
+        <member name="M:Fluent.Internal.ItemContainerGeneratorAction.#ctor(System.Windows.Controls.ItemContainerGenerator,System.Action)">
             <summary>
-            Large size of a control
+            Creates a new instance used to queue action for completion or items changes of <see cref="T:System.Windows.Controls.ItemContainerGenerator"/>
+            </summary>
+            <param name="generator">The <see cref="T:System.Windows.Controls.ItemContainerGenerator"/> to be used.</param>
+            <param name="action">The <see cref="T:System.Action"/> that should be invoked.</param>
+        </member>
+        <member name="M:Fluent.Internal.ItemContainerGeneratorAction.QueueAction">
+            <summary>
+            Queues <see cref="P:Fluent.Internal.ItemContainerGeneratorAction.Action"/> for invocation.
             </summary>
         </member>
-        <member name="F:Fluent.RibbonControlSize.Middle">
+        <member name="P:Fluent.Internal.ItemContainerGeneratorAction.Generator">
             <summary>
-            Middle size of a control
+            Gets the <see cref="T:System.Windows.Controls.ItemContainerGenerator"/> to be used.
             </summary>
         </member>
-        <member name="F:Fluent.RibbonControlSize.Small">
+        <member name="P:Fluent.Internal.ItemContainerGeneratorAction.Action">
             <summary>
-            Small size of a control
+            Gets the <see cref="T:System.Action"/> that should be invoked.
             </summary>
+        </member>
+        <member name="P:Fluent.Internal.ItemContainerGeneratorAction.IsWaitingForGenerator">
+            <summary>
+            Gets the current wait state. <c>true</c> in case <see cref="M:Fluent.Internal.ItemContainerGeneratorAction.QueueAction"/> was called and we are waiting for the <see cref="P:Fluent.Internal.ItemContainerGeneratorAction.Generator"/> to finish.
+            </summary>
+        </member>
+        <member name="F:Fluent.Internal.WindowChrome.hitTestBorders">
+            <summary>
+            Matrix of the hit test values to return when responding to NC window messages.
+            </summary>
+        </member>
+        <member name="M:Fluent.Internal.WindowChrome.ModifyStyle(System.Int32,System.Int32)">
+            <summary>Add and remove a native WindowStyle from the HWND.</summary>
+            <param name="removeStyle">The styles to be removed.  These can be bitwise combined.</param>
+            <param name="addStyle">The styles to be added.  These can be bitwise combined.</param>
+            <returns>Whether the styles of the HWND were modified as a result of this call.</returns>
+        </member>
+        <member name="M:Fluent.Internal.WindowChrome.ShowSystemMenu(System.Windows.Point)">
+            <summary>Display the system menu at a specified location.</summary>
+            <param name="screenLocation">The location to display the system menu, in logical screen coordinates.</param>
+        </member>
+        <member name="M:Fluent.Internal.WindowChrome.GetHwndState">
+            <summary>
+            Get the WindowState as the native HWND knows it to be.  This isn't necessarily the same as what Window thinks.
+            </summary>
+        </member>
+        <member name="M:Fluent.Internal.WindowChrome.UpdateSystemMenu(System.Nullable{System.Windows.WindowState})">
+            <summary>
+            Update the items in the system menu based on the current, or assumed, WindowState.
+            </summary>
+            <param name="assumeState">
+            The state to assume that the Window is in.  This can be null to query the Window's state.
+            </param>
+            <remarks>
+            We want to update the menu while we have some control over whether the caption will be repainted.
+            </remarks>
         </member>
         <member name="T:Fluent.IToggleButton">
             <summary>
@@ -2217,6 +2587,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:Fluent.PopupService.IsMousePhysicallyOver(System.Windows.Controls.Primitives.Popup)">
+            <summary>
+            Returns true whether mouse is physically over the popup 
+            </summary>
+            <param name="popup">Element</param>
+            <returns>Returns true whether mouse is physically over the popup</returns>
+        </member>
         <member name="M:Fluent.PopupService.IsMousePhysicallyOver(System.Windows.UIElement)">
             <summary>
             Returns true whether mouse is physically over the element 
@@ -2241,6 +2618,24 @@
         <member name="T:Fluent.RadioButton">
             <summary>
             Represents Fluent UI specific RadioButton
+            </summary>
+        </member>
+        <member name="F:Fluent.RadioButton.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RadioButton.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RadioButton.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.RadioButton.HeaderProperty">
@@ -2293,6 +2688,21 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.RadioButton.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RadioButton.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RadioButton.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.RadioButton.Header">
             <summary>
             Gets or sets element Text
@@ -2318,11 +2728,6 @@
             Represents menu in combo box and gallery
             </summary>
         </member>
-        <member name="M:Fluent.RibbonMenu.#ctor">
-            <summary>
-            Default constructor
-            </summary>
-        </member>
         <member name="M:Fluent.RibbonMenu.GetContainerForItemOverride">
             <summary>
             Creates or identifies the element that is used to display the given item.
@@ -2341,6 +2746,14 @@
             Invoked when an unhandled <see cref="E:System.Windows.Input.Keyboard.GotKeyboardFocus"/> attached event reaches an element in its route that is derived from this class. Implement this method to add class handling for this event. 
             </summary>
             <param name="e">The <see cref="T:System.Windows.Input.KeyboardFocusChangedEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Fluent.RibbonControlSizeDefinition.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>
+            A string that represents the current object.
+            </returns>
         </member>
         <member name="T:Fluent.StatusBar">
             <summary>
@@ -2445,6 +2858,24 @@
         <member name="T:Fluent.MenuItem">
             <summary>
             Represents menu item
+            </summary>
+        </member>
+        <member name="F:Fluent.MenuItem.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.MenuItem.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.MenuItem.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.MenuItem.DescriptionProperty">
@@ -2566,6 +2997,21 @@
             Responds to the <see cref="E:System.Windows.UIElement.KeyDown"/> event. 
             </summary>
             <param name="e">The event data for the <see cref="E:System.Windows.UIElement.KeyDown"/> event.</param>
+        </member>
+        <member name="P:Fluent.MenuItem.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.MenuItem.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.MenuItem.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
         </member>
         <member name="P:Fluent.MenuItem.DropDownPopup">
             <summary>
@@ -3196,6 +3642,12 @@
             Represents gallery item
             </summary>
         </member>
+        <member name="F:Fluent.GalleryItem.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.GalleryItem.IsPressedProperty">
             <summary>
             Using a DependencyProperty as the backing store for IsPressed.  
@@ -3305,6 +3757,11 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.GalleryItem.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.GalleryItem.IsPressed">
             <summary>
             Gets a value that indicates whether a Button is currently activated. 
@@ -3412,6 +3869,24 @@
         <member name="E:Fluent.IScalableRibbonControl.Scaled">
             <summary>
             Occurs when contol is scaled
+            </summary>
+        </member>
+        <member name="F:Fluent.InRibbonGallery.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.InRibbonGallery.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.InRibbonGallery.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.InRibbonGallery.HeaderProperty">
@@ -3625,6 +4100,21 @@
             Reduce control size
             </summary>
         </member>
+        <member name="P:Fluent.InRibbonGallery.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.InRibbonGallery.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.InRibbonGallery.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.InRibbonGallery.Header">
             <summary>
             Gets or sets element Text
@@ -3792,6 +4282,24 @@
             Represents ribbon items control
             </summary>
         </member>
+        <member name="F:Fluent.RibbonItemsControl.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonItemsControl.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonItemsControl.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.RibbonItemsControl.HeaderProperty">
             <summary>
             Using a DependencyProperty as the backing store for Header.  
@@ -3834,6 +4342,21 @@
         <member name="M:Fluent.RibbonItemsControl.OnKeyTipBack">
             <summary>
             Handles back navigation with KeyTips
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonItemsControl.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonItemsControl.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonItemsControl.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
             </summary>
         </member>
         <member name="P:Fluent.RibbonItemsControl.Header">
@@ -4038,6 +4561,18 @@
             Represent logical definition for a control in toolbar
             </summary>
         </member>
+        <member name="F:Fluent.RibbonToolBarControlDefinition.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonToolBarControlDefinition.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.RibbonToolBarControlDefinition.TargetProperty">
             <summary>
             Using a DependencyProperty as the backing store for ControlName.  
@@ -4048,6 +4583,16 @@
             <summary>
             Using a DependencyProperty as the backing store for Width. 
             This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonToolBarControlDefinition.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonToolBarControlDefinition.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
             </summary>
         </member>
         <member name="P:Fluent.RibbonToolBarControlDefinition.Target">
@@ -5937,10 +6482,32 @@
             Represents size definition for group box
             </summary>
         </member>
+        <member name="F:Fluent.RibbonToolBarLayoutDefinition.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonToolBarLayoutDefinition.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.RibbonToolBarLayoutDefinition.RowCountProperty">
             <summary>
             Using a DependencyProperty as the backing store for RowCount.  
             This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonToolBarLayoutDefinition.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonToolBarLayoutDefinition.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
             </summary>
         </member>
         <member name="P:Fluent.RibbonToolBarLayoutDefinition.RowCount">
@@ -5953,28 +6520,9 @@
             Gets rows
             </summary>
         </member>
-        <member name="M:Fluent.DpiHelper.LogicalPixelsToDevice(System.Windows.Point)">
-            <summary>
-            Convert a point in device independent pixels (1/96") to a point in the system coordinates.
-            </summary>
-            <param name="logicalPoint">A point in the logical coordinate system.</param>
-            <returns>Returns the parameter converted to the system's coordinates.</returns>
-        </member>
-        <member name="M:Fluent.DpiHelper.DevicePixelsToLogical(System.Windows.Point)">
-            <summary>
-            Convert a point in system coordinates to a point in device independent pixels (1/96").
-            </summary>
-            <param name="devicePoint">A point in the physical coordinate system.</param>
-            <returns>Returns the parameter converted to the device independent coordinate system.</returns>
-        </member>
         <member name="T:Fluent.RibbonWindow">
             <summary>
             Represents basic window for ribbon
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonWindow.HitTestBorders">
-            <summary>
-            Matrix of the hit test values to return when responding to NC window messages.
             </summary>
         </member>
         <member name="F:Fluent.RibbonWindow.ResizeBorderThicknessProperty">
@@ -6065,32 +6613,6 @@
             <summary>
             When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="M:System.Windows.FrameworkElement.ApplyTemplate"/>.
             </summary>
-        </member>
-        <member name="M:Fluent.RibbonWindow.ModifyStyle(System.Int32,System.Int32)">
-            <summary>Add and remove a native WindowStyle from the HWND.</summary>
-            <param name="removeStyle">The styles to be removed.  These can be bitwise combined.</param>
-            <param name="addStyle">The styles to be added.  These can be bitwise combined.</param>
-            <returns>Whether the styles of the HWND were modified as a result of this call.</returns>
-        </member>
-        <member name="M:Fluent.RibbonWindow.ShowSystemMenu(System.Windows.Point)">
-            <summary>Display the system menu at a specified location.</summary>
-            <param name="screenLocation">The location to display the system menu, in logical screen coordinates.</param>
-        </member>
-        <member name="M:Fluent.RibbonWindow.GetHwndState">
-            <summary>
-            Get the WindowState as the native HWND knows it to be.  This isn't necessarily the same as what Window thinks.
-            </summary>
-        </member>
-        <member name="M:Fluent.RibbonWindow.UpdateSystemMenu(System.Nullable{System.Windows.WindowState})">
-            <summary>
-            Update the items in the system menu based on the current, or assumed, WindowState.
-            </summary>
-            <param name="assumeState">
-            The state to assume that the Window is in.  This can be null to query the Window's state.
-            </param>
-            <remarks>
-            We want to update the menu while we have some control over whether the caption will be repainted.
-            </remarks>
         </member>
         <member name="P:Fluent.RibbonWindow.ResizeBorderThickness">
             <summary>
@@ -7223,13 +7745,6 @@
             Clears quick access toolbar
             </summary>
         </member>
-        <member name="M:Fluent.Ribbon.GetAdornerLayer(System.Windows.UIElement)">
-            <summary>
-            Get adorner layer for element
-            </summary>
-            <param name="element">Element</param>
-            <returns>Adorner layer</returns>
-        </member>
         <member name="M:Fluent.Ribbon.LoadState">
             <summary>
             Loads the State from Isolated Storage (in user store for domain)
@@ -7321,6 +7836,11 @@
         <member name="P:Fluent.Ribbon.LastVisibleItem">
             <summary>
             Gets the last visible TabItem
+            </summary>
+        </member>
+        <member name="P:Fluent.Ribbon.QuickAccessElements">
+            <summary>
+            Gets the list of currently active quick access elements.
             </summary>
         </member>
         <member name="P:Fluent.Ribbon.TitleBar">
@@ -7941,29 +8461,6 @@
             Extent is the total size of our content.
             </summary>
         </member>
-        <member name="T:Fluent.ObjectToImageConverter">
-            <summary>
-            Converts string or ImageSource to Image control
-            </summary>
-        </member>
-        <member name="M:Fluent.ObjectToImageConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Converts a value. 
-            </summary>
-            <returns>
-            A converted value. If the method returns null, the valid null value is used.
-            </returns>
-            <param name="value">The value produced by the binding source.</param><param name="targetType">The type of the binding target property.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
-        </member>
-        <member name="M:Fluent.ObjectToImageConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
-            <summary>
-            Converts a value. 
-            </summary>
-            <returns>
-            A converted value. If the method returns null, the valid null value is used.
-            </returns>
-            <param name="value">The value that is produced by the binding target.</param><param name="targetType">The type to convert to.</param><param name="parameter">The converter parameter to use.</param><param name="culture">The culture to use in the converter.</param>
-        </member>
         <member name="T:Fluent.RibbonTabControl">
             <summary>
             Represents ribbon tab control
@@ -8024,18 +8521,18 @@
             </summary>
             <returns>The element that is used to display the given item.</returns>
         </member>
-        <member name="M:Fluent.RibbonTabControl.OnApplyTemplate">
-            <summary>
-            When overridden in a derived class, is invoked whenever application code or 
-            internal processes call System.Windows.FrameworkElement.ApplyTemplate().
-            </summary>
-        </member>
         <member name="M:Fluent.RibbonTabControl.IsItemItsOwnContainerOverride(System.Object)">
             <summary>
             Determines if the specified item is (or is eligible to be) its own container.
             </summary>
             <param name="item">The item to check.</param>
             <returns>true if the item is (or is eligible to be) its own container; otherwise, false.</returns>
+        </member>
+        <member name="M:Fluent.RibbonTabControl.OnApplyTemplate">
+            <summary>
+            When overridden in a derived class, is invoked whenever application code or 
+            internal processes call System.Windows.FrameworkElement.ApplyTemplate().
+            </summary>
         </member>
         <member name="M:Fluent.RibbonTabControl.OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
             <summary>
@@ -8131,40 +8628,16 @@
             Gets or sets the height of the gap between the ribbon and the content
             </summary>
         </member>
-        <member name="T:Fluent.RibbonGroupBoxState">
-            <summary>
-            Represents states of ribbon group 
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonGroupBoxState.Large">
-            <summary>
-            Large. All controls in the group will try to be large size
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonGroupBoxState.Middle">
-            <summary>
-            Middle. All controls in the group will try to be middle size
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonGroupBoxState.Small">
-            <summary>
-            Small. All controls in the group will try to be small size
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonGroupBoxState.Collapsed">
-            <summary>
-            Collapsed. Group will collapse its content in a single button
-            </summary>
-        </member>
-        <member name="F:Fluent.RibbonGroupBoxState.QuickAccess">
-            <summary>
-            QuickAccess. Group will collapse its content in a single button in quick access toolbar
-            </summary>
-        </member>
         <member name="T:Fluent.RibbonGroupBox">
             <summary>
             RibbonGroup represents a logical group of controls as they appear on
             a RibbonTab.  These groups can resize its content
+            </summary>
+        </member>
+        <member name="F:Fluent.RibbonGroupBox.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
             </summary>
         </member>
         <member name="F:Fluent.RibbonGroupBox.StateProperty">
@@ -8256,13 +8729,6 @@
             Default constructor
             </summary>
         </member>
-        <member name="M:Fluent.RibbonGroupBox.OnClick(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Click event handler
-            </summary>
-            <param name="sender">Sender</param>
-            <param name="e">The event data</param>
-        </member>
         <member name="M:Fluent.RibbonGroupBox.GetPanel">
             <summary>
             Gets a panel with items
@@ -8285,12 +8751,6 @@
             Invalidates layout (with children)
             </summary>
         </member>
-        <member name="M:Fluent.RibbonGroupBox.OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs)">
-            <summary>
-            Invoked when the System.Windows.Controls.ItemsControl.Items property changes.
-            </summary>
-            <param name="e">Information about the change.</param>
-        </member>
         <member name="M:Fluent.RibbonGroupBox.OnApplyTemplate">
             <summary>
             When overridden in a derived class, is invoked whenever application code 
@@ -8299,7 +8759,7 @@
         </member>
         <member name="M:Fluent.RibbonGroupBox.OnMouseLeftButtonDown(System.Windows.Input.MouseButtonEventArgs)">
             <summary>
-            Invoked when an unhandled System.Windows.UIElement.PreviewMouseLeftButtonDown�routed 
+            Invoked when an unhandled System.Windows.UIElement.PreviewMouseLeftButtonDown
             event reaches an element in its route that is derived from this class. 
             Implement this method to add class handling for this event.
             </summary>
@@ -8341,6 +8801,11 @@
         <member name="M:Fluent.RibbonGroupBox.OnKeyTipBack">
             <summary>
             Handles back navigation with KeyTips
+            </summary>
+        </member>
+        <member name="P:Fluent.RibbonGroupBox.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
             </summary>
         </member>
         <member name="P:Fluent.RibbonGroupBox.DropDownPopup">
@@ -8662,6 +9127,12 @@
             Represents ribbon tab item
             </summary>
         </member>
+        <member name="F:Fluent.RibbonTabItem.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.RibbonTabItem.IsMinimizedProperty">
             <summary>
             Using a DependencyProperty as the backing store for IsMinimized.  
@@ -8783,6 +9254,11 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.RibbonTabItem.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.RibbonTabItem.GroupsContainer">
             <summary>
             Gets ribbon groups container
@@ -8868,6 +9344,24 @@
             Represents toggle button
             </summary>
         </member>
+        <member name="F:Fluent.ToggleButton.SizeProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Size.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.ToggleButton.SizeDefinitionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SizeDefinition.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:Fluent.ToggleButton.KeyTipProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Keys.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="F:Fluent.ToggleButton.GroupNameProperty">
             <summary>
             Using a DependencyProperty as the backing store for GroupName.  
@@ -8934,6 +9428,21 @@
             Handles back navigation with KeyTips
             </summary>
         </member>
+        <member name="P:Fluent.ToggleButton.Size">
+            <summary>
+            Gets or sets Size for the element.
+            </summary>
+        </member>
+        <member name="P:Fluent.ToggleButton.SizeDefinition">
+            <summary>
+            Gets or sets SizeDefinition for element.
+            </summary>
+        </member>
+        <member name="P:Fluent.ToggleButton.KeyTip">
+            <summary>
+            Gets or sets KeyTip for element.
+            </summary>
+        </member>
         <member name="P:Fluent.ToggleButton.GroupName">
             <summary>
             Gets or sets the name of the group that the toggle button belongs to. 
@@ -8972,6 +9481,22 @@
         <member name="T:Fluent.WindowCommands">
             <summary>
             Contains commands for <see cref="T:Fluent.MetroWindow"/>
+            </summary>
+        </member>
+        <member name="M:Fluent.WindowCommands.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Fluent.WindowCommands.Dispose(System.Boolean)">
+            <summary>
+            Dispose(bool disposing) executes in two distinct scenarios.
+            If disposing equals true, the method has been called directly
+            or indirectly by a user's code. Managed and unmanaged resources
+            can be disposed.
+            If disposing equals false, the method has been called by the
+            runtime from inside the finalizer and you should not reference
+            other objects. Only unmanaged resources can be disposed.
             </summary>
         </member>
         <member name="M:Fluent.WindowCommands.OnApplyTemplate">

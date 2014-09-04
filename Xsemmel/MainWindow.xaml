@@ -82,12 +82,12 @@
             <fluent:RibbonTabItem Header="Editor">
                 <fluent:RibbonGroupBox Header="Clipboard">
                     <fluent:Button Header="Paste" LargeIcon="/Images/Paste.png" Command="Paste"/>
-                    <fluent:Button Header="Cut" Icon="/Images/Cut.png" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small" Command="Cut"/>
-                    <fluent:Button Header="Copy" Icon="/Images/Copy.png" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small" Command="Copy"/>
+                    <fluent:Button Header="Cut" Icon="/Images/Cut.png" SizeDefinition="Middle, Small" Command="Cut"/>
+                    <fluent:Button Header="Copy" Icon="/Images/Copy.png" SizeDefinition="Middle, Small" Command="Copy"/>
                     <fluent:Button 
                         Header="Copy file path" 
                         Icon="/Images/CopyFolderHS.png" 
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         ToolTip="Copy name of open document to clipboard"
                         Command="{StaticResource CopyFilenameCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
@@ -98,7 +98,7 @@
                         Icon="/Images/Binoculars_16x16.png"
                         Command="{StaticResource StartSearchCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         ToolTip="Starts the text search (Ctrl+F)"/>
                     <fluent:ToggleButton
                         Header="Search'n'Replace"
@@ -106,11 +106,11 @@
                         Command="{StaticResource ToggleSearchAndReplaceCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ShowFindDialog}"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
-                    <fluent:Button Header="Select all" Icon="/Images/SelectAll.png" Command="SelectAll" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
-                    <fluent:Button Header="Delete" Icon="/Images/Delete_16x16.png" Command="Delete" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
-                    <fluent:Button Header="Undo" Icon="/Images/Undo.png" Command="Undo" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
-                    <fluent:Button Header="Redo" Icon="/Images/Redo.png" Command="Redo" fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                        SizeDefinition="Middle, Small"/>
+                    <fluent:Button Header="Select all" Icon="/Images/SelectAll.png" Command="SelectAll" SizeDefinition="Middle, Small"/>
+                    <fluent:Button Header="Delete" Icon="/Images/Delete_16x16.png" Command="Delete" SizeDefinition="Middle, Small"/>
+                    <fluent:Button Header="Undo" Icon="/Images/Undo.png" Command="Undo" SizeDefinition="Middle, Small"/>
+                    <fluent:Button Header="Redo" Icon="/Images/Redo.png" Command="Redo" SizeDefinition="Middle, Small"/>
                 </fluent:RibbonGroupBox>
                 <fluent:RibbonGroupBox Header="Show">
                     <fluent:CheckBox
@@ -153,7 +153,7 @@
                     
                     <fluent:Button
                         Header="Insert current date"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         ToolTip="Inserts the current date and time in a format compatible to ISO 8601 which is as well compatible to xs:dateTime"
                         Icon="/Images/Clock_16x16.png" 
                         Command="{StaticResource InsertCurrentDateTimeCommand}"
@@ -163,12 +163,12 @@
                         Header="Export highlighting"
                         ToolTip="Exports the code highlighting as HTML file"
                         Icon="/Images/Forecolor.png" 
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource ExportAsHtmlCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
                     <fluent:SplitButton Header="(Un)escape XML"
-                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                            SizeDefinition="Middle, Small"
                             Command="{StaticResource UnescapeXmlStringCommand}" 
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}">
                         <fluent:SplitButton.Items>
@@ -200,23 +200,23 @@
                     </fluent:SplitButton>
 
                     <fluent:SplitButton Header="Insert XML entity"
-                            fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small">
+                            SizeDefinition="Middle, Small">
                         <fluent:SplitButton.Items>
                             <fluent:MenuItem Header="quot" Click="insertEntity_OnClick"
                                              Icon="/Images/entities/quot.png" 
-                                             fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                                             SizeDefinition="Middle, Small"/>
                             <fluent:MenuItem Header="amp" Click="insertEntity_OnClick"
                                              Icon="/Images/entities/amp.png" 
-                                             fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                                             SizeDefinition="Middle, Small"/>
                             <fluent:MenuItem Header="apos" Click="insertEntity_OnClick"
                                              Icon="/Images/entities/apos.png" 
-                                             fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                                             SizeDefinition="Middle, Small"/>
                             <fluent:MenuItem Header="lt" Click="insertEntity_OnClick"
                                              Icon="/Images/entities/lt.png" 
-                                             fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                                             SizeDefinition="Middle, Small"/>
                             <fluent:MenuItem Header="gt" Click="insertEntity_OnClick"
                                              Icon="/Images/entities/gt.png" 
-                                             fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"/>
+                                             SizeDefinition="Middle, Small"/>
                         </fluent:SplitButton.Items>
                     </fluent:SplitButton>
                     
@@ -247,21 +247,21 @@
                     <fluent:Button 
                         Header="Show root"
                         Icon="/Images/HomeHS.png"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizShowRootCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
                     <fluent:Button 
                         Header="Back"
                         Icon="/Images/Back.png" 
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizHistoryBackCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
                     <fluent:Button 
                         Header="Unhide all"
                         Icon="/Images/RepeatHS.png"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizUnhideAllCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
@@ -270,35 +270,35 @@
                 <fluent:RibbonGroupBox Header="Elements">
                     <fluent:ToggleButton 
                         Header="Expand refs"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizEnabledCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandRefs}"
                     />
                     <fluent:ToggleButton 
                         Header="Expand types"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizEnabledCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandTypes}"
                     />
                     <fluent:ToggleButton 
                         Header="Expand includes"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizEnabledCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsdVisualizerData.ExpandIncludes}"
                     />
                     <fluent:ToggleButton 
                         Header="Hide types"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizEnabledCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsdVisualizerData.HideTypes}"
                     />
                     <fluent:ToggleButton 
                         Header="Hide includes"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizEnabledCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                         IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.XsdVisualizerData.HideIncludes}"
@@ -308,14 +308,14 @@
                 <fluent:RibbonGroupBox Header="View">
                     <fluent:Button Header="Copy" 
                         Icon="/Images/Copy.png" 
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizCopyToClipboardCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />
                     <fluent:Button 
                         Header="Export"
                         Icon="/Images/NewCardHS.png" 
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Command="{StaticResource XsdVizExportCommand}"
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
                     />

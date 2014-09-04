@@ -64,20 +64,20 @@
                 <fluent:RibbonGroupBox Header="Result">
                     <fluent:Button
                         Header="Open in new window..."
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Click="btnOpenInNewWindow_Click"
                     />
                     <fluent:Button
                         Header="Save As..."
                         Icon="/Images/SaveAsHH.png"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         Click="btnSave_Click"
                     />
                     <fluent:CheckBox
                         x:Name="btnWordWrap" x:FieldModifier="private"
                         Header="WordWrap"
                         ToolTip="WordWrap"
-                        fluent:RibbonAttachedProperties.RibbonSizeDefinition="Middle, Small"
+                        SizeDefinition="Middle, Small"
                         IsChecked="True"
                     />
                 </fluent:RibbonGroupBox>
