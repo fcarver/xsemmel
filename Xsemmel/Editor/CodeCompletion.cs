@@ -119,9 +119,14 @@ namespace XSemmel.Editor
                         {
                             if (!XParser.IsClosingElement(_editor.Text, offset-1, s))
                             {
-                                _editor.TextArea.Document.Insert(offset, "</" + s + ">");
-                                _editor.CaretOffset = offset;
-                                return true;
+                                string endElement = "</" + s + ">";
+                                var rightOfCursor = _editor.Text.Substring(offset, Math.Max(0, Math.Min(endElement.Length + 50, _editor.Text.Length) - offset - 1)).TrimStart();
+                                if (!rightOfCursor.StartsWith(endElement))
+                                {
+                                    _editor.TextArea.Document.Insert(offset, endElement);
+                                    _editor.CaretOffset = offset;
+                                    return true;
+                                }
                             }
                         }
                         break;
@@ -152,7 +157,7 @@ namespace XSemmel.Editor
                                 //search closing end tag. Element must be empty (whitespace allowed)  
                                 //"<hallo>  </hallo>" --> enter '/' --> "<hallo/>  "
                                 string expectedEndTag = "</" + s + ">";
-                                for (int i = offset+1; i < _editor.Text.Length - expectedEndTag.Length; i++)
+                                for (int i = offset+1; i < _editor.Text.Length - expectedEndTag.Length + 1; i++)
                                 {
                                     if (!char.IsWhiteSpace(_editor.Text[i]))
                                     {
