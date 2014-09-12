@@ -11,6 +11,7 @@
         <commands:Xml2XsdGeneratorCommand x:Key="Xml2XsdGeneratorCommand"/>
         <commands:InsertXsdLocationCommand x:Key="InsertXsdLocationCommand"/>
         <Commands:TidyInvalidXmlCommand x:Key="TidyInvalidXmlCommand"/>
+        <Commands:TrimXmlCommand x:Key="TrimXmlCommand"/>
     </fluent:RibbonTabItem.Resources>
 
     <fluent:RibbonGroupBox Header="Validation" Icon="/Images/112_Tick_Green_32x32_72.png" >
@@ -77,13 +78,23 @@
             Command="{StaticResource Xml2XsdGeneratorCommand}"
             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
         />
-        <fluent:Button
-            Header="Tidy invalid XML" 
-            LargeIcon="/Images/EditTask_32x32.png" 
-            Icon="/Images/EditTask.png" 
-            Command="{StaticResource TidyInvalidXmlCommand}"
-            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
-        />
+
+        <fluent:SplitButton Header="Tidy invalid XML" 
+                            LargeIcon="/Images/EditTask_32x32.png" 
+                            Icon="/Images/EditTask.png" 
+                            Command="{StaticResource TidyInvalidXmlCommand}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}">
+            <fluent:SplitButton.Items>
+                <fluent:MenuItem Header="Trim"
+                                Command="{StaticResource TrimXmlCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
+                <!--<fluent:MenuItem Header="Escape XML"
+                                Command="{StaticResource EscapeXmlStringCommand}" 
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>-->
+            </fluent:SplitButton.Items>
+        </fluent:SplitButton>
+
+          
         <fluent:Button
             Header="Bulk"
             ToolTip="Validates multiple files"

@@ -3,7 +3,10 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Margin="5">
     <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontWeight="Bold" FontSize="16">Xsemmel</TextBlock>
-    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-14 by F. Schnitzer</TextBlock>
+    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-2014 by F. Schnitzer</TextBlock>
+    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">
+        <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://xsemmel.codeplex.com/">http://xsemmel.codeplex.com/</Hyperlink>
+    </TextBlock>
     <TextBlock x:Name="builtOn" DockPanel.Dock="Top" FontStyle="Italic"/>
     <TabControl Margin="0,5,0,5">
         <TabItem Header="Uses">

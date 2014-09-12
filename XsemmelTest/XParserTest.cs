@@ -163,5 +163,16 @@ namespace XSemmel.Test
             Assert.IsTrue(XParser.IsInsideComment("<!-- xxx --> ", 6));
         }
 
+        [TestMethod]
+        public void TrimTest()
+        {
+            const string a1 = "2014-09-11 16:36:07,184 INFO [30] myclassname - [d9b4b140-71a4-44ff-9fdd-dcdfd2757191] [<?xml version=\"1.0\" encoding=\"UTF-8\"?><Request RequestId=\"Transfer\" Version=\"1\" MsgId=\"6\"><Customer><Field Type=\"Id\">1</Field><Field Type=\"LocationId\">Home</Field><Field Type=\"LastName\">Duck</Field><Field Type=\"CustomerType\">Adult</Field></Customer><Record Id=\"2B075C23-0E85-E232-E14A-48D9EFC888B0\" PrtId=\"7EC25208-88A2-4B46-A813-71A61EBD04EC\" State=\"Valid\" CreationDateTime=\"20140911164711+1200\"><Parameter Type=\"Numeric\" Code=\"0002-4a04\" Label=\"Count\" IsManual=\"0\" CreationDateTime=\"20140911164630+1200\"></Parameter></Record></Request>]";
+            const string e1 = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Request RequestId=\"Transfer\" Version=\"1\" MsgId=\"6\"><Customer><Field Type=\"Id\">1</Field><Field Type=\"LocationId\">Home</Field><Field Type=\"LastName\">Duck</Field><Field Type=\"CustomerType\">Adult</Field></Customer><Record Id=\"2B075C23-0E85-E232-E14A-48D9EFC888B0\" PrtId=\"7EC25208-88A2-4B46-A813-71A61EBD04EC\" State=\"Valid\" CreationDateTime=\"20140911164711+1200\"><Parameter Type=\"Numeric\" Code=\"0002-4a04\" Label=\"Count\" IsManual=\"0\" CreationDateTime=\"20140911164630+1200\"></Parameter></Record></Request>";
+            Assert.AreEqual(e1, XParser.Trim(a1));
+
+            Assert.AreEqual("<hallo/>", XParser.Trim("<hallo/>"));
+            Assert.AreEqual("<", XParser.Trim("<"));
+        }
+
     }
 }

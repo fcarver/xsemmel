@@ -290,5 +290,46 @@ namespace XSemmel.Editor
 //            return true;
 //        }
 
+
+        public static string Trim(string s)
+        {
+            if (s == null)
+            {
+                return null;
+            }
+
+            {
+                int idxOpen2 = -1;
+                int idxOpen = s.IndexOf('<');
+                if (idxOpen >= 0)
+                {
+                    idxOpen2 = s.IndexOf('<', idxOpen + 1);
+                }
+                int idxClose = s.IndexOf('>');
+
+                if (idxOpen2 < 0 || idxOpen2 > idxClose)
+                {
+                    s = s.Substring(idxOpen);
+                }
+            }
+
+            {
+                int idxClose2 = -1;
+                int idxClose = s.LastIndexOf('>');
+                if (idxClose > 0)
+                {
+                    idxClose2 = s.LastIndexOf('>', idxClose - 1);
+                }
+                int idxOpen = s.LastIndexOf('<');
+
+                if (idxClose >= 0 && (idxClose2 < 0 || idxClose2 < idxOpen))
+                {
+                    s = s.Substring(0, idxClose + 1);
+                }
+            }
+
+            return s;
+        }
+
     }
 }

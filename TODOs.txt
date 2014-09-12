@@ -1,27 +1,15 @@
-﻿= Done in current release = 
+﻿!! Done in current release
 
-* FIX: "Current file has changed" seldom comes up when file was saved by Xsemmel itself
-* FIX: "expand empty tags" was sometimes offered for non-empty tags
-* FIX: Crash in Schema Visualizer if schema contains extension-base of self
-* FIX: Fixed rare crash when open file was deleted by another process
-* FIX: Sometimes black window title on Win8 with multiple displays
-* NEW: Code-completion of attributed with Ctrl+Space
-* NEW: Convert decimal to hexadecimal numbers and v.v.
-* NEW: Installer is now signed to reduce issues with Win8 SmartScreen
-* CHG: Docking framework removed
+* FIX: 
+* NEW: Link to homepage in About-box
+* NEW: Trim file (e.g. XML contained in lines of Log files), see submenu of Validation/Tidy
+* CHG:
 
-= 29-MAY-2014 = 
 
-WINDOWS XP IS NO LONGER SUPPORTED
-
-* FIX: Some minor issues
-* NEW: Better visualisation of validation issues
-* NEW: Printing
-* CHG: Disabled Jumplist
-* CHG: updated to .net 4.5, WinXP NO LONGER SUPPORTED
 
 = TODOs =
 
+	* WebBrowser zeigt manchmal über Rand hinaus
 	* case-insensitives Suchen in Datei
 	* Code Completion tut nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* XSD-mode: per Shortcut xsd:annotation einfügen
