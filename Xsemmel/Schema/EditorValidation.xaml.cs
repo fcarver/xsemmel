@@ -107,7 +107,7 @@ namespace XSemmel.Schema
 
                     try
                     {
-                        XmlDocument xmlDoc = _editor.XmlEditor.Text.ToXmlDocument();
+                        XmlDocument xmlDoc = _editor.XmlEditor.Text.ToXmlDocument();  //TODO make async
                         var i = new ValidationIssue(ValidationIssue.Type.Information, 0, 0, "XML is wellformed");
                         _lstErrors.Items.Add(i);
                     }

@@ -63,6 +63,7 @@ namespace XSemmel.Helpers
         public static XmlDocument ToXmlDocument(this string source, bool preserveWhitespace = true)
         {
             XmlDocument xmldoc = new XmlDocument { PreserveWhitespace = preserveWhitespace };
+            xmldoc.XmlResolver = null;
 
             Regex getEncoding = new Regex(@"<\?.*encoding=\""(.+)\""\?>");
             Match m = getEncoding.Match(source);

@@ -16,8 +16,17 @@ namespace XSemmel
         [STAThread]
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.UnhandledException += (x,exargs) => 
+            AppDomain.CurrentDomain.UnhandledException += (x, exargs) =>
+            {
+                Trace.WriteLine(exargs.ExceptionObject.ToString());
+
+//                EventLog m_EventLog = new EventLog("");
+//                m_EventLog.Source = "Xsemmel";
+//                m_EventLog.WriteEntry(exargs.ExceptionObject.ToString(),
+//                    EventLogEntryType.FailureAudit);
+
                 MessageBox.Show(exargs.ExceptionObject.ToString(), "Error");
+            };
 
             if (XSConfiguration.Instance.Config.ShowSplashScreen)
             {

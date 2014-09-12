@@ -1,6 +1,7 @@
 ﻿!! Done in current release
 
-* FIX: 
+* FIX: Remove close tag on />
+* FIX: Hang when referenced DTD file is not accessible while checking for wellformedness
 * NEW: Link to homepage in About-box
 * NEW: Trim file (e.g. XML contained in lines of Log files), see submenu of Validation/Tidy
 * CHG:
