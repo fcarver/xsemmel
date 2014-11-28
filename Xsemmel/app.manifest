@@ -31,7 +31,7 @@
     </application>
   </compatibility>
   
-  <!-- Enable themes for Windows common controls and dialogs (Windows XP and later) -->
+  <!-- Enable themes for Windows common controls and dialogs (Windows XP and later), does not work in DEBUG-builds -->
   <dependency>
     <dependentAssembly>
       <assemblyIdentity

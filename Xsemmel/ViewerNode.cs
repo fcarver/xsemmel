@@ -21,7 +21,6 @@ namespace XSemmel
         private IXmlLineInfo _lineInfo;
 
         private readonly object _lockObjForExpandingChildNodes = new object();
-        private readonly object _lockObjForCalculatingLineInfo = new object();
 
         public ViewerNode(XSDocument doc)
             : this(doc, doc.XmlDoc.DocumentElement, null)
@@ -63,9 +62,9 @@ namespace XSemmel
                         {
                             string str = _originalNode.Value;
                             string str2;
-                            if (str.IndexOf(":") > -1)
+                            if (str.IndexOf(':') > -1)
                             {
-                                str2 = str.Substring(str.IndexOf(":") + 1);
+                                str2 = str.Substring(str.IndexOf(':') + 1);
                             }
                             else
                             {

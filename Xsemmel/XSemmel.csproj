@@ -76,11 +76,6 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
-    <Reference Include="AvalonDock, Version=1.3.3571.0, Culture=neutral, PublicKeyToken=85a1e0ada7ec13e4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AvalonDock.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="DiffPlex, Version=1.2.0.38654, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DiffPlex.1.2.0\lib\Net40\DiffPlex.dll</HintPath>
@@ -106,13 +101,11 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="PropertyTools, Version=2014.1.29.1, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\PropertyTools.Wpf.2014.1.29.1\lib\NET45\PropertyTools.dll</HintPath>
+    <Reference Include="PropertyTools">
+      <HintPath>..\packages\PropertyTools.Wpf.2014.2.16\lib\net45\PropertyTools.dll</HintPath>
     </Reference>
-    <Reference Include="PropertyTools.Wpf, Version=2014.1.29.1, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\PropertyTools.Wpf.2014.1.29.1\lib\NET45\PropertyTools.Wpf.dll</HintPath>
+    <Reference Include="PropertyTools.Wpf">
+      <HintPath>..\packages\PropertyTools.Wpf.2014.2.16\lib\net45\PropertyTools.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -656,9 +649,6 @@
     <Resource Include="Images\Document_blank_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\IndentHS.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\RelationshipsHS.png" />
   </ItemGroup>
   <ItemGroup>
@@ -762,6 +752,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\007_PrintView_32x32_72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Prettyprint_16x16.png" />
+    <Resource Include="Images\Prettyprint_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

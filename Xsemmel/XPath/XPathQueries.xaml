@@ -21,9 +21,13 @@
                 <Button x:Name="_btnExecute" x:FieldModifier="private" Width="110" Margin="5" Click="btnExecute_Click" IsDefault="True">Execute</Button>
             </StackPanel>
             <RadioButton DockPanel.Dock="Bottom" Name="_chkUseNamespaces" GroupName="x" IsChecked="True"
-                         x:FieldModifier="private">Extract Namespaces from XML document</RadioButton>
+                         x:FieldModifier="private" Checked="_chkUseNamespaces_OnChecked" >
+                Extract Namespaces from XML document
+            </RadioButton>
             <RadioButton DockPanel.Dock="Bottom" Name="_chkUseUserdefinedFunctions" GroupName="x" IsChecked="False"
-                         x:FieldModifier="private">Use user-defined XPath functions (from XPathFunctions.cs file)</RadioButton>
+                         x:FieldModifier="private" Checked="_chkUseNamespaces_OnChecked">
+                Use user-defined XPath functions (from XPathFunctions.cs file)
+            </RadioButton>
             <CheckBox DockPanel.Dock="Bottom" Name="_chkWhileTyping" IsChecked="True" x:FieldModifier="private">Check XPath while typing</CheckBox>
             <Border BorderThickness="1" BorderBrush="Silver">
                 <AvalonEdit:TextEditor 
@@ -83,7 +87,7 @@
                 <TreeView Name="_treeResult" x:FieldModifier="private" SelectedItemChanged="treeResult_SelectedItemChanged"/>
             </TabItem>
             <TabItem Header="Fragment">
-                <AvalonEdit:TextEditor x:Name="editorUserControl1" IsReadOnly="True" FontFamily="Consolas"
+                <AvalonEdit:TextEditor x:Name="_editorUserControl1" x:FieldModifier="private" IsReadOnly="True" FontFamily="Consolas"
                                         FontSize="10pt" SyntaxHighlighting="XML" ShowLineNumbers="true" />
             </TabItem>
         </TabControl>

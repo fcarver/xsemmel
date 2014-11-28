@@ -52,21 +52,28 @@ namespace XSemmel.XPath
             }
         }
 
-        private void performSnR(XPathNodeIterator xpi, XPathNavigator navigator)
+        private void performSnR(XPathNavigator navigator, XPathExpression expression)
         {
-            if ((xpi != null) && (xpi.Count > 0))
+            XPathNodeIterator xpi = navigator.Select(expression);
+            int count = xpi.Count;
+            if (count > 0)
             {
-                for (bool hasNext = xpi.MoveNext(); hasNext; hasNext = xpi.MoveNext())
+                while (xpi.MoveNext())
                 {
-                    if (chkReplaceByText.IsChecked == true)
+                    if (_chkReplaceByDelete.IsChecked == true)
                     {
-                        xpi.Current.InnerXml = edtReplaceBy.Text;
+                        xpi.Current.DeleteSelf();
+                        xpi = navigator.Select(expression);
+                    }
+                    else if (_chkReplaceByText.IsChecked == true)
+                    {
+                        xpi.Current.InnerXml = _edtReplaceBy.Text;
                     }
                     else
                     {
                         string res;
 
-                        XPathExpression query = xpi.Current.Compile(edtReplaceBy.Text);
+                        XPathExpression query = xpi.Current.Compile(_edtReplaceBy.Text);
 
                         object o = navigator.Evaluate(query, xpi);
                         if (o is string || o is double || o is bool)
@@ -87,7 +94,8 @@ namespace XSemmel.XPath
                         xpi.Current.InnerXml = res;
                     }
                 }
-                lblStatus.Content = "Replaced " + xpi.Count + " occurrences";
+
+                lblStatus.Content = "Replaced " + count + " occurrences";
             }
             else
             {
@@ -98,7 +106,7 @@ namespace XSemmel.XPath
         private XPathExpression createExpression(XmlDocument xmlDoc, XPathNavigator nav, string xpath)
         {
             XmlNamespaceManager xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
-            if (chkUseNamespaces.IsChecked == true)
+            if (_chkUseNamespaces.IsChecked == true)
             {
                 nav.MoveToFollowing(XPathNodeType.Element);
                 IDictionary<string, string> whatever = nav.GetNamespacesInScope(XmlNamespaceScope.All);
@@ -112,7 +120,7 @@ namespace XSemmel.XPath
             }
             else
             {
-                Debug.Assert(chkUseUserdefinedFunctions.IsChecked == true);
+                Debug.Assert(_chkUseUserdefinedFunctions.IsChecked == true);
                 xmlnsManager = getContext();
             }
 
@@ -123,10 +131,10 @@ namespace XSemmel.XPath
         private void query()
         {
             lblStatus.Content = "";
-            string text = edtXPath.Text;
-            if (edtXPath.SelectionLength > 0)
+            string xpath = _edtXPath.Text;
+            if (_edtXPath.SelectionLength > 0)
             {
-                text = edtXPath.SelectedText;
+                xpath = _edtXPath.SelectedText;
             }
 
 
@@ -145,7 +153,7 @@ namespace XSemmel.XPath
             {
                 XPathNavigator nav = xmldoc.CreateNavigator();
 
-                XPathExpression expression = createExpression(xmldoc, nav, text);
+                XPathExpression expression = createExpression(xmldoc, nav, xpath);
                 switch (expression.ReturnType)
                 {
                     case XPathResultType.String:
@@ -159,8 +167,7 @@ namespace XSemmel.XPath
                     }
                     case XPathResultType.NodeSet:
                     {
-                        XPathNodeIterator nodes = nav.Select(expression);
-                        performSnR(nodes, nav);
+                        performSnR(nav, expression);
                         break;
                     }
                 }
@@ -194,12 +201,12 @@ namespace XSemmel.XPath
 
         private void mnuPaste_Click(object sender, RoutedEventArgs e)
         {
-            edtXPath.SelectedText = Clipboard.GetText();
+            _edtXPath.SelectedText = Clipboard.GetText();
         }
 
         private void mnuCopy_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(edtXPath.Text);
+            Clipboard.SetText(_edtXPath.Text);
         }
 
         private void mnuLoadFromFile_Click(object sender, RoutedEventArgs e)
@@ -210,36 +217,41 @@ namespace XSemmel.XPath
 
             if (dlgOpenFile.ShowDialog() == true)
             {
-                edtXPath.Load(dlgOpenFile.FileName);
+                _edtXPath.Load(dlgOpenFile.FileName);
             }
         }
 
         private void mnuDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (edtXPath.SelectionLength > 0)
+            if (_edtXPath.SelectionLength > 0)
             {
-                edtXPath.SelectedText = "";
+                _edtXPath.SelectedText = "";
             }
             else
             {
-                edtXPath.Text = "";
+                _edtXPath.Text = "";
             }
         }
 
         private void chkReplaceByXPath_Checked(object sender, RoutedEventArgs e)
         {
-            if (edtReplaceBy == null)
+            if (_edtReplaceBy == null)
             {
                 return;
             }
-            if (chkReplaceByText.IsChecked == true)
+            if (_chkReplaceByText.IsChecked == true)
             {
-                edtReplaceBy.SyntaxHighlighting = _xmlHighlighter;
+                _edtReplaceBy.SyntaxHighlighting = _xmlHighlighter;
+                _edtReplaceBy.IsEnabled = true;
+            }
+            else if (_chkReplaceByDelete.IsChecked == true)
+            {
+                _edtReplaceBy.IsEnabled = false;
             }
             else
             {
-                Debug.Assert(chkReplaceByXPath.IsChecked == true);
-                edtReplaceBy.SyntaxHighlighting = _xpathHighlighter;
+                _edtReplaceBy.SyntaxHighlighting = _xpathHighlighter;
+                _edtReplaceBy.IsEnabled = true;
             }
         }
 

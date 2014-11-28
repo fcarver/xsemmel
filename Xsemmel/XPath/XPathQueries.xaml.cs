@@ -107,19 +107,32 @@ namespace XSemmel.XPath
 
         private void edtXPath_TextChanged(object sender, EventArgs eventArgs)
         {
+            if (_chkWhileTyping == null)
+            {
+                //initialization phase...
+                return;
+            }
             if (_chkWhileTyping.IsChecked == true)
             {
-                try
-                {
-                    WorkItem c = getWorkItem();
-                    createExpression(c, _edtXPath.Text);
-                    _edtXPath.Background = _xpathTextBackColor;
-                    _edtXPath.ToolTip = null;
-                }
-                catch (Exception exception)
+                if (string.IsNullOrWhiteSpace(_edtXPath.Text))
                 {
                     _edtXPath.Background = Brushes.Pink;
-                    _edtXPath.ToolTip = "Invalid XPath Query: " + exception.Message;
+                    _edtXPath.ToolTip = "Empty XPath Query";
+                }
+                else
+                {
+                    try
+                    {
+                        WorkItem c = getWorkItem();
+                        createExpression(c, _edtXPath.Text);
+                        _edtXPath.Background = _xpathTextBackColor;
+                        _edtXPath.ToolTip = null;
+                    }
+                    catch (Exception exception)
+                    {
+                        _edtXPath.Background = Brushes.Pink;
+                        _edtXPath.ToolTip = "Invalid XPath Query: " + exception.Message;
+                    }                    
                 }
             }
             else
@@ -180,20 +193,20 @@ namespace XSemmel.XPath
                             break;
                         }
                     }
-                    if (string.IsNullOrEmpty(editorUserControl1.Text))
+                    if (string.IsNullOrEmpty(_editorUserControl1.Text))
                     {
-                        editorUserControl1.Text = xpi.Current.OuterXml;
+                        _editorUserControl1.Text = xpi.Current.OuterXml;
                     }
                     else
                     {
-                        editorUserControl1.Text = editorUserControl1.Text + "\r\n" + xpi.Current.OuterXml;
+                        _editorUserControl1.Text = _editorUserControl1.Text + "\r\n" + xpi.Current.OuterXml;
                     }
                 }
             }
             else
             {
                 _treeResult.Items.Add("Nothing found.");
-                editorUserControl1.Text = "";
+                _editorUserControl1.Text = "";
             }
         }
 
@@ -251,7 +264,7 @@ namespace XSemmel.XPath
         private void query()
         {
             _treeResult.Items.Clear();
-            editorUserControl1.Text = "";
+            _editorUserControl1.Text = "";
             string text = _edtXPath.Text;
             if (_edtXPath.SelectionLength > 0)
             {
@@ -270,7 +283,7 @@ namespace XSemmel.XPath
                 node3.Foreground = Brushes.Red;
                 node3.ToolTip = e.Message;
                 _treeResult.Items.Add(node3);
-                editorUserControl1.Text = "Error in Xml document: " + e.Message;
+                _editorUserControl1.Text = "Error in Xml document: " + e.Message;
                 return;
             }
 
@@ -289,7 +302,7 @@ namespace XSemmel.XPath
                         node.Foreground = Brushes.Brown;
                         node.ToolTip = "("+ expression.ReturnType + ")";
                         _treeResult.Items.Add(node);
-                        editorUserControl1.Text = result.ToString();
+                        _editorUserControl1.Text = result.ToString();
                         break;
                     }
                     case XPathResultType.NodeSet:
@@ -312,7 +325,7 @@ namespace XSemmel.XPath
                             node.Header = "false";
                         }
                         _treeResult.Items.Add(node);
-                        editorUserControl1.Text = node.Header.ToString();
+                        _editorUserControl1.Text = node.Header.ToString();
                         break;
                     }
                 }
@@ -334,7 +347,7 @@ namespace XSemmel.XPath
                         node.Foreground = Brushes.Brown;
                         node.ToolTip = "(XPathSelectionIterator)";
                         _treeResult.Items.Add(node);
-                        editorUserControl1.Text = obj2.ToString();
+                        _editorUserControl1.Text = obj2.ToString();
                     }
                 }
                 catch (Exception exception)
@@ -345,7 +358,7 @@ namespace XSemmel.XPath
                     node2.ToolTip = exception.Message;
                     //                        node2.ContextMenuStrip = this.mnuTreeView;
                     _treeResult.Items.Add(node2);
-                    editorUserControl1.Text = "Error: " + exception.Message;
+                    _editorUserControl1.Text = "Error: " + exception.Message;
                 }
             }
             catch (Exception exception2)
@@ -356,7 +369,7 @@ namespace XSemmel.XPath
                 node3.ToolTip = exception2.Message;
                 //                    node3.ContextMenuStrip = this.mnuTreeView;
                 _treeResult.Items.Add(node3);
-                editorUserControl1.Text = "Error: " + exception2.Message;
+                _editorUserControl1.Text = "Error: " + exception2.Message;
             }
         }
 
@@ -474,6 +487,11 @@ namespace XSemmel.XPath
         private void btnBulkXPath_OnClick(object sender, RoutedEventArgs e)
         {
             BulkXPath.ShowDialog(Application.Current.MainWindow);
+        }
+
+        private void _chkUseNamespaces_OnChecked(object sender, RoutedEventArgs e)
+        {
+            edtXPath_TextChanged(sender, e);
         }
     }
 }

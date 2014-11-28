@@ -116,7 +116,7 @@ namespace XSemmel.Editor
 
         internal bool AllowToClose()
         {
-            if (_xmlEditor.TextEditor.IsModified)
+            if (_xmlEditor.TextEditor.IsModified || (XSDocument.Filename == null && XSDocument.Xml.Length > 0))
             {
                 var result = MessageBox.Show(Application.Current.MainWindow, "Save changes before closing?",
                     "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);

@@ -11,17 +11,17 @@
              xmlns:WebBrowser="clr-namespace:XSemmel.WebBrowser" 
              xmlns:TreeView="clr-namespace:XSemmel.TreeView">
     <Grid>
-
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*" MinHeight="125px" />
+            <RowDefinition Height="3*" MinHeight="150" />
             <RowDefinition Height="4"/>
-            <RowDefinition Height="1*" MinHeight="100px"/>
+            <RowDefinition Height="1*" MinHeight="50"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" MinWidth="300px" />
+            <ColumnDefinition Width="1*" MinWidth="100" />
             <ColumnDefinition Width="4"/>
-            <ColumnDefinition Width="4*" MinWidth="100px"/>
+            <ColumnDefinition Width="4*" MinWidth="400"/>
         </Grid.ColumnDefinitions>
 
         <TabControl Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" TabStripPlacement="Bottom" Margin="5 4 3 5" Background="Transparent"

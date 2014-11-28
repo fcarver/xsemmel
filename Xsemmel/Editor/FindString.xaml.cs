@@ -79,7 +79,7 @@ namespace XSemmel.Editor
             int startIdx = 0;
             while (true)
             {
-                int idx = _editor.Text.IndexOf(word, startIdx);
+                int idx = _editor.Text.IndexOf(word, startIdx, StringComparison.InvariantCultureIgnoreCase);
 
                 if (idx < 0)
                 {

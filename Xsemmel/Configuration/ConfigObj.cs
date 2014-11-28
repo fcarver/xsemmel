@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Text;
 using System.Xml.Serialization;
 using PropertyTools.DataAnnotations;
+using Category = PropertyTools.DataAnnotations.CategoryAttribute;
+using DisplayName = PropertyTools.DataAnnotations.DisplayNameAttribute;
+using Browsable = PropertyTools.DataAnnotations.BrowsableAttribute;
 
 namespace XSemmel.Configuration
 {

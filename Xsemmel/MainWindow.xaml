@@ -126,8 +126,8 @@
                 </fluent:RibbonGroupBox>
                 <fluent:RibbonGroupBox Header="Text">
                     <fluent:SplitButton Header="PrettyPrint" 
-                        Icon="/Images/IndentHS.png" 
-                        LargeIcon="/Images/IndentHS.png" 
+                        Icon="/Images/Prettyprint_16x16.png" 
+                        LargeIcon="/Images/Prettyprint_32x32.png" 
                         Command="{StaticResource PrettyPrintCommand}" 
                         CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}">
                         <fluent:SplitButton.Items>
@@ -145,7 +145,7 @@
                           <fluent:MenuItem
                               Header="Bulk"
                               ToolTip="Prettyprints multiple files"
-                              Icon="/Images/IndentHS.png"
+                              Icon="/Images/Prettyprint_16x16.png"
                               Click="mnuBulkPrettyPrint_Click"
                           />
                         </fluent:SplitButton.Items>

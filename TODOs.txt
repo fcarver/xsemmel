@@ -2,16 +2,21 @@
 
 * FIX: Remove close tag on />
 * FIX: Hang when referenced DTD file is not accessible while checking for wellformedness
+* FIX: Resizing on large monitors
+* FIX: Question to save file if file contains only text from clipboard
+* FIX: Changing options on XPath-Tab will update the error state (tooltip and backgroundcolor) of input area
 * NEW: Link to homepage in About-box
 * NEW: Trim file (e.g. XML contained in lines of Log files), see submenu of Validation/Tidy
-* CHG:
+* NEW: Search'n'Replace can delete found nodes
+* CHG: Prettified some icons
+* CHG: 'Search for text' (Ctrl+F) is now case-insensitive
 
 
 
 = TODOs =
 
-	* WebBrowser zeigt manchmal über Rand hinaus
 	* case-insensitives Suchen in Datei
+	* plain-text Suchen und Ersetzen
 	* Code Completion tut nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
