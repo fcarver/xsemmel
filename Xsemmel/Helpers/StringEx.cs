@@ -30,7 +30,7 @@ namespace XSemmel.Helpers
         /// <returns></returns>
         public static Stream ToStream(this string source)
         {
-            Regex getEncoding = new Regex(@"<\?.*encoding=\""(.+)\""\?>");
+            Regex getEncoding = new Regex(@"<\?.*encoding=\""(.+)\"".+\?>");
             Match m = getEncoding.Match(source);
 
             byte[] encodedString;
