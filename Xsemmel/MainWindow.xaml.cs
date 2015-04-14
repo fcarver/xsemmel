@@ -153,7 +153,7 @@ namespace XSemmel
                 }
                 else if (NEW.Equals(filePath))
                 {
-                    doc = new XSDocument(@"<?xml version=""1.0"" encoding=""utf-8""?>");
+                    doc = new XSDocument(@"<?xml version=""1.0"" encoding=""utf-8"" ?>");
                 }
                 else
                 {

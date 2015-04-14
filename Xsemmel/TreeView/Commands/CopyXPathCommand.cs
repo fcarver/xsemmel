@@ -50,10 +50,6 @@ namespace XSemmel.TreeView.Commands
             {
                 return false;
             }
-            if (node.ParentNode == null)
-            {
-                return false;
-            }
 
             return true;
         }

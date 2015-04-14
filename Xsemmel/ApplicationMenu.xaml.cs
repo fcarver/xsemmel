@@ -18,7 +18,7 @@ namespace XSemmel
 
         private void btnOptions_Click(object sender, RoutedEventArgs e)
         {
-            new ConfigurationWnd {Owner = Application.Current.MainWindow}.ShowDialog();
+            new ConfigurationWnd {Owner = Application.Current.MainWindow, WindowStartupLocation = WindowStartupLocation.CenterOwner}.ShowDialog();
         }
 
         private void ApplicationMenu_OnIsOpenChanged(object sender, DependencyPropertyChangedEventArgs e)

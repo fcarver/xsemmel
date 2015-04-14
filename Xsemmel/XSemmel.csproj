@@ -84,9 +84,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Fluent.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40-client\HtmlAgilityPack.dll</HintPath>
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit, Version=4.4.2.9744, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -101,11 +101,13 @@
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="PropertyTools">
-      <HintPath>..\packages\PropertyTools.Wpf.2014.2.16\lib\net45\PropertyTools.dll</HintPath>
+    <Reference Include="PropertyTools, Version=2015.1.56.0, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PropertyTools.Wpf.2015.1.56\lib\net45\PropertyTools.dll</HintPath>
     </Reference>
-    <Reference Include="PropertyTools.Wpf">
-      <HintPath>..\packages\PropertyTools.Wpf.2014.2.16\lib\net45\PropertyTools.Wpf.dll</HintPath>
+    <Reference Include="PropertyTools.Wpf, Version=2015.1.56.0, Culture=neutral, PublicKeyToken=ea0c9f2b460934d0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PropertyTools.Wpf.2015.1.56\lib\net45\PropertyTools.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="ReachFramework" />
     <Reference Include="System" />
@@ -186,6 +188,7 @@
       <DependentUpon>InputBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\XActor.cs" />
+    <Compile Include="Helpers\XPathBuilder.cs" />
     <Compile Include="PrettyPrinter\BulkPrettyPrint.cs" />
     <Compile Include="PrettyPrinter\PrettyPrint.cs" />
     <Compile Include="Helpers\BulkWindow.xaml.cs">

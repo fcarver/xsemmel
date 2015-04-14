@@ -66,7 +66,7 @@
                             <Paragraph>
                                 Html Agility Pack
                                 <LineBreak/>
-                                Ms-PL
+                                Version 1.4.9, Ms-PL
                                 <LineBreak/>
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://htmlagilitypack.codeplex.com">http://htmlagilitypack.codeplex.com</Hyperlink>
                             </Paragraph>
@@ -75,9 +75,9 @@
                             <Paragraph>
                                 Property Tools
                                 <LineBreak/>
-                                Ms-PL
+                                Version 2015.1.56, MIT
                                 <LineBreak/>
-                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://propertytools.codeplex.com">http://propertytools.codeplex.com</Hyperlink>
+                                <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/objorke/PropertyTools">https://github.com/objorke/PropertyTools</Hyperlink>
                             </Paragraph>
                         </ListItem>
                         <ListItem>
@@ -108,11 +108,14 @@
             <FlowDocumentScrollViewer>
                 <FlowDocument>
                     <Paragraph>
-                        Copyright (c) 2007-2014, Frank Schnitzer
+                        Copyright (c) 2007-2015, Frank Schnitzer
+                        <LineBreak/>
                         <LineBreak/>
                         All rights reserved.
                         <LineBreak/>
+                        <LineBreak/>
                         Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+                        <LineBreak/>
                         <LineBreak/>
                         Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.

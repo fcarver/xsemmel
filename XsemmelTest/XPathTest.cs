@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using XSemmel.Helpers;
 
 namespace XSemmel.Test
 {
@@ -10,8 +12,26 @@ namespace XSemmel.Test
     public class XPathTest
     {
         [TestMethod]
-        public void XTest()
+        public void BuilderTest()
         {
+            const string xml = @"
+<root>
+  <foo />
+  <foo>
+     <bar attr='value'/>
+     <bar other='va' />
+  </foo>
+  <foo><bar /></foo>
+</root>";
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(xml);
+            XmlNode node = doc.SelectSingleNode("//@attr");
+
+            string xpath = XPathBuilder.GetXPathToNode(node);
+            Assert.AreEqual("/node()[1]/node()[2]/node()[1]/@attr", xpath);
+
+            Console.WriteLine(xpath);
+            Assert.AreEqual(node, doc.SelectSingleNode(xpath));
         }
     }
 }

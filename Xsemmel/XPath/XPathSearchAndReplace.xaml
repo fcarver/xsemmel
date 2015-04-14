@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit" 
+             xmlns:AvalonEdit="clr-namespace:ICSharpCode.AvalonEdit;assembly=ICSharpCode.AvalonEdit"
+             xmlns:wpf="clr-namespace:XSemmel.Helpers.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="440" d:DesignWidth="400">
+    <UserControl.Resources>
+        <wpf:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" MinHeight="125px" />
@@ -15,10 +19,22 @@
         <DockPanel Grid.Row="0">
             <Label DockPanel.Dock="Top">XPath:</Label>
 
-            <RadioButton DockPanel.Dock="Bottom" Name="_chkUseNamespaces" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="True"
-                         >Extract Namespaces from XML document</RadioButton>
-            <RadioButton DockPanel.Dock="Bottom" Name="_chkUseUserdefinedFunctions" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="False"
-                         >Use user-defined XPath functions (from XPathFunctions.cs file)</RadioButton>
+            <RadioButton DockPanel.Dock="Bottom" Name="_chkPlainText" x:FieldModifier="private" 
+                         Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="False">
+                Plain text
+            </RadioButton>
+            <RadioButton DockPanel.Dock="Bottom" Name="_chkUseNamespaces" x:FieldModifier="private" 
+                         Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="True">
+                <RadioButton.Content>
+                    <TextBlock Text="Extract Namespaces from XML document" TextWrapping="Wrap"/>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton DockPanel.Dock="Bottom" Name="_chkUseUserdefinedFunctions" x:FieldModifier="private" 
+                         Margin="5,0,0,0" GroupName="xpathSearchAndReplace_X" IsChecked="False" >
+                <RadioButton.Content>
+                    <TextBlock Text="Use user-defined XPath functions (from XPathFunctions.cs file)" TextWrapping="Wrap"/>
+                </RadioButton.Content>
+            </RadioButton>
 
             <Border BorderThickness="1" BorderBrush="Silver">
                 <AvalonEdit:TextEditor 
@@ -56,9 +72,17 @@
         <GridSplitter Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <DockPanel Grid.Row="2">
             <Label DockPanel.Dock="Top" Margin="0,5,0,0">Replace by:</Label>
-            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByText" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="True" Checked="chkReplaceByXPath_Checked">Text</RadioButton>
-            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByDelete" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="False" Checked="chkReplaceByXPath_Checked">Nothing, delete</RadioButton>
-            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByXPath" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="False" Checked="chkReplaceByXPath_Checked">XPath relative to search result</RadioButton>
+            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByText" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="True" Checked="chkReplaceByXPath_Checked">
+                Text
+            </RadioButton>
+            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByDelete" x:FieldModifier="private" Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="False" Checked="chkReplaceByXPath_Checked">
+                Nothing, delete
+            </RadioButton>
+            <RadioButton DockPanel.Dock="Top" x:Name="_chkReplaceByXPath" x:FieldModifier="private" 
+                         Margin="5,0,0,0" GroupName="xpathSearchAndReplace_Y" IsChecked="False" Checked="chkReplaceByXPath_Checked"
+                         IsEnabled="{Binding ElementName=_chkPlainText, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}">
+                XPath relative to search result
+            </RadioButton>
             
             <Label x:Name="lblStatus" DockPanel.Dock="Bottom"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">

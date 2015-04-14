@@ -200,6 +200,7 @@ namespace XSemmel.Editor
                 {
                     Keyboard.Focus(_edtSearchText);
                     bool success = _edtSearchText.Focus();
+                    _edtSearchText.SelectAll();
                     Debug.Assert(success);
                 }
             }

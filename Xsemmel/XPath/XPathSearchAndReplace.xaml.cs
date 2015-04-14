@@ -186,11 +186,64 @@ namespace XSemmel.XPath
             try
             {
                 Mouse.OverrideCursor = Cursors.Wait;
-                query();
+                if (_chkPlainText.IsChecked == true)
+                {
+                    snrPlainText();
+                }
+                else
+                {
+                    query();    
+                }
             }
             finally
             {
                 Mouse.OverrideCursor = null;
+            }
+        }
+
+        private void snrPlainText()
+        {
+            Debug.Assert(_chkReplaceByText.IsChecked == true || _chkReplaceByDelete.IsChecked == true);
+
+            lblStatus.Content = "";
+            string searchFor = _edtXPath.Text;
+            if (_edtXPath.SelectionLength > 0)
+            {
+                searchFor = _edtXPath.SelectedText;
+            }
+            if (string.IsNullOrEmpty(searchFor))
+            {
+                lblStatus.Content = "Nothing found";
+                return;
+            }
+
+            string replaceBy = _edtReplaceBy.Text;
+            if (_chkReplaceByDelete.IsChecked == true)
+            {
+                replaceBy = "";
+            }
+
+            string searchIn = _editor.XmlEditor.Text;
+
+            //Anzahl der occurrences zählen
+            int count = 0, n = 0;
+            while ((n = searchIn.IndexOf(searchFor, n, StringComparison.InvariantCulture)) != -1)
+            {
+                n += searchFor.Length;
+                ++count;
+            }
+
+            //alles ersetzen
+            searchIn = searchIn.Replace(searchFor, replaceBy);
+            _editor.XmlEditor.Text = searchIn;
+                
+            if (count > 0)
+            {
+                lblStatus.Content = "Replaced " + count + " occurrences";
+            }
+            else
+            {
+                lblStatus.Content = "Nothing found";
             }
         }
 

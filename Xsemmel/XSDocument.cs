@@ -4,6 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.XPath;
 using System.IO;
+using XSemmel.Configuration;
 using XSemmel.Helpers;
 using XSemmel.Schema;
 
@@ -20,9 +21,18 @@ namespace XSemmel
         private XPathNavigator _navigator;
         private string _xsdFile;
 
+        private static readonly bool _workaroundUtf8BomBug = XSConfiguration.Instance.Config.WorkaroundUtf8BomBug;
 
         public XSDocument(string xml, string xsdfile = null, string xmlfile = null)
         {
+            if (_workaroundUtf8BomBug)
+            {
+                if (xml.Substring(0, Math.Min(50, xml.Length)).Contains("\"?>"))
+                {
+                    xml = xml.Replace("\"?>", "\" ?>");
+                }
+            }
+
             Debug.Assert(xml != null);
             if (xml == null)
             {

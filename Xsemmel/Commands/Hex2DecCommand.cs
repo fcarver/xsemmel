@@ -13,10 +13,10 @@ namespace XSemmel.Commands
             {
                 return false;
             }
-            if (!ef.XmlEditor.TextArea.IsFocused)
-            {
-                return false;
-            }
+//            if (!ef.XmlEditor.TextArea.IsFocused)
+//            {
+//                return false;
+//            }
             if (ef.XmlEditor.SelectionLength == 0)
             {
                 return false;

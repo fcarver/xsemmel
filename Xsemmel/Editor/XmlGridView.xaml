@@ -12,7 +12,7 @@
                Foreground="DarkRed" Background="Transparent" Visibility="Collapsed">
             Errors
         </Label>
-        <WindowsFormsHost>
+        <WindowsFormsHost x:Name="_winformsHost" x:FieldModifier="private">
             <GridView:XmlGridView x:Name="_xmlGridView" x:FieldModifier="private" AutoHeightCells="True"/>
         </WindowsFormsHost>
     </DockPanel>

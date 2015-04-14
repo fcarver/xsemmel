@@ -24,6 +24,7 @@ namespace XSemmel.Configuration
         {
             public string Name { get; set; }
             public string Mapping { get; set; }
+
             public event PropertyChangedEventHandler PropertyChanged;
         }
 
@@ -34,9 +35,11 @@ namespace XSemmel.Configuration
         private bool _watchCurrentFileForChanges = true;
         private bool _alwaysPrettyprintFragments = true;
         private bool _enableCodeCompletion = true;
+        private bool _workaroundUtf8BomBug = true;
         private const int MAX_RECENTLY_USED_FILES = 5;
         private readonly List<string> _recentlyUsedFiles = new List<string>(); //cannot use LinkedList due to serialization
         private List<XsdMapItem> _xsdMapping = new List<XsdMapItem>();
+
 
 
         [Category("General|Application")]
@@ -46,9 +49,18 @@ namespace XSemmel.Configuration
             set { _showSplashScreen = value; }
         }
 
+        [Category("General|Application")]
+        [DisplayName("Replace \"?> by \" ?> as workaround for UTF8-BOM files: ")]
+        public bool WorkaroundUtf8BomBug
+        {
+            get { return _workaroundUtf8BomBug; }
+            set { _workaroundUtf8BomBug = value; }
+        }
+
         [Category("Schema|XSD mapping")]
-        [Column(0, "Name", "Replace", null, "2*", 'L')]
-        [Column(1, "Mapping", "by", null, "1*", 'L')]
+//        [DisplayName(" ")]
+//        [Column(0, "Name", "Replace", null, "1*", 'L')]  //TODO bug in PropertyTools prevents to show this columnname correctly
+//        [Column(1, "Mapping", "by", null, "2*", 'R')]
         [HeaderPlacement(HeaderPlacement.Collapsed)]
         public List<XsdMapItem> XsdMapping
         {
@@ -58,8 +70,10 @@ namespace XSemmel.Configuration
 
 
         [Category("Schema|XSD mapping")]
+        [DisplayName(" ")]
         [Comment]
         [XmlIgnore]
+        [HeaderPlacement(HeaderPlacement.Collapsed)]
         public string Comment
         {
             get { return "All xsd's with the specified name will be replaced by the path of the mapping"; }
@@ -118,7 +132,9 @@ namespace XSemmel.Configuration
 
         [Category("External Tools|")]
         [Comment]
+//        [DisplayName(" ")]
         [XmlIgnore]
+        [HeaderPlacement(HeaderPlacement.Collapsed)]
         public string Comment3
         {
             get { return "You can specifiy up to three external tools. Please specify command lines to run the tools:"; }
@@ -151,6 +167,8 @@ namespace XSemmel.Configuration
 
         [Category("External Tools|")]
         [Comment]
+//        [DisplayName(" ")]
+        [HeaderPlacement(HeaderPlacement.Collapsed)]
         [XmlIgnore]
         public string Comment2
         {

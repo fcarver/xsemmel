@@ -15,18 +15,22 @@
                 
         <DockPanel Grid.Row="0">
             <TextBlock DockPanel.Dock="Top">XPath:</TextBlock>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom">
+            <WrapPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Bottom" >
                 <Button Width="50" Margin="5" ToolTip="Executes a XPath in multiple files" Click="btnBulkXPath_OnClick">Bulk...</Button>
                 <Button Width="90" Margin="5" Click="btnCopy_Click">Copy XPath</Button>
                 <Button x:Name="_btnExecute" x:FieldModifier="private" Width="110" Margin="5" Click="btnExecute_Click" IsDefault="True">Execute</Button>
-            </StackPanel>
+            </WrapPanel>
             <RadioButton DockPanel.Dock="Bottom" Name="_chkUseNamespaces" GroupName="x" IsChecked="True"
-                         x:FieldModifier="private" Checked="_chkUseNamespaces_OnChecked" >
-                Extract Namespaces from XML document
+                         x:FieldModifier="private" Checked="_chkUseNamespaces_OnChecked">
+                <RadioButton.Content>
+                    <TextBlock Text="Extract Namespaces from XML document" TextWrapping="Wrap"/>
+                </RadioButton.Content>
             </RadioButton>
             <RadioButton DockPanel.Dock="Bottom" Name="_chkUseUserdefinedFunctions" GroupName="x" IsChecked="False"
                          x:FieldModifier="private" Checked="_chkUseNamespaces_OnChecked">
-                Use user-defined XPath functions (from XPathFunctions.cs file)
+                <RadioButton.Content>
+                    <TextBlock Text="Use user-defined XPath functions (from XPathFunctions.cs file)" TextWrapping="Wrap"/>
+                </RadioButton.Content>
             </RadioButton>
             <CheckBox DockPanel.Dock="Bottom" Name="_chkWhileTyping" IsChecked="True" x:FieldModifier="private">Check XPath while typing</CheckBox>
             <Border BorderThickness="1" BorderBrush="Silver">

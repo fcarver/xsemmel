@@ -109,6 +109,7 @@ namespace XSemmel
 
         private void BuildXPath()
         {
+            //TODO consider using XPathBuilder
             StringBuilder builder = new StringBuilder();
             if (_parent != null)
             {

@@ -1,14 +1,18 @@
 ﻿!! Done in current release
 
-* FIX: Issue #4: Encoding of some xml files gets detected wrong
-* NEW: 
+* FIX: several focus-related issues with ribbon-buttons
+* FIX: Generate XPath for attributes
+* FIX: workaround: couldn't detect wellformedness of UTF8-BOM encoded XML (can be disabled in options)
+* NEW: Minor improvements in search with Ctrl+F
+* NEW: Search'n'Replace can handle plain text
+* NEW: Copy XPath of node in XmlGridView to clipboard
+* NEW: Copy value of node in XmlGridView to clipboard
 * CHG: 
 
 
 
 = TODOs =
 
-	* plain-text Suchen und Ersetzen
 	* Code Completion tut nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
@@ -35,7 +39,7 @@
 	* GridView is read-only
 	
 == low prio ==
-	* GridView: Zelle markieren und 'copy XPath', insert element, delete element, comment out, rename (aus Forum)
+	* GridView erweitern: Position synchron halten, auch nach Wechsel zum Editor und zurück; Zelle markieren und insert element, delete element, comment out, rename (aus Forum)
 	* TCP Listener: Auto-Scrolldown
 	* Öffnender und schließender Tag synchron halten (vgl. VS)
 	* Highlighting fuer beliebige Dateien ausschalten

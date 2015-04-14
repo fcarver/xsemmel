@@ -15,10 +15,10 @@ namespace XSemmel.Schema.Commands
             {
                 return false;
             }
-            if (!ef.XmlEditor.TextArea.IsFocused)
-            {
-                return false;
-            }
+//            if (!ef.XmlEditor.TextArea.IsFocused)
+//            {
+//                return false;
+//            }
             if (string.IsNullOrWhiteSpace(ef.Data.ValidationData.Xsd))
             {
                 return false;
