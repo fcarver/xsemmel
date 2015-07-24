@@ -17,7 +17,7 @@ namespace XSemmel.PrettyPrinter
             {
                 Owner = owner,
                 Icon = BitmapFrame.Create(
-                    new Uri("pack://application:,,,/Images/IndentHS.png",
+                    new Uri("pack://application:,,,/Images/Prettyprint_16x16.png",
                     UriKind.RelativeOrAbsolute)),
                 Title = "Bulk pretty print files",
                 OnSearchClicked = onSearchClicked
