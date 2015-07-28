@@ -46,6 +46,8 @@
             <commands:OpenFromClipboardCommand x:Key="OpenFromClipboardCommand"/>
             <commands:XsdVizEnabledCommand x:Key="XsdVizEnabledCommand"/>
             <commands:XsdValidateXmlCommand x:Key="XsdValidateXmlCommand"/>
+            <commands:CommentCommand x:Key="CommentCommand"/>
+            <commands:UncommentCommand x:Key="UncommentCommand"/>
         </DockPanel.Resources>
 
         <fluent:Ribbon x:Name="Ribbon" DockPanel.Dock="Top" AutomaticStateManagement="False">
@@ -111,6 +113,22 @@
                     <fluent:Button Header="Delete" Icon="/Images/Delete_16x16.png" Command="Delete" SizeDefinition="Middle, Small"/>
                     <fluent:Button Header="Undo" Icon="/Images/Undo.png" Command="Undo" SizeDefinition="Middle, Small"/>
                     <fluent:Button Header="Redo" Icon="/Images/Redo.png" Command="Redo" SizeDefinition="Middle, Small"/>
+
+                    <fluent:ToggleButton
+                        Header="Comment"
+                        Icon="/Images/XmlComment_16x16.png"
+                        Command="{StaticResource CommentCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ShowFindDialog}"
+                        SizeDefinition="Middle, Small"/>
+                    <fluent:ToggleButton
+                        Header="Uncomment"
+                        Icon="/Images/XmlUncomment_16x16.png"
+                        Command="{StaticResource UncommentCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"
+                        IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.ShowFindDialog}"
+                        SizeDefinition="Middle, Small"/>                    
+                    
                 </fluent:RibbonGroupBox>
                 <fluent:RibbonGroupBox Header="Show">
                     <fluent:CheckBox

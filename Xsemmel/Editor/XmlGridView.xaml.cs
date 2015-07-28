@@ -20,12 +20,36 @@ namespace XSemmel.Editor
         {
             InitializeComponent();
             _xmlGridView.MouseDown += (sender, args) => { _contextMenuAtPos = args.Location; };
-
+            
             _xmlGridView.ContextMenu = new ContextMenu(
                 new[]
                     {
                         new MenuItem("Refresh", (sender, evt) => load()),
                         new MenuItem("Expand all", (sender, evt) => _xmlGridView.FullExpand()),
+                        
+                        new MenuItem("Expand", new[] {
+                            new MenuItem("1 Level", (sender, evt) => {
+                                Rectangle rect = new Rectangle();
+                                GridCell cell = _xmlGridView.FindCellByPoint(_contextMenuAtPos, ref rect);
+                                ExpandCell(cell);
+                            } ),
+                            new MenuItem("2 Levels", (sender, evt) => {
+                                Rectangle rect = new Rectangle();
+                                GridCell cell = _xmlGridView.FindCellByPoint(_contextMenuAtPos, ref rect);
+                                ExpandCell(cell, 2);
+                            } ),
+                            new MenuItem("3 Levels", (sender, evt) => {
+                                Rectangle rect = new Rectangle();
+                                GridCell cell = _xmlGridView.FindCellByPoint(_contextMenuAtPos, ref rect);
+                                ExpandCell(cell, 3);
+                            } )
+                        }),
+                        new MenuItem("Collapse all", (sender, evt) => 
+                            {
+                                Rectangle rect = new Rectangle();
+                                GridCell cell = _xmlGridView.FindCellByPoint(_contextMenuAtPos, ref rect);
+                                _xmlGridView.FullCollapse(cell);
+                            }),
                         new MenuItem("-"),
                         new MenuItem("Copy", (sender, evt) =>
                         {
@@ -129,6 +153,28 @@ namespace XSemmel.Editor
         private void editor_TextChanged(object sender, EventArgs e)
         {
             load();
+        }
+
+        private void ExpandCell(GridCell cell, int level = 1)
+        {
+            GridCellGroup cellGroup = (GridCellGroup)cell;
+            _xmlGridView.Expand(cellGroup);
+
+            if (level > 1)
+            {                
+                level--;
+
+                for (int i = 0; i <= cellGroup.Table.Height - 1; i++)
+                {
+                    GridCell tableCell = cellGroup.Table[0, i];
+                    if (tableCell.IsGroup)
+                    {
+                        ExpandCell(tableCell, level);
+                    }
+                }
+
+            }
+
         }
     }
 }

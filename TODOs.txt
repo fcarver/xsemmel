@@ -9,6 +9,9 @@
 * NEW: Copy value of node in XmlGridView to clipboard
 * CHG: 
 
+* NEW: Comment / Uncomment block or line via toolbar
+* NEW: GridView right click context menu.  Collapse all, expand to 1, 2, or 3 levels.
+* CHG: XsdVisualizer now shows an Xml Modified warning and will be updated on Save.
 
 
 = TODOs =

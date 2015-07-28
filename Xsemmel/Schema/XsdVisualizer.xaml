@@ -5,11 +5,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" 
         d:DesignHeight="312" d:DesignWidth="966" 
         IsVisibleChanged="UserControl_IsVisibleChanged">
-    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Left">
+                <TextBlock x:Name="_lblModified" Foreground="DarkRed" Width="70" Visibility="Collapsed">
+                        Xml Modified
+                </TextBlock>
+            </StatusBarItem>
+            <StatusBarItem DockPanel.Dock="Right">
+            </StatusBarItem>
+        </StatusBar>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" DockPanel.Dock="Bottom">
         <DockPanel Name="pnlPaintArea" Background="White" HorizontalAlignment="Left" VerticalAlignment="Top">
             <DockPanel.Effect>
                 <DropShadowEffect ShadowDepth="4" Direction="320" Color="DarkGray" Opacity="0.5" BlurRadius="4"/>
             </DockPanel.Effect>
+            
         </DockPanel>
+
+        
     </ScrollViewer>
+    </DockPanel>
 </UserControl>

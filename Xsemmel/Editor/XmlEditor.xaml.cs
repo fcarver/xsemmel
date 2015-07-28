@@ -232,6 +232,17 @@ namespace XSemmel.Editor
             }
         }
 
+        private void _textEditor_TextChanged(object sender, EventArgs e)
+        {
+            if (_textEditor.IsModified)
+            {
+                if (_editorFrame.XSDocument.Filename != null && _editorFrame.XSDocument.Filename.ToLower().EndsWith(".xsd"))
+                {
+                    _editorFrame._xsdVisualizer._lblModified.Visibility = System.Windows.Visibility.Visible;
+                }
+            }
+        }
+
         private void mnuSelectionAsFragment_Click(object sender, RoutedEventArgs e)
         {
             _editorFrame.SetFragmentText(_textEditor.SelectedText, true);

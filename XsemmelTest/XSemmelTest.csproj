@@ -65,68 +65,17 @@
     <Compile Include="XsltTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="SampleFiles\Xml\books.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\booksNotWellformed.xml" />
-    <Content Include="SampleFiles\Xml\booktransform.xsl">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-a1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-a2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-alt.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-b1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-b2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-c1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-c2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-d1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-d2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-f1.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-f2.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\diff-neu.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleFiles\Xml\note.xml" />
-    <Content Include="SampleFiles\Xml\noteInvalid.xml" />
-    <Content Include="SampleFiles\Xml\out.html" />
-    <Content Include="SampleFiles\Xml\ugly.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
-    <None Include="SampleFiles\Xml\note.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="SampleFiles\Xml\pattern" />
-    <None Include="SampleFiles\Xml\pattern2" />
-    <None Include="SampleFiles\Xml\pattern3" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Xsemmel\XSemmel.csproj">
       <Project>{e3cf1844-9703-425e-b0c2-980fb2026a01}</Project>
       <Name>XSemmel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SampleFiles\Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

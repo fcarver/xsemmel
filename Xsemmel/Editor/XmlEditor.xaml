@@ -43,6 +43,7 @@
                                MouseHover="textEditor_MouseHover" 
                                MouseHoverStopped="textEditor_MouseHoverStopped"
                                MouseRightButtonDown="_textEditor_MouseRightButtonDown"
+                               TextChanged="_textEditor_TextChanged"
             >
             <avalonEdit:TextEditor.ContextMenu>
                 <ContextMenu>
