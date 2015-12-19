@@ -1,10 +1,8 @@
 ﻿!! Done in current release
 
-* FIX: No longer possible to minimize Compare- and XQuery-dialogs
-* FIX: fixed some Windows 10 design issues
-* NEW: "Listening to TCP stream" window is now always on top, Mainwindow can be minimized
-* CHG: "Trim" command also under "Prettyprint". Trim prettyprints even if XML is wellformed
-* CHG: Automatically show schema info when selecting node
+* FIX: 
+* NEW: 
+* CHG: 
 
 
 = TODOs =

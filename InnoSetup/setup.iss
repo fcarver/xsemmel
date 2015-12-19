@@ -1,4 +1,4 @@
-; .net Installing functionality: http://www.codeproject.com/Articles/20868/NET-Framework-1-1-2-0-3-5-Installer-for-InnoSetup
+;contribute on github.com/stfx/innodependencyinstaller or codeproject.com/Articles/20868/NET-Framework-1-1-2-0-3-5-Installer-for-InnoSetup
 
 ;#define use_iis
 ;#define use_kb835732
@@ -19,10 +19,17 @@
 ;#define use_dotnetfx35lp
 
 ;#define use_dotnetfx40
-#define use_dotnetfx45full
 ;#define use_wic
 
+#define use_dotnetfx46
+
+;#define use_msiproduct
+;#define use_vc2005
+;#define use_vc2008
 ;#define use_vc2010
+;#define use_vc2012
+;#define use_vc2013
+;#define use_vc2015
 
 ;#define use_mdac28
 ;#define use_jet4sp8
@@ -62,10 +69,10 @@ OutputBaseFilename=setup_xsemmel_{#CurrentDate}
 Compression=lzma
 SolidCompression=yes
 MinVersion=0,5.01
-AppCopyright=(c) 2007 F. Schnitzer
+AppCopyright=(c) 2007-2016 F. Schnitzer
 UninstallDisplayName=Xsemmel
 VersionInfoCompany=F. Schnitzer
-VersionInfoCopyright=(c) 2007 F. Schnitzer
+VersionInfoCopyright=(c) 2007-2016 F. Schnitzer
 VersionInfoProductName=Xsemmel
 
 [Languages]
@@ -111,13 +118,20 @@ Root: HKCR; Subkey: "XsemmelFile\shell\open\command"; ValueType: string; ValueNa
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
-#include "scripts\products.iss"
+[CustomMessages]
+win_sp_title=Windows %1 Service Pack %2
 
+
+[Code]
+// shared code for installing the products
+#include "scripts\products.iss"
+// helper functions
 #include "scripts\products\stringversion.iss"
 #include "scripts\products\winversion.iss"
 #include "scripts\products\fileversion.iss"
 #include "scripts\products\dotnetfxversion.iss"
 
+// actual products
 #ifdef use_iis
 #include "scripts\products\iis.iss"
 #endif
@@ -173,16 +187,34 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 #include "scripts\products\dotnetfx40full.iss"
 #endif
 
-#ifdef use_dotnetfx45full
-#include "scripts\products\dotnetfx45full.iss"
+#ifdef use_dotnetfx46
+#include "scripts\products\dotnetfx46.iss"
 #endif
 
 #ifdef use_wic
 #include "scripts\products\wic.iss"
 #endif
 
+#ifdef use_msiproduct
+#include "scripts\products\msiproduct.iss"
+#endif
+#ifdef use_vc2005
+#include "scripts\products\vcredist2005.iss"
+#endif
+#ifdef use_vc2008
+#include "scripts\products\vcredist2008.iss"
+#endif
 #ifdef use_vc2010
 #include "scripts\products\vcredist2010.iss"
+#endif
+#ifdef use_vc2012
+#include "scripts\products\vcredist2012.iss"
+#endif
+#ifdef use_vc2013
+#include "scripts\products\vcredist2013.iss"
+#endif
+#ifdef use_vc2015
+#include "scripts\products\vcredist2015.iss"
 #endif
 
 #ifdef use_mdac28
@@ -203,14 +235,10 @@ Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChang
 #include "scripts\products\sql2008express.iss"
 #endif
 
-[CustomMessages]
-win_sp_title=Windows %1 Service Pack %2
 
-
-[Code]
 function InitializeSetup(): boolean;
 begin
-	//init windows version
+	// initialize windows version
 	initwinversion();
 
 #ifdef use_iis
@@ -218,16 +246,16 @@ begin
 #endif
 
 #ifdef use_msi20
-	msi20('2.0');
+	msi20('2.0'); // min allowed version is 2.0
 #endif
 #ifdef use_msi31
-	msi31('3.1');
+	msi31('3.1'); // min allowed version is 3.1
 #endif
 #ifdef use_msi45
-	msi45('4.5');
+	msi45('4.5'); // min allowed version is 4.5
 #endif
 #ifdef use_ie6
-	ie6('5.0.2919');
+	ie6('5.0.2919'); // min allowed version is 5.0.2919
 #endif
 
 #ifdef use_dotnetfx11
@@ -238,9 +266,9 @@ begin
 	dotnetfx11sp1();
 #endif
 
-	//install .netfx 2.0 sp2 if possible; if not sp1 if possible; if not .netfx 2.0
+	// install .netfx 2.0 sp2 if possible; if not sp1 if possible; if not .netfx 2.0
 #ifdef use_dotnetfx20
-	//check if .netfx 2.0 can be installed on this OS
+	// check if .netfx 2.0 can be installed on this OS
 	if not minwinspversion(5, 0, 3) then begin
 		msgbox(fmtmessage(custommessage('depinstall_missing'), [fmtmessage(custommessage('win_sp_title'), ['2000', '3'])]), mberror, mb_ok);
 		exit;
@@ -282,29 +310,46 @@ begin
 #endif
 #endif
 
+#ifdef use_wic
+	wic();
+#endif
+
 	// if no .netfx 4.0 is found, install the client (smallest)
 #ifdef use_dotnetfx40
 	if (not netfxinstalled(NetFx40Client, '') and not netfxinstalled(NetFx40Full, '')) then
 		dotnetfx40client();
 #endif
 
-#ifdef use_dotnetfx45full
-   dotnetfx45full();
+#ifdef use_dotnetfx46
+    dotnetfx46(50); // min allowed version is 4.5.0
 #endif
 
-#ifdef use_wic
-	wic();
+#ifdef use_vc2005
+	vcredist2005();
 #endif
-
+#ifdef use_vc2008
+	vcredist2008();
+#endif
 #ifdef use_vc2010
 	vcredist2010();
 #endif
+#ifdef use_vc2012
+	vcredist2012();
+#endif
+#ifdef use_vc2013
+	//SetForceX86(true); // force 32-bit install of next products
+	vcredist2013();
+	//SetForceX86(false); // disable forced 32-bit install again
+#endif
+#ifdef use_vc2015
+	vcredist2015();
+#endif
 
 #ifdef use_mdac28
-	mdac28('2.7');
+	mdac28('2.7'); // min allowed version is 2.7
 #endif
 #ifdef use_jet4sp8
-	jet4sp8('4.0.8015');
+	jet4sp8('4.0.8015'); // min allowed version is 4.0.8015
 #endif
 
 #ifdef use_sqlcompact35sp2
@@ -320,4 +365,3 @@ begin
 
 	Result := true;
 end;
-
