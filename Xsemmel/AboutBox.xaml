@@ -32,6 +32,8 @@
                             <Paragraph>
                                 SharpDevelop AvalonEdit
                                 <LineBreak/>
+                                Version 4.4.2.9744, LGPL
+                                <LineBreak/>
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://www.avalonedit.net/">http://www.avalonedit.net/</Hyperlink>
                             </Paragraph>
                         </ListItem>
@@ -76,6 +78,8 @@
                                 Property Tools
                                 <LineBreak/>
                                 Version 2015.1.56, MIT
+                                <LineBreak/>
+                                Copyright (c) 2014 PropertyTools contributors
                                 <LineBreak/>
                                 <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://github.com/objorke/PropertyTools">https://github.com/objorke/PropertyTools</Hyperlink>
                             </Paragraph>

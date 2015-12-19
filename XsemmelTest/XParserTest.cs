@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using XSemmel.Editor;
 
 namespace XSemmel.Test
@@ -171,7 +172,24 @@ namespace XSemmel.Test
             Assert.AreEqual(e1, XParser.Trim(a1));
 
             Assert.AreEqual("<hallo/>", XParser.Trim("<hallo/>"));
-            Assert.AreEqual("<", XParser.Trim("<"));
+            
+            try
+            {
+                Assert.AreEqual("<", XParser.Trim("<"));
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("No XML found", e.Message);
+            }
+
+            try
+            {
+                XParser.Trim("xxx");
+            }
+            catch (Exception e)
+            {
+                Assert.AreEqual("No XML found", e.Message);
+            }
         }
 
     }
