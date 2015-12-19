@@ -44,6 +44,12 @@ namespace XSemmel.Differ
             edtTwo.TextArea.TextView.BackgroundRenderers.Add(markerTwo);
         }
 
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            this.HideMinimizeButtons();
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dlgOpenFile = new OpenFileDialog();

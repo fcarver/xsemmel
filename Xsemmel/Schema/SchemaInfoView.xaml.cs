@@ -56,7 +56,9 @@ namespace XSemmel.Schema
 
         private void append(StringBuilder sb, XmlSchemaDocumentation doc)
         {
-            sb.AppendLine(string.Format("At line: {0}/{1} ({2})", doc.LineNumber, doc.LinePosition, doc.SourceUri));
+            sb.AppendLine(string.Format("(Source: {2} at Ln {0} Col {1})", doc.LineNumber, doc.LinePosition, doc.SourceUri));
+            sb.AppendLine();
+            sb.Append("     ");
             sb.AppendLine(doc.Markup[0].OuterXml.Trim());
         }
 

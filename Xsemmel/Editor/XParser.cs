@@ -309,6 +309,11 @@ namespace XSemmel.Editor
 
                 if (idxOpen2 < 0 || idxOpen2 > idxClose)
                 {
+                    if (idxOpen < 0)
+                    {
+                        throw new Exception("No XML found");
+                    }
+
                     s = s.Substring(idxOpen);
                 }
             }
@@ -321,6 +326,11 @@ namespace XSemmel.Editor
                     idxClose2 = s.LastIndexOf('>', idxClose - 1);
                 }
                 int idxOpen = s.LastIndexOf('<');
+
+                if (idxOpen < 0)
+                {
+                    throw new Exception("No XML found");
+                }
 
                 if (idxClose >= 0 && (idxClose2 < 0 || idxClose2 < idxOpen))
                 {

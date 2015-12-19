@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Xml;
@@ -96,7 +97,12 @@ namespace XSemmel.TreeView
             {
                 Cursor = Cursors.Wait;
                 var loc = _editor.XmlEditor.TextArea.Caret.Location;
-                tree.SelectNodeBasedOnCursor(loc);
+                TreeViewItem selectedItem = tree.SelectNodeBasedOnCursor(loc);
+                if (selectedItem != null)
+                {
+                    ViewerNode node = (ViewerNode)selectedItem.Tag;
+                    _editor.SetSchemaInfo(node.SchemaInfo);
+                }
             }
             finally
             {

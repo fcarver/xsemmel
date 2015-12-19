@@ -17,34 +17,37 @@ namespace XSemmel.Commands
         {
             try
             {
-                ef.XmlEditor.Text.ToXmlDocument();
-                MessageBox.Show(Application.Current.MainWindow, "Document is well-formed. No need to trim.",
-                                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch
-            {
+                string xmlToProcess;
+
                 try
                 {
-                    var trimmed = XParser.Trim(ef.XmlEditor.Text);
-
-                    try
-                    {
-                        ef.XmlEditor.Text = PrettyPrint.Execute(
-                            trimmed,
-                            ef.Data.PrettyPrintData.Indent,
-                            ef.Data.PrettyPrintData.NewLineOnAttributes
-                        );
-                    }
-                    catch
-                    {
-                        ef.XmlEditor.Text = trimmed;
-                    }
+                    ef.XmlEditor.Text.ToXmlDocument();  //we are interested if this throws an exception, nothing else
+                    xmlToProcess = ef.XmlEditor.Text;
+                    //MessageBox.Show(Application.Current.MainWindow, "Document is well-formed. No need to trim.",
+                    //                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                catch (Exception e)
+                catch
                 {
-                    MessageBox.Show(Application.Current.MainWindow, "Error: " + e.Message, "Error", MessageBoxButton.OK,
-                                    MessageBoxImage.Error);
+                    xmlToProcess = XParser.Trim(ef.XmlEditor.Text);
                 }
+
+                try
+                {
+                    ef.XmlEditor.Text = PrettyPrint.Execute(
+                        xmlToProcess,
+                        ef.Data.PrettyPrintData.Indent,
+                        ef.Data.PrettyPrintData.NewLineOnAttributes
+                    );
+                }
+                catch
+                {
+                    ef.XmlEditor.Text = xmlToProcess;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(Application.Current.MainWindow, "Error: " + e.Message, "Error", MessageBoxButton.OK,
+                                MessageBoxImage.Error);
             }
         }
 

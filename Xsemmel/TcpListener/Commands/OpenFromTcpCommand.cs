@@ -29,9 +29,11 @@ namespace XSemmel.TcpListener.Commands
                     return;
                 }
 
-                TcpListeningWindow wnd = new TcpListeningWindow(configuration, data.EditorFrame) { Owner = mainWnd };
+                TcpListeningWindow wnd = new TcpListeningWindow(configuration, data.EditorFrame); // { Owner = mainWnd };  //kein Owner, damit das Fenster aufbleiben kann während das MainWindow minimiert ist
+                wnd.Topmost = true;
                 wnd.Show();
                 wnd.Start();
+//                wnd.Activate();
             }
         }
 

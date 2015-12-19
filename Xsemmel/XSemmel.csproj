@@ -179,6 +179,7 @@
     <Compile Include="Editor\HighlightOccurrences.cs" />
     <Compile Include="ExternalTools.cs" />
     <Compile Include="Helpers\ColorHelper.cs" />
+    <Compile Include="Helpers\WindowExtension.cs" />
     <Compile Include="Helpers\WindowSaver.cs" />
     <Compile Include="Helpers\NamedPipeHelper.cs" />
     <Compile Include="Helpers\NodeMover.cs" />

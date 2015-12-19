@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using Microsoft.Xml.XQuery;
+using XSemmel.Helpers;
 
 namespace XSemmel.XQuery
 {
@@ -19,6 +20,12 @@ namespace XSemmel.XQuery
             }
             _document = doc;
             InitializeComponent();
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e); 
+            this.HideMinimizeButtons();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

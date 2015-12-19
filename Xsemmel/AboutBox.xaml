@@ -3,7 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Margin="5">
     <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontWeight="Bold" FontSize="16">Xsemmel</TextBlock>
-    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-2014 by F. Schnitzer</TextBlock>
+    <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">(c) 2007-2016 by F. Schnitzer</TextBlock>
     <TextBlock DockPanel.Dock="Top" FontFamily="{Binding ElementName=flowDoc, Path=FontFamily}" FontStyle="Italic" FontSize="14">
         <Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="http://xsemmel.codeplex.com/">http://xsemmel.codeplex.com/</Hyperlink>
     </TextBlock>
@@ -108,7 +108,7 @@
             <FlowDocumentScrollViewer>
                 <FlowDocument>
                     <Paragraph>
-                        Copyright (c) 2007-2015, Frank Schnitzer
+                        Copyright (c) 2007-2016, Frank Schnitzer
                         <LineBreak/>
                         <LineBreak/>
                         All rights reserved.

@@ -36,13 +36,13 @@ namespace XSemmel.TreeView
 
         public event Action<ViewerNode> SelectionChanged;
 
-        public void SelectNodeBasedOnCursor(TextLocation loc)
+        public TreeViewItem SelectNodeBasedOnCursor(TextLocation loc)
         {
             ItemCollection items = _tree.Items;
             Debug.Assert(items.Count <= 1);
             if (items.Count != 1)
             {
-                return;
+                return null;
             }
 
             LazyTreeViewItem root = (LazyTreeViewItem)_tree.Items[0];
@@ -82,6 +82,7 @@ namespace XSemmel.TreeView
                 match.BringIntoView();
                 _tree.SelectedItemChanged += tree_SelectedItemChanged;
             }
+            return match;
         }
 
         private void highlightFragment(ViewerNode selectedNode)

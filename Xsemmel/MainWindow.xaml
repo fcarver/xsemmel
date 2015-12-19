@@ -20,6 +20,7 @@
     <DockPanel>
         <DockPanel.Resources>
             <prettyPrinter:PrettyPrintCommand x:Key="PrettyPrintCommand"/>
+            <commands:TrimXmlCommand x:Key="TrimXmlCommand"/>
             <commands:SaveCommand x:Key="SaveCommand"/>
             <commands:OpenCommand x:Key="OpenCommand"/>
             <commands:CopyFilenameCommand x:Key="CopyFilenameCommand"/>
@@ -141,13 +142,19 @@
                                     IsChecked="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data.PrettyPrintData.NewLineOnAttributes}"
                                     Command="{StaticResource PrettyPrintCommand}" 
                                     CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
-                          <Separator/>
-                          <fluent:MenuItem
-                              Header="Bulk"
-                              ToolTip="Prettyprints multiple files"
-                              Icon="/Images/Prettyprint_16x16.png"
-                              Click="mnuBulkPrettyPrint_Click"
-                          />
+
+                            <Separator/>
+                            <fluent:MenuItem Header="Trim"
+                                             ToolTip="Trims and prettyprints invalid XML"
+                                             Icon="/Images/EditTask.png" 
+                                    Command="{StaticResource TrimXmlCommand}" 
+                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
+                            <fluent:MenuItem
+                                Header="Bulk"
+                                ToolTip="Prettyprints multiple files"
+                                Icon="/Images/Prettyprint_16x16.png"
+                                Click="mnuBulkPrettyPrint_Click"
+                            />
                         </fluent:SplitButton.Items>
                     </fluent:SplitButton>
                     

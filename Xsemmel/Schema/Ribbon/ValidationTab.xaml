@@ -86,6 +86,8 @@
                             CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}">
             <fluent:SplitButton.Items>
                 <fluent:MenuItem Header="Trim"
+                                 ToolTip="Trims and prettyprints invalid XML"
+                                 Icon="/Images/EditTask.png" 
                                 Command="{StaticResource TrimXmlCommand}" 
                                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type fluent:RibbonWindow}}, Path=Data}"/>
                 <!--<fluent:MenuItem Header="Escape XML"
