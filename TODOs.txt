@@ -2,11 +2,13 @@
 
 * FIX: 
 * NEW: 
-* CHG: 
+* CHG: updated to .net 4.6
 
 
 = TODOs =
 
+	* XPath search'n'replace tut nicht wie erwartet; Beispiele machen
+	* C#-Code auf XML ausführen
 	* Code Completion funktioniert nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
@@ -74,4 +76,3 @@
 		End a DTD declaration: >
 	* ICSharpCode.NRefactory.Xml anschauen
 	* http://stackoverflow.com/questions/12567455/wpf-ribbonwindow-ribbon-title-outside-screen
-	* http://www.codeproject.com/Articles/20868/NET-Framework-Installer-for-InnoSetup
