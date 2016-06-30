@@ -36,7 +36,7 @@ namespace XSemmel
             Debug.Assert(xml != null);
             if (xml == null)
             {
-                throw new ArgumentNullException("xml");
+                throw new ArgumentNullException(nameof(xml));
             }
             Xml = xml;
             if (xmlfile != null)
@@ -57,6 +57,7 @@ namespace XSemmel
                 }
                 catch (Exception)
                 {
+                    // ignored
                 }
             }
         }
@@ -73,7 +74,7 @@ namespace XSemmel
                 Debug.Assert(value != null);
                 if (value == null)
                 {
-                    throw new ArgumentNullException("value");
+                    throw new ArgumentNullException(nameof(value));
                 }
 
                 _xmlDoc = null;

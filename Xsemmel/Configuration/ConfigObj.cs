@@ -31,42 +31,24 @@ namespace XSemmel.Configuration
 //        private string _fileEncoding = "UTF-8";
 
         private ushort _fontSize = 13;
-        private bool _showSplashScreen = false;
-        private bool _watchCurrentFileForChanges = true;
-        private bool _alwaysPrettyprintFragments = true;
         private bool _enableCodeCompletion = true;
-        private bool _workaroundUtf8BomBug = true;
         private const int MAX_RECENTLY_USED_FILES = 5;
         private readonly List<string> _recentlyUsedFiles = new List<string>(); //cannot use LinkedList due to serialization
-        private List<XsdMapItem> _xsdMapping = new List<XsdMapItem>();
-
 
 
         [Category("General|Application")]
-        public bool ShowSplashScreen
-        {
-            get { return _showSplashScreen; }
-            set { _showSplashScreen = value; }
-        }
+        public bool ShowSplashScreen { get; set; } = false;
 
         [Category("General|Application")]
         [DisplayName("Replace \"?> by \" ?> as workaround for UTF8-BOM files: ")]
-        public bool WorkaroundUtf8BomBug
-        {
-            get { return _workaroundUtf8BomBug; }
-            set { _workaroundUtf8BomBug = value; }
-        }
+        public bool WorkaroundUtf8BomBug { get; set; } = true;
 
         [Category("Schema|XSD mapping")]
 //        [DisplayName(" ")]
 //        [Column(0, "Name", "Replace", null, "1*", 'L')]  //TODO bug in PropertyTools prevents to show this columnname correctly
 //        [Column(1, "Mapping", "by", null, "2*", 'R')]
         [HeaderPlacement(HeaderPlacement.Collapsed)]
-        public List<XsdMapItem> XsdMapping
-        {
-            get { return _xsdMapping; }
-            set { _xsdMapping = value; }
-        }
+        public List<XsdMapItem> XsdMapping { get; set; } = new List<XsdMapItem>();
 
 
         [Category("Schema|XSD mapping")]
@@ -81,18 +63,10 @@ namespace XSemmel.Configuration
         }
 
         [Category("General|Application")]
-        public bool WatchCurrentFileForChanges
-        {
-            get { return _watchCurrentFileForChanges; }
-            set { _watchCurrentFileForChanges = value; }
-        }
+        public bool WatchCurrentFileForChanges { get; set; } = true;
 
         [Category("General|Application")]
-        public bool AlwaysPrettyprintFragments
-        {
-            get { return _alwaysPrettyprintFragments; }
-            set { _alwaysPrettyprintFragments = value; }
-        }
+        public bool AlwaysPrettyprintFragments { get; set; } = true;
 
         [Category("General|Editor")]
         public ushort FontSize

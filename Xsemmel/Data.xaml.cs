@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows.Controls;
-using XSemmel.Editor;
+﻿using XSemmel.Editor;
 using XSemmel.Helpers.WPF;
 
 namespace XSemmel
@@ -86,10 +84,7 @@ namespace XSemmel
                 if (_data.EditorFrame != null)
                 {
                     string filename = value;
-                    if (filename != null)
-                    {
-                        filename = filename.Trim('\"');
-                    }
+                    filename = filename?.Trim('\"');
 
                     _xsdFile = filename;
                     _data.EditorFrame.SetXsdFile(filename);
@@ -107,7 +102,6 @@ namespace XSemmel
 
         private bool _xsltInEditor = true;
         private bool _xmlInEditor;
-        private bool _checkXsd;
 
         private string _file;
 
@@ -239,10 +233,7 @@ namespace XSemmel
             {
                 _expandRefs = value;
                 OnPropertyChanged("ExpandRefs");
-                if (_data.EditorFrame != null && _data.EditorFrame._xsdVisualizer != null)
-                {
-                    _data.EditorFrame._xsdVisualizer.Refresh();
-                }
+                _data.EditorFrame?._xsdVisualizer?.Refresh();
             }
         }
 
@@ -256,10 +247,7 @@ namespace XSemmel
             {
                 _expandTypes = value;
                 OnPropertyChanged("ExpandTypes");
-                if (_data.EditorFrame != null && _data.EditorFrame._xsdVisualizer != null)
-                {
-                    _data.EditorFrame._xsdVisualizer.Refresh();
-                }
+                _data.EditorFrame?._xsdVisualizer?.Refresh();
             }
         }
 
@@ -273,10 +261,7 @@ namespace XSemmel
             {
                 _hideTypes = value;
                 OnPropertyChanged("HideTypes");
-                if (_data.EditorFrame != null && _data.EditorFrame._xsdVisualizer != null)
-                {
-                    _data.EditorFrame._xsdVisualizer.Refresh();
-                }
+                _data.EditorFrame?._xsdVisualizer?.Refresh();
             }
         }
 
@@ -290,10 +275,7 @@ namespace XSemmel
             {
                 _expandIncludes = value;
                 OnPropertyChanged("ExpandIncludes");
-                if (_data.EditorFrame != null && _data.EditorFrame._xsdVisualizer != null)
-                {
-                    _data.EditorFrame._xsdVisualizer.Refresh();
-                }
+                _data.EditorFrame?._xsdVisualizer?.Refresh();
             }
         }
 
@@ -307,10 +289,7 @@ namespace XSemmel
             {
                 _hideIncludes = value;
                 OnPropertyChanged("HideIncludes");
-                if (_data.EditorFrame != null && _data.EditorFrame._xsdVisualizer != null)
-                {
-                    _data.EditorFrame._xsdVisualizer.Refresh();
-                }
+                _data.EditorFrame?._xsdVisualizer?.Refresh();
             }
         }
 
@@ -358,7 +337,7 @@ namespace XSemmel
         {
             get
             {
-                if (EditorFrame != null && EditorFrame.XmlEditor != null)
+                if (EditorFrame?.XmlEditor != null)
                 {
                     return EditorFrame.XmlEditor.WordWrap;
                 }
@@ -366,7 +345,7 @@ namespace XSemmel
             }
             set
             {
-                if (EditorFrame != null && EditorFrame.XmlEditor != null)
+                if (EditorFrame?.XmlEditor != null)
                 {
                     EditorFrame.XmlEditor.WordWrap = value;
                     OnPropertyChanged("WordWrap");
@@ -378,7 +357,7 @@ namespace XSemmel
         {
             get
             {
-                if (EditorFrame != null && EditorFrame.XmlEditor != null)
+                if (EditorFrame?.XmlEditor != null)
                 {
                     return EditorFrame.XmlEditor.Options.ShowEndOfLine;
                 }
@@ -386,7 +365,7 @@ namespace XSemmel
             }
             set
             {
-                if (EditorFrame != null && EditorFrame.XmlEditor != null)
+                if (EditorFrame?.XmlEditor != null)
                 {
                     EditorFrame.XmlEditor.Options.ShowBoxForControlCharacters = value;
                     EditorFrame.XmlEditor.Options.ShowEndOfLine = value;

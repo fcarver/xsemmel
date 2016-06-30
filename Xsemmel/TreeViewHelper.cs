@@ -25,10 +25,7 @@ namespace XSemmel
 
         public void Expand()
         {
-            if (ExpandAction != null)
-            {
-                ExpandAction(this);
-            }
+            ExpandAction?.Invoke(this);
             IsStillLazy = false;
         }
 
