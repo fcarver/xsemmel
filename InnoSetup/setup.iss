@@ -92,6 +92,8 @@ Source: "..\Xsemmel\bin\Release\ICSharpCode.AvalonEdit.dll"; DestDir: "{app}"; F
 Source: "..\Xsemmel\bin\Release\Fluent.dll"; DestDir: "{app}"; Flags: ignoreversion
 ;System.Windows.Interactivity used by Fluent
 Source: "..\Xsemmel\bin\Release\System.Windows.Interactivity.dll"; DestDir: "{app}"; Flags: ignoreversion
+;ControlzEx.dll used by fluent
+Source: "..\Xsemmel\bin\Release\ControlzEx.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\Microsoft.Xml.XQuery.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\XmlGridControl.dll"; DestDir: "{app}"; Flags: ignoreversion
 ;http://www.codeproject.com/KB/WPF/WPFTaskDialogEmulator.aspx?msg=4068294
@@ -102,6 +104,7 @@ Source: "..\Xsemmel\bin\Release\PropertyTools.Wpf.dll"; DestDir: "{app}"; Flags:
 Source: "..\Xsemmel\bin\Release\HtmlAgilityPack.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\XPathFunctions.cs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Xsemmel\bin\Release\FileIcon.ico"; DestDir: "{app}"; Flags: ignoreversion
+
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
