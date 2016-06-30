@@ -131,7 +131,7 @@ namespace XSemmel.TreeView
                 }
                 ((TreeViewItem)_tree.Items[0]).IsExpanded = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 _tree.Items.Clear();
             }

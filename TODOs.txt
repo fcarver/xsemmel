@@ -2,7 +2,9 @@
 
 * FIX: 
 * NEW: 
-* CHG: 
+* CHG: Updated Fluent.Ribbon
+* CHG: Updated DiffPlex
+* CHG: Updated HTML Agility Pack
 
 
 = TODOs =

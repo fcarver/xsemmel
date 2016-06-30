@@ -17,7 +17,7 @@ namespace XSemmel
         private string _nodePath;
         private string _nonRecurringNodePath;
         private string _xpath;
-        public List<ViewerNode> _childNodes;
+        private List<ViewerNode> _childNodes;
         private IXmlLineInfo _lineInfo;
 
         private readonly object _lockObjForExpandingChildNodes = new object();
@@ -161,19 +161,19 @@ namespace XSemmel
             builder.AppendLine();
             if (!string.IsNullOrEmpty(Value))
             {
-                builder.AppendLine(string.Format("Value: {0}", Value));
+                builder.AppendLine($"Value: {Value}");
             }
             if (!string.IsNullOrEmpty(Namespace))
             {
-                builder.AppendLine(string.Format("Namespace: {0}", Namespace));
+                builder.AppendLine($"Namespace: {Namespace}");
             }
             if (NormalAttributeCount > 0)
             {
-                builder.AppendLine(string.Format("Attribute Count: {0}", NormalAttributeCount));
+                builder.AppendLine($"Attribute Count: {NormalAttributeCount}");
             }
             if (ChildNodes.Count > 0)
             {
-                builder.AppendLine(string.Format("Child Node Count: {0}", ChildNodes.Count));
+                builder.AppendLine($"Child Node Count: {ChildNodes.Count}");
             }
             return builder.ToString();
         }
@@ -193,7 +193,7 @@ namespace XSemmel
                     }
                     else
                     {
-                        str = string.Format("{0} [{1}]", LocalName, TypeName);
+                        str = $"{LocalName} [{TypeName}]";
                     }
                     break;
                 default:
@@ -202,7 +202,7 @@ namespace XSemmel
             }
             if ((ChildNodes.Count == 0) && !string.IsNullOrEmpty(Value))
             {
-                str = string.Format("{0}: {1}", str, Value);
+                str = $"{str}: {Value}";
             }
             return str;
         }
@@ -221,7 +221,7 @@ namespace XSemmel
                     if (_childNodes == null)
                     {
                         _childNodes = new List<ViewerNode>();
-                        if ((_originalNode.ChildNodes != null) && (_originalNode.ChildNodes.Count > 0))
+                        if (_originalNode.ChildNodes.Count > 0)
                         {
                             for (int j = 0; j < _originalNode.ChildNodes.Count; j++)
                             {
@@ -361,11 +361,7 @@ namespace XSemmel
             {
                 //there's a b ug in XPathNavigator preventing to access nav.SelectSingleNode(XPath).SchemaInfo
                 XmlNode node = _document.XmlDoc.SelectSingleNode(XPath);
-                if (node != null)
-                {
-                    return node.SchemaInfo;
-                }
-                return null;
+                return node?.SchemaInfo;
             }
         }
 
