@@ -2,10 +2,6 @@
 
 * FIX: 
 * NEW: 
-* CHG: updated to .net 4.6
-* CHG: Updated Fluent.Ribbon
-* CHG: Updated DiffPlex
-* CHG: Updated HTML Agility Pack
 
 
 = TODOs =
