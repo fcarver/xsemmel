@@ -24,11 +24,11 @@ namespace XSemmel.Editor
         {
             if (doc == null)
             {
-                throw new ArgumentNullException("doc");
+                throw new ArgumentNullException(nameof(doc));
             }
             if (data == null)
             {
-                throw new ArgumentNullException("data");
+                throw new ArgumentNullException(nameof(data));
             }
             InitializeComponent();
 
@@ -102,8 +102,8 @@ namespace XSemmel.Editor
 
         public void SetSchemaInfo(IXmlSchemaInfo schemaInfo)
         {
-            _schemaInfoDockable.Focus();
             _schemaInfoDockable.Visibility = Visibility.Visible;
+            _schemaInfoDockable.IsSelected = true;
             _schemaInfo.SetSchemaInfo(schemaInfo);
         }
 
