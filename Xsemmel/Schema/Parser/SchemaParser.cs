@@ -70,10 +70,10 @@ namespace XSemmel.Schema.Parser
             expandReferences();
         }
 
-	    public SchemaParser(string schemafile, bool loadImportedSchemas)
+        public SchemaParser(string schemafile, bool loadImportedSchemas)
             : this(schemafile, loadImportedSchemas ? new SchemaMap() : null)
-	    {
-	    }
+        {
+        }
 
         private IXsdNode getNodeByName(string name)
         {
@@ -212,16 +212,16 @@ namespace XSemmel.Schema.Parser
             }
         }
 
-	    public IXsdNode GetVirtualRoot() 
+        public IXsdNode GetVirtualRoot() 
         {
-		    return _virtualRoot;
-	    }
+            return _virtualRoot;
+        }
 
-	    public IList<IXsdNode> GetAllNodes() 
+        public IList<IXsdNode> GetAllNodes() 
         {
-		    IList<IXsdNode> all = new List<IXsdNode>();
-		    return _virtualRoot.GetAll(all);
-	    }
+            IList<IXsdNode> all = new List<IXsdNode>();
+            return _virtualRoot.GetAll(all);
+        }
 
         public string Filename
         {
@@ -233,53 +233,53 @@ namespace XSemmel.Schema.Parser
         /// </summary>
         /// <param name="schema"></param>
         /// <param name="node"></param>
-	    private void parse(XmlNode schema, XsdNode node) 
+        private void parse(XmlNode schema, XsdNode node) 
         {
-		    XmlNodeList nl = schema.ChildNodes;
-		    for (int i = 0; i < nl.Count; i++) 
+            XmlNodeList nl = schema.ChildNodes;
+            for (int i = 0; i < nl.Count; i++) 
             {
-			    XmlNode n = nl.Item(i);
+                XmlNode n = nl.Item(i);
 
-			    string name = n.Name;
+                string name = n.Name;
                 if (!name.StartsWith(_prefix))
                 {
                     continue;
                 }
                 name = name.Substring(_prefix.Length);
 
-		        switch (name)
-		        {
+                switch (name)
+                {
                     case "element":
-		            {
+                    {
                         XsdNode newNode = new XsdElement(n);
                         node.AddKids(newNode);
                         parse(n, newNode);
                         break;    
-		            }
+                    }
                     case "sequence":
                     case "choice":
                     case "all":
-		            {
+                    {
                         XsdNode newNode = new XsdAllSequenceChoice(n, name);
-		                node.AddKids(newNode);
+                        node.AddKids(newNode);
                         parse(n, newNode);
                         break;    
-		            }
+                    }
                     case "documentation":
-		            {
+                    {
                         //last element
                         node.AddAnnotation(n.InnerText);
                         break;    
-		            }
-		            case "attribute":
-		            {
+                    }
+                    case "attribute":
+                    {
                         XsdAttribute newAttr = new XsdAttribute(n);
                         ((IXsdHasAttribute)node).AddAtts(newAttr);
                         parse(n, newAttr);
                         break;    
-		            }
+                    }
                     case "complexType":
-		            {
+                    {
                         if (!string.IsNullOrEmpty(VisualizerHelper.GetAttr(n, "name")))
                         {
                             XsdComplexType newType = new XsdComplexType(n);
@@ -291,7 +291,7 @@ namespace XSemmel.Schema.Parser
                             parse(n, node);
                         }
                         break;
-		            }
+                    }
                     case "simpleType":
                     {
                         if (!string.IsNullOrEmpty(VisualizerHelper.GetAttr(n, "name")))
@@ -307,68 +307,68 @@ namespace XSemmel.Schema.Parser
                         break;
                     }
                     case "annotation":
-		            {
+                    {
                         parse(n, node);
                         break;		                    
-		            }
+                    }
                     case "restriction":
                     {
                         XsdNode newNode = new XsdRestriction(n);
                         node.AddKids(newNode);
                         parse(n, newNode);
                         break;    
-		            }
+                    }
                     case "enumeration":
-		            {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                    {
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).AddEnum(value);
-		                break;		                    
-		            }
+                        break;		                    
+                    }
                     case "pattern":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).Pattern = value;
                         break;
                     }
                     case "length":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).Length = value;
                         break;
                     }
                     case "maxLength":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MaxLength = value;
                         break;
                     }
                     case "minLength":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MinLength = value;
                         break;
                     }
                     case "maxInclusive":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MaxInclusive = value;
                         break;
                     }
                     case "maxExclusive":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MaxExclusive = value;
                         break;
                     }
                     case "minInclusive":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MinInclusive = value;
                         break;
                     }
                     case "minExclusive":
                     {
-		                string value = VisualizerHelper.GetAttr(n, "value");
+                        string value = VisualizerHelper.GetAttr(n, "value");
                         ((XsdRestriction)node).MinExclusive = value;
                         break;
                     }
@@ -405,12 +405,12 @@ namespace XSemmel.Schema.Parser
                         break;
                     }
                     case "extension":
-		            {
-		                XsdNode newNode = new XsdExtension(n);
+                    {
+                        XsdNode newNode = new XsdExtension(n);
                         node.AddKids(newNode);
                         parse(n, newNode);
-		                break;
-		            }
+                        break;
+                    }
                     case "anyAttribute":
                     case "attributeGroup":
                     case "field":
@@ -420,13 +420,13 @@ namespace XSemmel.Schema.Parser
                     case "union":
                         Debug.Fail("Not supported: " + name);
                         Console.Error.WriteLine("Not supported: " + name);
-		                break;
+                        break;
                     default:
                         Debug.Fail("Unknown type: " + name);
-		                break;
-		        }
-		    }
-	    }
+                        break;
+                }
+            }
+        }
 
     }
 }

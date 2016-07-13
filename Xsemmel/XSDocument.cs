@@ -52,7 +52,7 @@ namespace XSemmel
             {
                 try
                 {
-                    string xsd2 = GetEmbeddedXsdFile();
+                    string xsd2 = getEmbeddedXsdFile();
                     XsdFile = xsd2;
                 }
                 catch (Exception)
@@ -140,7 +140,7 @@ namespace XSemmel
         }
 
 
-        public string GetEmbeddedXsdFile()
+        private string getEmbeddedXsdFile()
         {
             string currentDirectory = ".";
             if (Filename != null)

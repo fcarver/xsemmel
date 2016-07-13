@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -401,23 +400,17 @@ namespace XSemmel.Editor
             {
                 result.AddRange(((IXsdHasAttribute)node).GetAttributes());
             }
-            if (node is IXsdHasType)
+            IXsdNode typeTarget = (node as IXsdHasType)?.TypeTarget;
+            if (typeTarget is IXsdHasAttribute)
             {
-                IXsdNode typeTarget = ((IXsdHasType)node).TypeTarget;
-                if (typeTarget is IXsdHasAttribute)
-                {
-                    //don't call me recursively to prevent endless loops
-                    result.AddRange(((IXsdHasAttribute)typeTarget).GetAttributes());
-                }
+                //don't call me recursively to prevent endless loops
+                result.AddRange(((IXsdHasAttribute)typeTarget).GetAttributes());
             }
-            if (node is IXsdHasRef)
+            IXsdNode refTarget = (node as IXsdHasRef)?.RefTarget;
+            if (refTarget is IXsdHasAttribute)
             {
-                IXsdNode refTarget = ((IXsdHasRef)node).RefTarget;
-                if (refTarget is IXsdHasAttribute)
-                {
-                    //don't call me recursively to prevent endless loops
-                    result.AddRange(((IXsdHasAttribute)refTarget).GetAttributes());
-                }
+                //don't call me recursively to prevent endless loops
+                result.AddRange(((IXsdHasAttribute)refTarget).GetAttributes());
             }
             foreach (XsdExtension kid in node.GetChildren().OfType<XsdExtension>())
             {
@@ -450,21 +443,15 @@ namespace XSemmel.Editor
                 }
             }
 
-            if (node is IXsdHasType)
+            if ((node as IXsdHasType)?.TypeTarget != null)
             {
-                if (((IXsdHasType)node).TypeTarget != null)
-                {
-                    IXsdHasType n = (IXsdHasType)node;
-                    getChildNames(n.TypeTarget, result);
-                }
+                IXsdHasType n = (IXsdHasType)node;
+                getChildNames(n.TypeTarget, result);
             }
-            if (node is IXsdHasRef)
+            if ((node as IXsdHasRef)?.RefTarget != null)
             {
-                if (((IXsdHasRef)node).RefTarget != null)
-                {
-                    IXsdHasRef n = (IXsdHasRef)node;
-                    getChildNames(n.RefTarget, result);
-                }
+                IXsdHasRef n = (IXsdHasRef)node;
+                getChildNames(n.RefTarget, result);
             }
         }
 

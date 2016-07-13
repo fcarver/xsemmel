@@ -4,7 +4,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Xml;
-using System.Xml.Schema;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Indentation;
 using ICSharpCode.AvalonEdit;
@@ -64,7 +63,7 @@ namespace XSemmel.Editor
             {
                 if (_editorFrame != null)
                 {
-                    throw new Exception("XSDocument already set");
+                    throw new Exception("Editor already set");
                 }
                 _editorFrame = value;
 

@@ -7,8 +7,6 @@
 = TODOs =
 
 	* XPath search'n'replace tut nicht wie erwartet; Beispiele machen
-	* C#-Code auf XML ausführen
-	* Code Completion funktioniert nicht für Typen mit restriction-base, wenn Basis Attribute definiert
 	* XSD-mode: per Shortcut xsd:annotation einfügen
 	* Screenshots auf Homepage aktualisieren
 	* Refactoring: rename (Editor)
@@ -26,6 +24,10 @@
 		* Tab "Schema Info" nur einblenden, wenn Schema referenziert ist
 	* GridView: Collapse all
 	* GridView: Expand to level x
+	* Code Completion
+		* auch ohne XSW completion anbieten
+		* Code Completion funktioniert nicht für Typen mit restriction-base, wenn Basis Attribute definiert
+	* Tab "TreeView" wie normalen Tab anzeigen
 	
 == Limitations ==
 	* Xsd visualizer is not namespace aware
@@ -61,17 +63,3 @@
 	* Große XML splitten, vgl XmlReader
 	* xsd2html: http://xml.fiforms.org/xs3p/
 	* https://xompare.codeplex.com
-	* AutoCompletion of Visual Studio 2008
-		The XML editor fills in the end tag and positions the cursor after the start tag. The following is an example of this (the "|" notes the cursor position):
-		<book>|</book>
-		Because attribute values must always have quotes, the XML editor fills in the quotes for you. For example, if you type the following:
-		<book title=
-		The XML editor adds the quotes and positions the cursor between the quotes:
-		<book title="|"
-		Similarly, the XML editor also inserts the following XML syntax automatically for you:
-		End a processing instruction: ?>
-		End a CDATA block: ]]>
-		End a comment: -->
-		End a DTD declaration: >
-	* ICSharpCode.NRefactory.Xml anschauen
-	* http://stackoverflow.com/questions/12567455/wpf-ribbonwindow-ribbon-title-outside-screen

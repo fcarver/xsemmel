@@ -297,41 +297,24 @@ namespace XSemmel
 
     public class Data : PropertyChangeNotifierBase
     {
-        private readonly ValidationData _validationData;
-        private readonly PrettyPrintData _prettyPrintData;
-        private readonly XsdVisualizerData _xsdVisualizerData;
-        private readonly XsltData _xsltData;
-
         public Data()
         {
-            _validationData = new ValidationData(this);
-            _prettyPrintData = new PrettyPrintData(this);
-            _xsdVisualizerData = new XsdVisualizerData(this);
-            _xsltData = new XsltData(this);
+            ValidationData = new ValidationData(this);
+            PrettyPrintData = new PrettyPrintData(this);
+            XsdVisualizerData = new XsdVisualizerData(this);
+            XsltData = new XsltData(this);
         }
 
         public EditorFrame EditorFrame { get; set; }
 
      
-        public ValidationData ValidationData
-        {
-            get { return _validationData; }
-        }
+        public ValidationData ValidationData { get; }
 
-        public PrettyPrintData PrettyPrintData
-        {
-            get { return _prettyPrintData; }
-        }
+        public PrettyPrintData PrettyPrintData { get; }
 
-        public XsdVisualizerData XsdVisualizerData
-        {
-            get { return _xsdVisualizerData; }
-        }
+        public XsdVisualizerData XsdVisualizerData { get; }
 
-        public XsltData XsltData
-        {
-            get { return _xsltData; }
-        }
+        public XsltData XsltData { get; }
 
         public bool WordWrap
         {

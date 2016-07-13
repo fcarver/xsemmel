@@ -124,8 +124,8 @@ namespace XSemmel.Schema
                     string xsdFile = _validationData.Xsd;
                     if (!FileHelper.FileExists(xsdFile))
                     {
-                        var i = new ValidationIssue(ValidationIssue.Type.Warning, 0, 0, 
-                            string.Format("The file '{0}' does not exist, or the path is invalid", xsdFile));
+                        var i = new ValidationIssue(ValidationIssue.Type.Warning, 0, 0,
+                            $"The file '{xsdFile}' does not exist, or the path is invalid");
                         _lstErrors.Items.Add(i);
                         return;
                     }
