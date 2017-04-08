@@ -103,7 +103,7 @@ namespace XSemmel.Editor
         public void SetSchemaInfo(IXmlSchemaInfo schemaInfo)
         {
             _schemaInfoDockable.Visibility = Visibility.Visible;
-            _schemaInfoDockable.IsSelected = true;
+        //    _schemaInfoDockable.IsSelected = true;  //do not auto-switch tab, in case user likes to see fragments or validation errors...
             _schemaInfo.SetSchemaInfo(schemaInfo);
         }
 
