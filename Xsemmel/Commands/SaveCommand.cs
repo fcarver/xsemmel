@@ -16,7 +16,11 @@ namespace XSemmel.Commands
             return ef.XmlEditor.IsModified;
         }
 
-        public static void SaveWithoutQuestion(EditorFrame ef)
+        /// <summary>
+        /// </summary>
+        /// <param name="ef"></param>
+        /// <returns>true if saving succeeded</returns>
+        public static bool SaveWithoutQuestion(EditorFrame ef)
         {
             if (ef.XSDocument.Filename == null)
             {
@@ -31,6 +35,7 @@ namespace XSemmel.Commands
                     {
                         MainWindow mainWnd = (MainWindow)Application.Current.MainWindow;
                         mainWnd.SaveFile(dlgSaveFile.FileName);
+                        return true;
                     }
                     catch (Exception ex)
                     {
@@ -45,6 +50,7 @@ namespace XSemmel.Commands
                 {
                     MainWindow mainWnd = (MainWindow)Application.Current.MainWindow;
                     mainWnd.SaveFile(ef.XSDocument.Filename);
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -52,6 +58,7 @@ namespace XSemmel.Commands
                                     MessageBoxImage.Error);
                 }
             }
+            return false;
         }
 
         protected override void Execute(EditorFrame ef)

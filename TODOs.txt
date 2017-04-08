@@ -1,6 +1,6 @@
 ﻿!! Done in current release
 
-* FIX: 
+* FIX: do not close application if error occurred after question "Save before closing?"
 * NEW: 
 
 

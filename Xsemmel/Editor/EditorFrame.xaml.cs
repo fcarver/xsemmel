@@ -122,7 +122,7 @@ namespace XSemmel.Editor
                     "Question", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    SaveCommand.SaveWithoutQuestion(this);
+                    return SaveCommand.SaveWithoutQuestion(this);
                 }
                 if (result == MessageBoxResult.No)
                 {
