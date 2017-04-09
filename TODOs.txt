@@ -1,10 +1,9 @@
 ﻿!! Done in current release
 
-* FIX: do not close application if error occurred after question "Save before closing?"
-* CHG: do not auto-switch to SchemaInfo tab, in case user likes to see fragments or validation errors...
-* NEW: Comment / Uncomment block or line via toolbar (thx vestanpance)
-* NEW: GridView right click context menu.  Collapse all, expand to 1, 2, or 3 levels. (thx vestanpance)
-* CHG: XsdVisualizer now shows an Xml Modified warning and will be updated on Save. (thx vestanpance)
+* FIX
+* CHG
+* NEW
+
 
 = TODOs =
 
