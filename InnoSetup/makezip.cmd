@@ -1,0 +1,1 @@
+7z a -tzip output\xsemmel-portable.zip @filelist.txt
