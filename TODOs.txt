@@ -2,8 +2,9 @@
 
 * FIX: do not close application if error occurred after question "Save before closing?"
 * CHG: do not auto-switch to SchemaInfo tab, in case user likes to see fragments or validation errors...
-* NEW: 
-
+* NEW: Comment / Uncomment block or line via toolbar (thx vestanpance)
+* NEW: GridView right click context menu.  Collapse all, expand to 1, 2, or 3 levels. (thx vestanpance)
+* CHG: XsdVisualizer now shows an Xml Modified warning and will be updated on Save. (thx vestanpance)
 
 = TODOs =
 
@@ -16,15 +17,12 @@
 	* Diff: 2. Fenster editierbar machen
 	* Forms-Controls: Passt DPI-Anpassung?
 	* show matching closing/opening element (vgl. BracketMatcher)
-	* Icon zum Ein-/Auskommentieren
 	* SchemaInfo
 		* wenn leer, Info wie aktiviert werden kann
 		* schöner formatieren
 		* Bei Quellenangabe: Klick und XSD öffnen an spezifizierter Position
 		* Im Tooltip eines XML-Elements zeigen
 		* Tab "Schema Info" nur einblenden, wenn Schema referenziert ist
-	* GridView: Collapse all
-	* GridView: Expand to level x
 	* Code Completion
 		* auch ohne XSW completion anbieten
 		* Code Completion funktioniert nicht für Typen mit restriction-base, wenn Basis Attribute definiert

@@ -35,6 +35,15 @@ namespace XSemmel.Commands
                     {
                         MainWindow mainWnd = (MainWindow)Application.Current.MainWindow;
                         mainWnd.SaveFile(dlgSaveFile.FileName);
+
+                        //TGW
+                        if (ef.XSDocument.Filename != null && ef.XSDocument.Filename.ToLower().EndsWith(".xsd"))
+                        {
+                            Schema.Parser.IXsdNode nd = new Schema.Parser.SchemaParser(ef.XSDocument.Filename, false).GetVirtualRoot();
+                            ef._xsdVisualizer.SetRoot(nd);
+                            ef._xsdVisualizer.Refresh();
+                            ef._xsdVisualizer._lblModified.Visibility = System.Windows.Visibility.Collapsed;
+                        }
                         return true;
                     }
                     catch (Exception ex)
@@ -50,6 +59,15 @@ namespace XSemmel.Commands
                 {
                     MainWindow mainWnd = (MainWindow)Application.Current.MainWindow;
                     mainWnd.SaveFile(ef.XSDocument.Filename);
+
+                    //TGW
+                    if (ef.XSDocument.Filename != null && ef.XSDocument.Filename.ToLower().EndsWith(".xsd"))
+                    {
+                        Schema.Parser.IXsdNode nd = new Schema.Parser.SchemaParser(ef.XSDocument.Filename, false).GetVirtualRoot();
+                        ef._xsdVisualizer.SetRoot(nd);
+                        ef._xsdVisualizer.Refresh();
+                        ef._xsdVisualizer._lblModified.Visibility = System.Windows.Visibility.Collapsed;
+                    }
                     return true;
                 }
                 catch (Exception ex)

@@ -153,10 +153,12 @@
       <DependentUpon>ApplicationMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="AttributeType.cs" />
+    <Compile Include="Commands\CommentCommand.cs" />
     <Compile Include="Commands\Hex2DecCommand.cs" />
     <Compile Include="Commands\Dec2HexCommand.cs" />
     <Compile Include="Commands\StartSearchCommand.cs" />
     <Compile Include="Commands\TrimXmlCommand.cs" />
+    <Compile Include="Commands\UncommentCommand.cs" />
     <Compile Include="Commands\UnescapeBase64StringCommand.cs" />
     <Compile Include="Commands\EscapeBase64StringCommand.cs" />
     <Compile Include="Commands\XsdValidateXmlCommand.cs" />
@@ -764,6 +766,12 @@
   <ItemGroup>
     <Resource Include="Images\Prettyprint_16x16.png" />
     <Resource Include="Images\Prettyprint_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\XmlComment_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\XmlUncomment_16x16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
